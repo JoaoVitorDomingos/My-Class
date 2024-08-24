@@ -1,0 +1,10 @@
+Schoool
+Edit
+Grid View
+View List
+Article
+Person
+Picture As Pdf
+Send
+Cancel
+Close

@@ -1,0 +1,4 @@
+Azul: 2C1CF5
+Verde Claro: 1EDFD8
+Preto: 000500
+Branco: f4f9e9
