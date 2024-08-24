@@ -8,3 +8,6 @@ Picture As Pdf
 Send
 Cancel
 Close
+
+UTILIZAÇÃO:
+<span class="material-symbols-outlined">NOME</span>

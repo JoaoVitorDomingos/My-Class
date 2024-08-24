@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+/* Fontes e Cores */
+:root {
+    --azul: #2C1CF5;
+    --verde-claro: #1EDFD8;
+    --preto: #000500;
+    --branco: #f4f9e9;
+
+    --principal: "Inter";
+    --secundaria: "Roboto";
+    --terciaria: "Open Sans";
+}
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--principal), var(--secundaria), var(--terciaria), sans-serif;
+}

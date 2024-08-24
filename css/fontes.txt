@@ -1,0 +1,3 @@
+Principal: Inter
+Secundaria: Roboto
+Terciária: Open Sans
