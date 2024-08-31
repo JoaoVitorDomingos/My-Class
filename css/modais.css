@@ -135,17 +135,17 @@
     margin-bottom: 20px;
 }
 
-#lancar_notas .modal-conteudo label {
+.modal-conteudo label {
     font-size: 1.3em;
 }
 
-#lancar_notas .modal-conteudo .area-data input {
+.modal-conteudo .area-data input {
     display: block;
     padding: .375rem .375rem .375rem .75rem;
     border: 1px solid #dee2e6;
     border-radius: 5px;
     color: #212529;
-} 
+}
 
 /* Modal - Tabela */
 .modal-conteudo table thead > tr > th {
@@ -187,4 +187,11 @@
 
 .modal-conteudo table .observacao:focus {
     cursor: text;
+}
+
+
+/* Modal - Lançar Presença */
+#lancar_presenca table .check-box {
+    width: 10%;
+    text-align: center;
 }

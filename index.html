@@ -94,7 +94,7 @@
 
             <div class="botoes mx-auto">
                 <p class="botao" data-bs-toggle="modal" data-bs-target="#lancar_notas">Lançar Notas</p>
-                <p class="botao" data-bs-toggle="modal" data-bs-target="#">Lançar Presença</p>
+                <p class="botao" data-bs-toggle="modal" data-bs-target="#lancar_presenca">Lançar Presença</p>
                 <p class="botao" data-bs-toggle="modal" data-bs-target="#">Adicionar Aluno</p>
                 <p class="botao" data-bs-toggle="modal" data-bs-target="#">Imprimir Boletim</p>
                 <p class="botao" data-bs-toggle="modal" data-bs-target="#">Imprimir Presença</p>
@@ -216,6 +216,68 @@
                                 <tr>
                                     <td class="td_nome">Guilherme</td>
                                     <td class="td_nota">--</td>
+                                    <td class="td_observacao"><input type="text" name="observacao" class="observacao"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="modal-footer modal-botoes">
+                        <button type="button" data-bs-dismiss="modal" class="modal-btn btn-cancel">Cancelar</button>
+                        <input type="submit" value="Salvar" data-bs-dismiss="modal" class="modal-btn btn-salvar" >
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="lancar_presenca" class="modal fade">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Lançar Presença</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body modal-conteudo">
+                        <form class="mb-4 mx-auto w-75">  
+                            <fieldset class="mb-3">
+                                <label for="presenca_conteudo" class="form-label">Conteudo do dia:</label>
+                                <input type="text" name="presenca_conteudo" id="presenca_conteudo" class="form-control">
+                            </fieldset>
+
+                            <fieldset class="area-data">
+                                <label for="presenca_data">Data:</label>
+                                <input type="date" name="presenca_data" id="presenca_data">
+                            </fieldset>
+                        </form>
+
+                        <table class="table table-striped table-bordered border-dark mx-auto w-75">
+                            <thead>
+                                <tr>
+                                    <th>Alunos</th>
+                                    <th>Presença</th>
+                                    <th>Falta</th>
+                                    <th>Observação</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td class="td_nome">João Vitor</td>
+                                    <td class="check-box"><input type="radio" name="presenca1" id="v"></td>
+                                    <td class="check-box"><input type="radio" name="presenca1" id="f"></td>
+                                    <td class="td_observacao"><input type="text" name="observacao" class="observacao"></td>
+                                </tr>
+                                <tr>
+                                    <td class="td_nome">Igor</td>
+                                    <td class="check-box"><input type="radio" name="presenca2" id="v"></td>
+                                    <td class="check-box"><input type="radio" name="presenca2" id="f"></td>
+                                    <td class="td_observacao"><input type="text" name="observacao" class="observacao"></td>
+                                </tr>
+                                <tr>
+                                    <td class="td_nome">Guilherme</td>
+                                    <td class="check-box"><input type="radio" name="presenca3" id="v"></td>
+                                    <td class="check-box"><input type="radio" name="presenca3" id="f"></td>
                                     <td class="td_observacao"><input type="text" name="observacao" class="observacao"></td>
                                 </tr>
                             </tbody>
