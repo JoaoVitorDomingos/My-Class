@@ -124,3 +124,67 @@
     margin-right: 30px;
 }
 
+
+
+/* Modal - Lançar Notas */
+#lancar_notas .modal-conteudo form {
+    justify-content: center;
+}
+
+#lancar_notas .modal-conteudo fieldset {
+    margin-bottom: 20px;
+}
+
+#lancar_notas .modal-conteudo label {
+    font-size: 1.3em;
+}
+
+#lancar_notas .modal-conteudo .area-data input {
+    display: block;
+    padding: .375rem .375rem .375rem .75rem;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    color: #212529;
+} 
+
+/* Modal - Tabela */
+.modal-conteudo table thead > tr > th {
+    background-color: rgb(189, 184, 184);
+    text-align: center;
+    font-size: 1.1em;
+}
+
+.modal-conteudo table .td_nome {
+    font-size: 1em;
+}
+
+#lancar_notas .modal-conteudo table .td_nota {
+    text-align: center;
+    font-style: 1em;
+}
+
+#lancar_notas .modal-conteudo table .td_nota:hover {
+    cursor: pointer;
+}
+
+.modal-conteudo table .td_observacao {
+    width: 40%;
+    padding: 5px;
+}
+
+.modal-conteudo table .observacao {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    font-size: 1em;
+}
+
+.modal-conteudo table .observacao:hover {
+    cursor: pointer;
+}
+
+.modal-conteudo table .observacao:focus {
+    cursor: text;
+}
