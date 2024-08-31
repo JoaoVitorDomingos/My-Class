@@ -22,6 +22,9 @@
 
     <!-- Estilo Principal -->
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- Estilo dos Modais -->
+     <link rel="stylesheet" href="css/modais.css">
 </head>
 <body>
     
@@ -46,7 +49,7 @@
         <section id="classe">
             <div class="back container-md">
                 <h2>Matemática - 2°B</h2>
-                <span class="material-symbols-outlined">edit</span>
+                <span class="material-symbols-outlined" data-bs-toggle="modal" data-bs-target="#editar_back">edit</span>
             </div>
 
             <table class="table table-striped mx-auto tabela">
@@ -101,6 +104,56 @@
 
 
     </main>
+
+    <section id="modias">
+        <div id="editar_back" class="mx-auto janela-modais modal fade">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header modal-topo">
+                        <h2>Editar Imagem de Visita</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <form method="post" class="modal-conteudo modal-body">
+                        <fieldset id="area-titulo">
+                            <label for="titulo">Título:</label>
+                            <input type="text" name="titulo" id="titulo">
+                        </fieldset>
+                        <fieldset id="cor-texto" class="area-color">
+                            <label for="corTxt">Cor do Texto:</label>
+                            <input type="color" name="corTxt" id="corTxt" value="#FFFFFF">
+                        </fieldset>
+                        <fieldset id="area-fundotxt">
+                            <p>Fundo do texto:</p>
+                            <div class="div-radios">
+                                <div>
+                                    <input type="radio" name="backTxt" id="backTxt-ativado" value="ativado">
+                                    <label for="backTxt-ativado">Ativado</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="backTxt" id="backTxt-desativado" value="desativado" checked>
+                                    <label for="backTxt-desativado">Desativado</label>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="area-color" id="cor-back">
+                            <label for="backCor">Cor de Fundo:</label>
+                            <input type="color" name="backCor" id="backCor">
+                        </fieldset>
+                        <fieldset id="img-back">
+                            <label for="backImg">Imagem de Fundo:</label>
+                            <input type="file" name="backImg" id="backImg">
+                        </fieldset>
+                    </form>
+
+                    <div class="modal-botoes modal-footer">
+                        <button type="button" data-bs-dismiss="modal" class="modal-btn btn-cancel">Cancelar</button>
+                        <input type="submit" value="Salvar" data-bs-dismiss="modal" class="modal-btn btn-salvar" >
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <footer>
         <p>&copy; Feito por <a href="https://github.com/JoaoVitorDomingos" target="_blank">João Vitor C. Domingos</a></p>
