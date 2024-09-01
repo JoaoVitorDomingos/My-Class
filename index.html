@@ -96,7 +96,7 @@
                 <p class="botao" data-bs-toggle="modal" data-bs-target="#lancar_notas">Lançar Notas</p>
                 <p class="botao" data-bs-toggle="modal" data-bs-target="#lancar_presenca">Lançar Presença</p>
                 <p class="botao" data-bs-toggle="modal" data-bs-target="#adicionar_aluno">Adicionar Aluno</p>
-                <p class="botao" data-bs-toggle="modal" data-bs-target="#">Imprimir Boletim</p>
+                <p class="botao" data-bs-toggle="modal" data-bs-target="#imprimir_boletim">Imprimir Boletim</p>
                 <p class="botao" data-bs-toggle="modal" data-bs-target="#">Imprimir Presença</p>
                 <p class="botao" data-bs-toggle="modal" data-bs-target="#">Imprimir Tabela</p>
             </div>
@@ -305,7 +305,7 @@
                     </div>
                     
                     <div class="modal-body modal-conteudo">
-                        <form class="my-4 mx-auto row">
+                        <form method="post" class="my-4 mx-auto row">
                             <fieldset class="col-md-12 mb-4">
                                 <label for="adicionar_nome" class="form-label">Nome:</label>
                                 <input type="text" name="adicionar_nome" id="adicionar_nome" class="form-control" required>
@@ -346,6 +346,73 @@
                                 <input type="file" name="adicionar_foto" id="adicionar_foto" class="form-control">
                             </fieldset>
                         </form>
+                    </div>
+
+                    <div class="modal-footer modal-botoes">
+                        <button type="button" data-bs-dismiss="modal" class="modal-btn btn-cancel">Cancelar</button>
+                        <input type="submit" value="Salvar" data-bs-dismiss="modal" class="modal-btn btn-salvar" >
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="imprimir_boletim" class="modal fade">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Imprimir Boletim</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body modal-conteudo">
+                        <form action="" method="get" class="w-75 mx-auto my-4 row">
+                            <fieldset class="col-md-7">
+                                <label for="imprimir_bo_bimestre" class="form-label">Bimestre:</label>
+                                <select name="imprimir_bo_bimestre" id="imprimir_bo_bimestre" class="form-select">
+                                    <option value="1b">1° Bimestre</option>
+                                    <option value="2b">2° Bimestre</option>
+                                    <option value="3b">3° Bimestre</option>
+                                    <option value="4b">4° Bimestre</option>
+                                </select>
+                            </fieldset>
+
+                            <fieldset class="area-radio col-md-5">
+                                <div class="div-radios">
+                                    <div>
+                                        <input type="radio" name="imprimir_bo_tipo" id="imprimir_bo_sala" checked>
+                                        <label for="imprimir_bo_sala">Sala Toda</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" name="imprimir_bo_tipo" id="imprimir_bo_escolher">
+                                        <label for="imprimir_bo_escolher">Escolher Aluno</label>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+
+                        <table class="table table-striped table-bordered border-dark mx-auto w-75">
+                            <thead>
+                                <tr>
+                                    <th>Escolher</th>
+                                    <th>Aluno</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td class="check-box"><input type="checkbox" name="imprimir_bo_aluno" id="aluno1"></td>
+                                    <td class="td_nome">João Vitor</td>
+                                </tr>
+                                <tr>
+                                    <td class="check-box"><input type="checkbox" name="imprimir_bo_aluno" id="aluno2"></td>
+                                    <td class="td_nome">Igor</td>
+                                </tr>
+                                <tr>
+                                    <td class="check-box"><input type="checkbox" name="imprimir_bo_aluno" id="aluno3"></td>
+                                    <td class="td_nome">Guilherme</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
 
                     <div class="modal-footer modal-botoes">

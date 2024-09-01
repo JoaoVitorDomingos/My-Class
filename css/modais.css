@@ -193,8 +193,7 @@
 }
 
 
-/* Modal - Lançar Presença */
-#lancar_presenca table .check-box {
+.check-box {
     width: 10%;
     text-align: center;
 }
@@ -213,4 +212,32 @@
 #adicionar_aluno .area-data label {
     margin-bottom: 0;
     margin-right: 5px;
+}
+
+
+/* Modal - Imprimir Boletim */
+#imprimir_boletim .modal-conteudo form fieldset:first-of-type {
+    display: flex;
+    align-items: center;
+}
+
+#imprimir_boletim .modal-conteudo form fieldset:first-of-type label {
+    margin-right: 10px;
+}
+
+#imprimir_boletim .modal-conteudo form fieldset:first-of-type select {
+    width: 60%;
+}
+
+#imprimir_boletim .area-radio label {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+#imprimir_boletim table .check-box {
+    width: 30%;
+}
+
+#imprimir_boletim table .td_nome {
+    text-align: center;
 }
