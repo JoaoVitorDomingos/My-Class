@@ -82,24 +82,26 @@
     padding: 1px;
 }
 
-#area-fundotxt {
+.area-radio {
     display: flex;
     align-items: center;
 }
 
-#area-fundotxt p {
+.area-radio p {
     margin: 0;
     margin-right: 10px;
     font-weight: bold;
+    font-size: 1.3em;
 }
 
-#area-fundotxt div.div-radios {
+.area-radio div.div-radios {
     display: flex;
     flex-direction: column;
 }
 
-.div-radios label {
-    font-size: 0.8em;
+.area-radio .div-radios label {
+    font-size: 1em;
+    font-weight: normal;
 }
 
 #img-back {
@@ -137,6 +139,7 @@
 
 .modal-conteudo label {
     font-size: 1.3em;
+    font-weight: bold;
 }
 
 .modal-conteudo .area-data input {
@@ -194,4 +197,20 @@
 #lancar_presenca table .check-box {
     width: 10%;
     text-align: center;
+}
+
+
+/* Modal - Adicionar Aluno */
+#adicionar_aluno form {
+    width: 80%;
+}
+
+#adicionar_aluno .area-data {
+    display: flex;
+    align-items: center;
+}
+
+#adicionar_aluno .area-data label {
+    margin-bottom: 0;
+    margin-right: 5px;
 }

@@ -95,7 +95,7 @@
             <div class="botoes mx-auto">
                 <p class="botao" data-bs-toggle="modal" data-bs-target="#lancar_notas">Lançar Notas</p>
                 <p class="botao" data-bs-toggle="modal" data-bs-target="#lancar_presenca">Lançar Presença</p>
-                <p class="botao" data-bs-toggle="modal" data-bs-target="#">Adicionar Aluno</p>
+                <p class="botao" data-bs-toggle="modal" data-bs-target="#adicionar_aluno">Adicionar Aluno</p>
                 <p class="botao" data-bs-toggle="modal" data-bs-target="#">Imprimir Boletim</p>
                 <p class="botao" data-bs-toggle="modal" data-bs-target="#">Imprimir Presença</p>
                 <p class="botao" data-bs-toggle="modal" data-bs-target="#">Imprimir Tabela</p>
@@ -119,11 +119,13 @@
                             <label for="titulo">Título:</label>
                             <input type="text" name="titulo" id="titulo">
                         </fieldset>
+
                         <fieldset id="cor-texto" class="area-color">
                             <label for="corTxt">Cor do Texto:</label>
                             <input type="color" name="corTxt" id="corTxt" value="#FFFFFF">
                         </fieldset>
-                        <fieldset id="area-fundotxt">
+
+                        <fieldset id="area-fundotxt" class="area-radio">
                             <p>Fundo do texto:</p>
                             <div class="div-radios">
                                 <div>
@@ -136,10 +138,12 @@
                                 </div>
                             </div>
                         </fieldset>
+
                         <fieldset class="area-color" id="cor-back">
                             <label for="backCor">Cor de Fundo:</label>
                             <input type="color" name="backCor" id="backCor">
                         </fieldset>
+
                         <fieldset id="img-back">
                             <label for="backImg">Imagem de Fundo:</label>
                             <input type="file" name="backImg" id="backImg">
@@ -282,6 +286,66 @@
                                 </tr>
                             </tbody>
                         </table>
+                    </div>
+
+                    <div class="modal-footer modal-botoes">
+                        <button type="button" data-bs-dismiss="modal" class="modal-btn btn-cancel">Cancelar</button>
+                        <input type="submit" value="Salvar" data-bs-dismiss="modal" class="modal-btn btn-salvar" >
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="adicionar_aluno" class="modal fade">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Adicionar Aluno</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    
+                    <div class="modal-body modal-conteudo">
+                        <form class="my-4 mx-auto row">
+                            <fieldset class="col-md-12 mb-4">
+                                <label for="adicionar_nome" class="form-label">Nome:</label>
+                                <input type="text" name="adicionar_nome" id="adicionar_nome" class="form-control" required>
+                            </fieldset>
+
+                            <fieldset class="area-data col-md-8 mb-4">
+                                <label for="adicionar_nasc" class="form-label">Data de Nascimento:</label>
+                                <input type="date" name="adicionar_nasc" id="adicionar_nasc" required>
+                            </fieldset>
+
+                            <fieldset class="area-radio col-md-4 mb-4">
+                                <p>Sexo:</p>
+                                <div class="div-radios">
+                                    <div>
+                                        <input type="radio" name="adicionar_sexo" id="adsexo_masculino" value="Masculino" checked>
+                                        <label for="adsexo_masculino">Masculino</label>
+                                    </div>
+
+                                    <div>
+                                        <input type="radio" name="adicionar_sexo" id="adsexo_feminino" value="Feminino">
+                                        <label for="adsexo_feminino">Feminino</label>
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <fieldset class="col-md-4 mb-4">
+                                <label for="adicionar_cpf" class="form-label">CPF:</label>
+                                <input type="text" name="adicionar_cpf" id="adicionar_cpf" required maxlength="11" placeholder="12345678912" class="form-control">
+                            </fieldset>
+
+                            <fieldset class="col-md-8 mb-4">
+                                <label for="adicionar_end" class="form-label">Endereço:</label>
+                                <input type="text" name="adicionar_end" id="adicionar_end" required class="form-control">
+                            </fieldset>
+
+                            <fieldset class="col-md-12">
+                                <label for="adicionar_foto" class="form-label">Foto:</label>
+                                <input type="file" name="adicionar_foto" id="adicionar_foto" class="form-control">
+                            </fieldset>
+                        </form>
                     </div>
 
                     <div class="modal-footer modal-botoes">
