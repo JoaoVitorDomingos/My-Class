@@ -229,15 +229,31 @@
     width: 60%;
 }
 
-#imprimir_boletim .area-radio label {
-    font-size: 1.2em;
+#imprimir_boletim .area-radio label, #imprimir_presenca form .area-radio label {
+    font-size: 1.3em;
     font-weight: bold;
 }
 
-#imprimir_boletim table .check-box {
+#imprimir_boletim table .check-box, #imprimir_presenca table .check-box {
     width: 30%;
 }
 
-#imprimir_boletim table .td_nome {
+#imprimir_boletim table .td_nome, #imprimir_presenca table .td_nome {
     text-align: center;
+}
+
+
+/* Modal - Imprimir Presença */
+#imprimir_presenca form {
+    align-items: center;
+}
+
+#imprimir_presenca form .presenca_datas fieldset {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#imprimir_presenca form .presenca_datas fieldset label {
+    margin-right: 10px;
 }
