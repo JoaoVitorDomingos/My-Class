@@ -114,18 +114,18 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
-                    <form method="post" class="modal-conteudo modal-body">
-                        <fieldset id="area-titulo">
-                            <label for="titulo">Título:</label>
-                            <input type="text" name="titulo" id="titulo">
+                    <form method="post" class="modal-conteudo modal-body row w-75 mx-auto my-4">
+                        <fieldset id="area-titulo" class="col-md-7">
+                            <label for="titulo" class="form-label">Título:</label>
+                            <input type="text" name="titulo" id="titulo" class="form-control">
                         </fieldset>
 
-                        <fieldset id="cor-texto" class="area-color">
-                            <label for="corTxt">Cor do Texto:</label>
-                            <input type="color" name="corTxt" id="corTxt" value="#FFFFFF">
+                        <fieldset id="cor-texto" class="area-color col-md-5 justify-content-end">
+                            <label for="corTxt" class="form-label">Cor do Texto:</label>
+                            <input type="color" name="corTxt" id="corTxt" value="#FFFFFF" class="form-control form-control-color">
                         </fieldset>
 
-                        <fieldset id="area-fundotxt" class="area-radio">
+                        <fieldset id="area-fundotxt" class="area-radio col-md-7">
                             <p>Fundo do texto:</p>
                             <div class="div-radios">
                                 <div>
@@ -139,14 +139,14 @@
                             </div>
                         </fieldset>
 
-                        <fieldset class="area-color" id="cor-back">
-                            <label for="backCor">Cor de Fundo:</label>
-                            <input type="color" name="backCor" id="backCor">
+                        <fieldset class="area-color col-md-5 justify-content-end" id="cor-back">
+                            <label for="backCor" class="form-label">Cor de Fundo:</label>
+                            <input type="color" name="backCor" id="backCor" class="form-control-color">
                         </fieldset>
 
-                        <fieldset id="img-back">
-                            <label for="backImg">Imagem de Fundo:</label>
-                            <input type="file" name="backImg" id="backImg">
+                        <fieldset id="img-back" class="col-md-12">
+                            <label for="backImg" class="form-label">Imagem de Fundo:</label>
+                            <input type="file" name="backImg" id="backImg" class="form-control">
                         </fieldset>
                     </form>
 
