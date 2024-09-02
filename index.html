@@ -36,17 +36,23 @@
 
         <menu>
             <nav>
-                <ul class="nav nav-tab">
-                    <li class="nav-item"><a href="#" class="link-active" data-bs-toggle="tab">Classe</a></li>
-                    <li class="nav-item"><a href="#" data-bs-toggle="tab">Atividades</a></li>
+                <ul class="nav nav-underline" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <!-- <a class="link-active" href="#classe" data-bs-toggle="tab">Classe</a> -->
+                        <button class="link-active active" data-bs-toggle="tab" data-bs-target="#classe" type="button" role="tab" aria-controls="classe" aria-selected="true">Classe</button>
+                    </li>
+                    <li class="nav-item" role="presentation"> 
+                        <!-- <a class="" href="#atividades" data-bs-toggle="tab">Atividades</a> -->
+                        <button data-bs-toggle="tab" data-bs-target="#atividades" type="button" role="tab" aria-controls="atividades" aria-selected="false">Atividades</button>
+                    </li>
                 </ul>
             </nav>
         </menu>
     </header>
 
-    <main>
+    <main class="tab-content">
 
-        <section id="classe">
+        <section id="classe" class="tab-pane fade show active" role="tabpanel" aria-labelledby="classe-tab" tabindex="0">
             <div class="back container-md">
                 <h2>Matemática - 2°B</h2>
                 <span class="material-symbols-outlined" data-bs-toggle="modal" data-bs-target="#editar_back">edit</span>
@@ -102,6 +108,9 @@
             </div>
         </section>
 
+        <section id="atividades" class="tab-pane fade" role="tabpanel" aria-labelledby="atividades-tab" tabindex="0">
+            
+        </section>
 
     </main>
 

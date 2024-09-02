@@ -75,9 +75,18 @@ menu a {
     text-decoration: none;
 }
 
-menu a:hover {
+menu a:hover, menu button:hover {
     color: var(--verde-claro);
     cursor: pointer;
+    border: none;
+}
+
+menu button {
+    font-size: 2em;
+    color: white;
+    padding: 0;
+    background-color: transparent;
+    border: none;
 }
 
 
