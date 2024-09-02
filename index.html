@@ -71,7 +71,7 @@
                         <td>100%</td>
                         <td>10.0</td>
                         <td>Aprovado</td>
-                        <td><span class="material-symbols-outlined">query_stats</span></td>
+                        <td><span class="material-symbols-outlined" data-bs-toggle="modal" data-bs-target="#aluno_vejaMais">query_stats</span></td>
                     </tr>
                     <tr>
                         <td class="nome">Guilherme Henrique</td>
@@ -79,7 +79,7 @@
                         <td>80%</td>
                         <td>9.0</td>
                         <td>Exame</td>
-                        <td><span class="material-symbols-outlined">query_stats</span></td>
+                        <td><span class="material-symbols-outlined" data-bs-toggle="modal" data-bs-target="#aluno_vejaMais">query_stats</span></td>
                     </tr>
                     <tr>
                         <td class="nome">Igor</td>
@@ -87,7 +87,7 @@
                         <td>90%</td>
                         <td>7.0</td>
                         <td>Reprovado</td>
-                        <td><span class="material-symbols-outlined">query_stats</span></td>
+                        <td><span class="material-symbols-outlined" data-bs-toggle="modal" data-bs-target="#aluno_vejaMais">query_stats</span></td>
                     </tr>
                 </tbody>
             </table>
@@ -149,6 +149,82 @@
                             <input type="file" name="backImg" id="backImg">
                         </fieldset>
                     </form>
+
+                    <div class="modal-botoes modal-footer">
+                        <button type="button" data-bs-dismiss="modal" class="modal-btn btn-cancel">Cancelar</button>
+                        <input type="submit" value="Salvar" data-bs-dismiss="modal" class="modal-btn btn-salvar" >
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="aluno_vejaMais" class="modal fade">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header modal-topo">
+                        <h2>Editar Imagem de Visita</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body modal-conteudo my-4">
+                        <div class="mb-3 row informacoes-aluno w-75 mx-auto">
+                            <div class="foto-aluno col-md-4"></div>
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <p class="col-md-12">Nome do Aluno</p>
+                                </div>
+                                <div class="row">
+                                    <p class="col-md-6">Data Nasc Aluno</p>
+                                    <p class="col-md-6">CPF do Aluno</p>
+                                </div>
+                                <div class="row">
+                                    <p class="col-md-12">Endereço do Aluno</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tabelas-aluno">
+                            <table class="table table-bordered border-dark">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Presença</th>
+                                        <th scope="col">Atividades</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr>
+                                        <td>100%</td>
+                                        <td>100%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table table-bordered border-dark">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">1° Bimestre</th>
+                                        <th scope="col">2° Bimestre</th>
+                                        <th scope="col">3° Bimestre</th>
+                                        <th scope="col">4° Bimestre</th>
+                                        <th scope="col">Média Final</th>
+                                        <th scope="col">Situação</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr>
+                                        <td>10.0</td>
+                                        <td>9.0</td>
+                                        <td>9.9</td>
+                                        <td>10.0</td>
+                                        <td>9.7</td>
+                                        <td>Aprovado</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
 
                     <div class="modal-botoes modal-footer">
                         <button type="button" data-bs-dismiss="modal" class="modal-btn btn-cancel">Cancelar</button>

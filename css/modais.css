@@ -127,6 +127,41 @@
 }
 
 
+/* Modal - Veja Mais */
+#aluno_vejaMais .modal-conteudo .informacoes-aluno {
+    justify-content: space-around;
+}
+
+#aluno_vejaMais .modal-conteudo .foto-aluno {
+    border: 2px solid black;
+    border-radius: 3px;
+    width: 140px;
+    height: 158px;
+    background-image: url(../imgs/foto-alunos/foto-aluno1.jpg);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#aluno_vejaMais .modal-conteudo p {
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+#aluno_vejaMais .modal-conteudo .tabelas-aluno table {
+    text-align: center;
+}
+
+#aluno_vejaMais .modal-conteudo .tabelas-aluno table:first-of-type {
+    text-align: center;
+    width: 20%;
+    margin: 0 auto 20px auto;
+}
+
+#aluno_vejaMais .modal-conteudo .tabelas-aluno table:last-of-type {
+    width: 90%;
+    margin: 0 auto;
+}
 
 /* Modal - Lançar Notas */
 #lancar_notas .modal-conteudo form {
