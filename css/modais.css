@@ -267,3 +267,13 @@
 #criar_sessao .modal-conteudo div table {
     text-align: center;
 }
+
+
+/* Modal - Criar Atividade */
+#criar_atividade .modal-conteudo {
+    width: 80%;
+}
+
+#criar_atividade .modal-conteudo form fieldset {
+    margin-bottom: 30px;
+}

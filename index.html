@@ -118,7 +118,7 @@
                 <hr>
                 <div class="topo_botoes">
                     <p class="botao" data-bs-toggle="modal" data-bs-target="#criar_sessao">Criar Sessão</p>
-                    <p class="botao" data-bs-toggle="modal" data-bs-target="#">Criar Atividade</p>
+                    <p class="botao" data-bs-toggle="modal" data-bs-target="#criar_atividade">Criar Atividade</p>
                 </div>
             </section>
 
@@ -732,6 +732,46 @@
                                 </tbody>
                             </table>
                         </div>
+                    </div>
+
+                    <div class="modal-footer modal-botoes">
+                        <button type="button" data-bs-dismiss="modal" class="modal-btn btn-cancel">Cancelar</button>
+                        <input type="submit" value="Salvar" data-bs-dismiss="modal" class="modal-btn btn-salvar" >
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="criar_atividade" class="modal fade">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Criar Atividade</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body modal-conteudo row mx-auto mt-3">
+                        <form method="post">
+                            <fieldset>
+                                <label for="atividade_nome" class="form-label">Nome:</label>
+                                <input type="text" name="atividade_nome" id="atividade_nome" class="form-control">
+                            </fieldset>
+
+                            <fieldset>
+                                <label for="atividade_descricao" class="form-label">Descrição:</label>
+                                <input type="text" name="atividade_descricao" id="atividade_descricao" class="form-control">
+                            </fieldset>
+
+                            <fieldset>
+                                <label for="atividade_conteudo" class="form-label">Conteúdo:</label>
+                                <textarea name="atividade_conteudo" id="atividade_conteudo" class="form-control" rows="5"></textarea>
+                            </fieldset>
+
+                            <fieldset>
+                                <label for="atividade_arquivo" class="form-label">Arquivo:</label>
+                                <input type="file" name="atividade_arquivo" id="atividade_arquivo" class="form-control">
+                            </fieldset>
+                        </form>
                     </div>
 
                     <div class="modal-footer modal-botoes">
