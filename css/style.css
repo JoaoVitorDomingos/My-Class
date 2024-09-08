@@ -47,14 +47,6 @@
     color: var(--azul);
 }
 
-/* Grid View */
-.grid-view {
-    display: grid;
-    grid-template-columns: 25% 25% 25%;
-    justify-content: center;
-    gap: 40px 30px;
-}
-
 
 /* Atividade */
 .atividade {
@@ -73,7 +65,7 @@
     cursor: pointer;
 }
 
-.atividade h3 {
+.atividade > div > div > h3 {
     text-align: center;
     font-weight: bold;
     margin-top: -30px;
@@ -103,6 +95,93 @@
     text-decoration: underline;
     border: 3px solid var(--verde-claro);
 }
+
+
+/* Grid View */
+.grid-view {
+    display: grid;
+    grid-template-columns: 25% 25% 25%;
+    justify-content: center;
+    gap: 40px 30px;
+}
+
+div.grid-view > div.atividade > div > div > span {
+    display: none;
+}
+
+div.grid-view > div.atividade > hr {
+    display: none;
+}
+
+/* Line View - Closed */
+.line-view .atividade {
+    height: 60px;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+.line-view .atividade:hover {
+    cursor: pointer;
+}
+
+.line-view .atividade div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto 7px;
+}
+
+.line-view .atividade h3 {
+    margin: 0;
+    font-size: 2em;
+}
+
+.line-view .atividade > div > span {
+    font-size: 1.7em;
+    order: 2;
+}
+
+.line-view .atividade > div > div span {
+    font-size: 3em;
+    margin-right: 10px;
+}
+
+.line-view .atividade > div > div span:hover {
+    cursor: default;
+    color: white;
+}
+
+div.line-view > div.atividade p, div.line-view > div.atividade hr {
+    display: none;
+}
+
+/* Line View - Opened */
+.opened .atividade {
+    height: 250px;
+}
+
+div.opened > div.atividade p, div.opened > div.atividade hr {
+    display: block;
+}
+
+div.opened > div.atividade hr {
+    opacity: 1;
+    width: 88%;
+    border: 1px solid white;
+    margin: 5px auto 20px auto;
+}
+
+div.opened > div.atividade p:first-of-type {
+    height: 70px;
+    width: 88%;
+    margin: 0 auto 30px auto;
+}
+
+div.opened > div.atividade p.botao {
+    width: 15%;
+    margin: 0 auto auto;
+}
+
 
 
 /* Header */
@@ -328,7 +407,7 @@ section#atividades div.container-sessões section div.topo h2 {
 }
 
 section#atividades div.container-sessões section div.topo div.container-span span {
-    font-size: 1.5em;
+    font-size: 2em;
 }
 
 section#atividades div.container-sessões section div.topo hr {
