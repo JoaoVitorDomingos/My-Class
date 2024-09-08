@@ -117,8 +117,8 @@
                 </div>
                 <hr>
                 <div class="topo_botoes">
-                    <p class="botao">Criar Sessão</p>
-                    <p class="botao">Criar Atividade</p>
+                    <p class="botao" data-bs-toggle="modal" data-bs-target="#criar_sessao">Criar Sessão</p>
+                    <p class="botao" data-bs-toggle="modal" data-bs-target="#">Criar Atividade</p>
                 </div>
             </section>
 
@@ -682,6 +682,56 @@
                                 </tr>
                             </tbody>
                         </table>
+                    </div>
+
+                    <div class="modal-footer modal-botoes">
+                        <button type="button" data-bs-dismiss="modal" class="modal-btn btn-cancel">Cancelar</button>
+                        <input type="submit" value="Salvar" data-bs-dismiss="modal" class="modal-btn btn-salvar" >
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="criar_sessao" class="modal fade">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Criar Sessão</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body modal-conteudo w-75 row mx-auto">
+                        <fieldset class="col-md-12 mb-4">
+                            <label for="sessao_nome" class="form-label">Nome:</label>
+                            <input type="text" name="sessao_nome" id="sessao_nome" class="form-control">
+                        </fieldset>
+
+                        <div>
+                            <p>Selecione as atividades desta sessão:</p>
+                            <table class="table table-striped table-bordered border-dark">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Selecionar</th>
+                                        <th scope="col">Atividade</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr>
+                                        <td class="check-box"><input type="checkbox" name="selecionar_atividade" id="atividade1"></td>
+                                        <td>Atividade 1</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="check-box"><input type="checkbox" name="selecionar_atividade" id="atividade2"></td>
+                                        <td>Atividade 2</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="check-box"><input type="checkbox" name="selecionar_atividade" id="atividade3"></td>
+                                        <td>Atividade 3</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
 
                     <div class="modal-footer modal-botoes">
