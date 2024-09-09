@@ -151,33 +151,33 @@ div.grid-view > div.atividade > hr {
     color: white;
 }
 
-div.line-view > div.atividade p, div.line-view > div.atividade hr {
+.closed p, .closed hr {
     display: none;
 }
 
 /* Line View - Opened */
-.opened .atividade {
+.line-view > .opened {
     height: 250px;
 }
 
-div.opened > div.atividade p, div.opened > div.atividade hr {
+.opened > p, .opened > hr {
     display: block;
 }
 
-div.opened > div.atividade hr {
+.line-view > div.opened > hr {
     opacity: 1;
     width: 88%;
     border: 1px solid white;
     margin: 5px auto 20px auto;
 }
 
-div.opened > div.atividade p:first-of-type {
+.line-view > div.opened > p:first-of-type {
     height: 70px;
     width: 88%;
     margin: 0 auto 30px auto;
 }
 
-div.opened > div.atividade p.botao {
+.line-view > div.opened > p.botao {
     width: 15%;
     margin: 0 auto auto;
 }
