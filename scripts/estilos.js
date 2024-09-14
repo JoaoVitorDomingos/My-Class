@@ -19,7 +19,7 @@ let icones_layout = [grid_view, line_view]
 let atividades = document.querySelectorAll(".atividade")
 let line_view_ativada = false
 
-console.log(atividades)
+//console.log(atividades)
 //console.log(container_sessoes)
 
 icones_layout.forEach(el => {el.addEventListener("click", evt => {
@@ -45,9 +45,6 @@ icones_layout.forEach(el => {el.addEventListener("click", evt => {
         })
     }
 })})
-
-console.log("CLASS NOME:")
-console.log(grid_view.className)
 
 // Expande a atividade do layout line view
 let icones_editar_atividades = document.querySelectorAll("div.atividade>div>span")
