@@ -47,6 +47,10 @@
     color: var(--azul);
 }
 
+.form-desativado {
+    opacity: 0.5;
+}
+
 
 /* Atividade */
 .atividade {

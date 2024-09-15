@@ -93,3 +93,23 @@ atividades.forEach(el => el.addEventListener("click", evt => {
         }
     }
 }))
+
+
+// Desativa ou Ativa um elemento do form
+const modal_editarBack_formRadios = document.querySelector("#area-fundotxt>div")
+const modal_editarBack_formCorBack = document.querySelector("#cor-back")
+
+modal_editarBack_formRadios.addEventListener("click", evt => {
+    //console.log(evt.target)
+    if(evt.target == document.getElementById('backTxt-ativado') || evt.target == document.querySelector("label[for = 'backTxt-ativado']")) {
+        //alert("Ativei")
+        modal_editarBack_formCorBack.classList.remove("form-desativado")
+        modal_editarBack_formCorBack.removeAttribute("disabled")
+    } else if(evt.target == document.getElementById("backTxt-desativado") || evt.target == document.querySelector("label[for = 'backTxt-desativado']")) {
+        //alert("Desativei")
+        modal_editarBack_formCorBack.classList.add("form-desativado")
+        modal_editarBack_formCorBack.setAttribute("disabled", "")
+    }
+})
+
+
