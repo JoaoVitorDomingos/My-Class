@@ -25,11 +25,70 @@ function ValidacaoFormulario(...inputs) {
         
 }
 
-function Resetar() {
-    let editarBack_form = document.querySelector("#editar_back>div>div>form")
+// Função para resetar as informações de formulários
+document.querySelectorAll("#modais>div.modal").forEach(modal => {
+    //console.log(modal)
+    //console.log(modal.id)
+    if(modal.id != "aluno_vejaMais") {
+        let botaoCancel = document.querySelector(`#${modal.id}>div>div>div.modal-footer>button`)
+        //console.log(botaoCancel)
+        botaoCancel.addEventListener("click", Resetar)
+    }
+})
 
-    editarBack_form.reset()
+function IdentificacaoBtnModal(elementId) {
+    let caminhoTdNota = "tbody>tr>td.td_nota"
+    let caminhoTdObservacao = "tbody>tr>td.td_observacao>input"
+    let caminhoTdCheckBox = "tbody>tr>td.check-box>input"
+
+    if(elementId == "modal_editarBack_btnCancel") {
+        const modal_editarBack_formCorBack = document.querySelector("#cor-back")
+        modal_editarBack_formCorBack.classList.add("form-desativado")
+        modal_editarBack_formCorBack.setAttribute("disabled", "")
+
+        return [document.querySelector("#modais>#editar_back>div>div>form")]
+
+    } else if(elementId == "modal_LancarNotas_BtnCancel") {
+        let caminhoLN = "#modais>#lancar_notas>div>div>div>"
+
+        return [document.querySelector(`${caminhoLN}form`), ...document.querySelectorAll(`${caminhoLN}table>${caminhoTdNota}`), ...document.querySelectorAll(`${caminhoLN}table>${caminhoTdObservacao}`)]
+
+    } else if(elementId == "modal_LancarPresenca_BtnCancel") {
+        let caminhoLP = "#modais>#lancar_presenca>div>div>div"
+
+        return [document.querySelector(`${caminhoLP}>form`), ...document.querySelectorAll(`${caminhoLP}>table>${caminhoTdCheckBox}`), ...document.querySelectorAll(`${caminhoLP}>table>${caminhoTdObservacao}`)]
+    }
 }
+
+function Resetar(evt) {
+    console.log("Função Resetar - evt.target(this):")
+    console.log(evt.target)
+    console.log("Id: " + evt.target.id)
+
+    let elementos = IdentificacaoBtnModal(evt.target.id)
+    console.log(elementos)
+
+    elementos.map(el => {
+        console.log("Tag Name: " + el.tagName)
+        if(el.tagName == "FORM") {
+            console.log("Resetando Formulario...")
+            el.reset()
+        } else if(el.tagName == "TD") {
+            console.log("Resetando TD...")
+            el.innerHTML = "--"
+        } else if(el.tagName == "INPUT") {
+            console.log("Tipo do Input: " + el.type)
+            if(el.type == "text")
+                el.value = ""
+            else if(el.type == "radio")
+                el.checked = false
+        }
+    })
+}
+
+//IdentificacaoBtnModal("modal_editarBack_btnCancel")
+
+//editarBack_form.reset()
 
 // Formulario Editar Back
 const modal_editarBack = new bootstrap.Modal("#editar_back")

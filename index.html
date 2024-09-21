@@ -104,7 +104,7 @@
                 <p class="botao" data-bs-toggle="modal" data-bs-target="#adicionar_aluno">Adicionar Aluno</p>
                 <p class="botao" data-bs-toggle="modal" data-bs-target="#imprimir_boletim">Imprimir Boletim</p>
                 <p class="botao" data-bs-toggle="modal" data-bs-target="#imprimir_presenca">Imprimir Presença</p>
-                <p class="botao" data-bs-toggle="modal" data-bs-target="#">Imprimir Tabela</p>
+                <p class="botao">Imprimir Tabela</p>
             </div>
         </section>
 
@@ -276,7 +276,7 @@
                     </form>
 
                     <div class="modal-botoes modal-footer">
-                        <button type="button" data-bs-dismiss="modal" class="modal-btn btn-cancel" onclick="Resetar()">Cancelar</button>
+                        <button type="button" data-bs-dismiss="modal" class="modal-btn btn-cancel" id="modal_editarBack_btnCancel">Cancelar</button>
                         <input type="submit" value="Salvar" class="modal-btn btn-salvar" onclick="EditarBack()">
                     </div>
                 </div>
@@ -427,7 +427,7 @@
                     </div>
 
                     <div class="modal-footer modal-botoes">
-                        <button type="button" data-bs-dismiss="modal" class="modal-btn btn-cancel">Cancelar</button>
+                        <button type="button" data-bs-dismiss="modal" class="modal-btn btn-cancel" id="modal_LancarNotas_BtnCancel">Cancelar</button>
                         <input type="submit" value="Salvar" data-bs-dismiss="modal" class="modal-btn btn-salvar" >
                     </div>
                 </div>
@@ -489,7 +489,7 @@
                     </div>
 
                     <div class="modal-footer modal-botoes">
-                        <button type="button" data-bs-dismiss="modal" class="modal-btn btn-cancel">Cancelar</button>
+                        <button type="button" data-bs-dismiss="modal" class="modal-btn btn-cancel" id="modal_LancarPresenca_BtnCancel">Cancelar</button>
                         <input type="submit" value="Salvar" data-bs-dismiss="modal" class="modal-btn btn-salvar" >
                     </div>
                 </div>
