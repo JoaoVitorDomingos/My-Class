@@ -25,8 +25,10 @@ function ValidacaoFormulario(...inputs) {
         
 }
 
-// Função para resetar as informações de formulários
-document.querySelectorAll("#modais>div.modal").forEach(modal => {
+// Reset
+
+// adicionando o evento de click nos botões de cancelar
+document.querySelectorAll("#modais>div.modal").forEach(modal => { 
     //console.log(modal)
     //console.log(modal.id)
     if(modal.id != "aluno_vejaMais") {
@@ -36,6 +38,7 @@ document.querySelectorAll("#modais>div.modal").forEach(modal => {
     }
 })
 
+// Identifica qual é o botão de cancelar e retorna o que precisa ser resetado
 function IdentificacaoBtnModal(elementId) {
     let caminhoTdNota = "tbody>tr>td.td_nota"
     let caminhoTdObservacao = "tbody>tr>td.td_observacao>input"
@@ -57,9 +60,31 @@ function IdentificacaoBtnModal(elementId) {
         let caminhoLP = "#modais>#lancar_presenca>div>div>div"
 
         return [document.querySelector(`${caminhoLP}>form`), ...document.querySelectorAll(`${caminhoLP}>table>${caminhoTdCheckBox}`), ...document.querySelectorAll(`${caminhoLP}>table>${caminhoTdObservacao}`)]
+
+    } else if(elementId == "modal_AdicionarAluno_BtnCancel") {
+        return [document.querySelector("#modais>#adicionar_aluno>div>div>div>form")]
+
+    } else if(elementId == "modal_ImprimirBoletim_BtnCancel") {
+        let caminhoIB = "#modais>#imprimir_boletim>div>div>div.modal-body"
+
+        return [document.querySelector(`${caminhoIB}>form`), ...document.querySelectorAll(`${caminhoIB}>table>${caminhoTdCheckBox}`)]
+    } else if(elementId == "modal_ImprimirPresenca_BtnCancel") {
+        let caminhoIP = "#modais>#imprimir_presenca>div>div>div.modal-body"
+
+        return [document.querySelector(`${caminhoIP}>form`), ...document.querySelectorAll(`${caminhoIP}>table>${caminhoTdCheckBox}`)]
+
+    } else if(elementId == "modal_CriarSessao_BtnCancel") {
+        let caminhoCS = "#modais>#criar_sessao>div>div>div.modal-body"
+
+        return [document.querySelector(`${caminhoCS}>fieldset>input`), ...document.querySelectorAll(`${caminhoCS}>div>table>${caminhoTdCheckBox}`)]
+    } else if(elementId == "modal_CriarAtividade_BtnCancel") {
+        let caminhoCA = "#modais>#criar_atividade>div>div>div.modal-body"
+
+        return [document.querySelector(`${caminhoCA}>form`)]
     }
 }
 
+// Função para resetar as informações de formulários
 function Resetar(evt) {
     console.log("Função Resetar - evt.target(this):")
     console.log(evt.target)
@@ -80,15 +105,11 @@ function Resetar(evt) {
             console.log("Tipo do Input: " + el.type)
             if(el.type == "text")
                 el.value = ""
-            else if(el.type == "radio")
+            else if(el.type == "radio" || el.type == "checkbox")
                 el.checked = false
         }
     })
 }
-
-//IdentificacaoBtnModal("modal_editarBack_btnCancel")
-
-//editarBack_form.reset()
 
 // Formulario Editar Back
 const modal_editarBack = new bootstrap.Modal("#editar_back")
