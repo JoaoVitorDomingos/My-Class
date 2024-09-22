@@ -16,18 +16,16 @@ function ValidacaoFormulario(...inputs) {
     }
 
     if(contador == max) {
-        //console.log("Tudo Preechido")
+        console.log("Tudo Preechido")
         return true
     } else {
-        //console.log("Nem tudo esta preenchido")
+        console.log("Nem tudo esta preenchido")
         return false
     }
         
 }
 
-// Reset
-
-// adicionando o evento de click nos botões de cancelar
+// adicionando o evento de click com a função resetar nos botões de cancelar
 document.querySelectorAll("#modais>div.modal").forEach(modal => { 
     //console.log(modal)
     //console.log(modal.id)
@@ -85,12 +83,24 @@ function IdentificacaoBtnModal(elementId) {
 }
 
 // Função para resetar as informações de formulários
-function Resetar(evt) {
-    console.log("Função Resetar - evt.target(this):")
-    console.log(evt.target)
-    console.log("Id: " + evt.target.id)
+function Resetar(evt, btnCancel) {
+    let botaoID
 
-    let elementos = IdentificacaoBtnModal(evt.target.id)
+    console.log(btnCancel)
+    if(btnCancel != undefined) {
+        console.log("Função Resetar - Botao")
+        console.log(btnCancel)
+        console.log("Botao Id: " + btnCancel.id)
+        botaoID = btnCancel.id
+    } else {
+        console.log("Função Resetar - evt.target(this):")
+        console.log(evt.target)
+        console.log("Id: " + evt.target.id)
+        botaoID = evt.target.id
+    }
+    
+
+    let elementos = IdentificacaoBtnModal(botaoID)
     console.log(elementos)
 
     elementos.map(el => {
@@ -114,7 +124,7 @@ function Resetar(evt) {
 // Formulario Editar Back
 const modal_editarBack = new bootstrap.Modal("#editar_back")
 
-function EditarBack() {
+function EditarBack(btn) {
     const editarBack_titulo = document.getElementById("titulo")
     const editarBack_corTxt = document.getElementById("corTxt")
     const editarBack_backTxt_ativado = document.getElementById("backTxt-ativado")
@@ -128,7 +138,7 @@ function EditarBack() {
     let validacao = ValidacaoFormulario(editarBack_titulo, editarBack_backImg)
 
     if(!validacao) {
-        //alert("Preencha tudo!")
+        alert("Preencha tudo!")
     } else {
         //alert("Tudo Preenchido!")
 
@@ -152,6 +162,8 @@ function EditarBack() {
         let url = URL.createObjectURL(editarBack_backImg.files[0])
         //console.log(url)
         divBack.style.setProperty("background-image", `url(${url})`)
+        
+        Resetar(event, btn.previousElementSibling)
 
         modal_editarBack.hide()
     }
