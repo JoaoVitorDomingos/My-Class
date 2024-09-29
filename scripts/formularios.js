@@ -1,5 +1,3 @@
-import CriarTabelaAluno from "./metodos.js";
-
 // Função de Validação de Formularios
 function ValidacaoFormulario(...inputs) {
     let max = inputs.length
@@ -170,5 +168,3 @@ function EditarBack(btn) {
         modal_editarBack.hide()
     }
 }
-
-//CriarTabelaAluno("Caio", "100%", "50%", "6.5", "Exame")

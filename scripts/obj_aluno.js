@@ -6,20 +6,18 @@ export default class Aluno {
         this.cpf = pcpf
         this.endereco = pend
         this.foto = pfoto
-        this.matriculo = pid
+        this.matricula = pid
 
         this.notas = []
         this.situacao = ""
         this.presenca = []
+        this.dias_presenca = []
         this.atividades = []
     }
 
     AdicionarNota = function(bimestre, nota) {
+        bimestre -= 1
         this.notas[bimestre] = nota
-    }
-
-    Notas = function() {
-        return this.notas
     }
 
     CalcularMedia = function() {
@@ -29,7 +27,7 @@ export default class Aluno {
         }
         media /= 4.0
         
-        this.notas[4] = media
+        this.notas[4] = media.toFixed(2)
     }
 
     MostrarMedia = function() {
@@ -46,25 +44,17 @@ export default class Aluno {
         }
     }
 
-    MostrarSituacao = function() {
-        return this.situacao
-    }
-
     CalcularAtividades = function(atividades, total) {
-        let porcentagem = atividades / total * 100
+        let porcentagem = Math.round(atividades / total * 100)
         this.atividades = [atividades, porcentagem]
     }
 
-    MostrarAtividades = function() {
-        return this.atividades
-    }
-
     CalcularPresenca = function(presenca, total) {
-        let porcentagem = presenca / total * 100
+        let porcentagem = Math.round(presenca / total * 100)
         this.presenca = [presenca, porcentagem]
     }
 
-    MostrarPresenca = function() {
-        return this.presenca
+    AdicionarPresenca = function(presenca) {
+        this.dias_presenca.push(presenca)
     }
 }
