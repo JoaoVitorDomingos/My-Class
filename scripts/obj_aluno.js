@@ -27,7 +27,7 @@ export default class Aluno {
         }
         media /= 4.0
         
-        this.notas[4] = media.toFixed(2)
+        this.notas[4] = media.toFixed(1)
     }
 
     MostrarMedia = function() {

@@ -6,9 +6,10 @@ export default function CriarTabelaAluno(nome, presenca, atividades, media, situ
     for(let i = 0; i < 6; i++) {
         let td = document.createElement("td")
 
-        if(i == 0)
+        if(i == 0) {
             td.innerHTML = nome
-        else if(i == 1) 
+            td.classList.add("nome")
+        } else if(i == 1) 
             td.innerHTML = presenca
         else if(i == 2) 
             td.innerHTML = atividades
@@ -31,3 +32,13 @@ export default function CriarTabelaAluno(nome, presenca, atividades, media, situ
 
     tabela.appendChild(tr)
 }
+
+function GerarNumeroAleatorioInclusivo(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min
+}
+
+function GerarNumeroFloatAleatorioInclusivo(min, max, casasDecimais) {
+    return Number.parseFloat((Math.random() * (max - min) + min).toFixed(casasDecimais))
+}
+
+export {GerarNumeroAleatorioInclusivo, GerarNumeroFloatAleatorioInclusivo}

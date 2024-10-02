@@ -5,10 +5,16 @@ const Dados = {
         this.alunos.push(aluno)
     },
 
-    aulas: [],
+    aulas: 155,
 
-    AdicionarAula(aula) {
-        this.aulas.push(aula)
+    AdicionarAula() {
+        this.aulas++
+    },
+
+    atividades: 6,
+
+    AdicionarAtividade() {
+        this.atividades++
     }
 }
 
