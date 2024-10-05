@@ -312,23 +312,31 @@
                         </div>
 
                         <div class="tabelas-aluno">
-                            <table class="table table-bordered border-dark">
+                            <table class="table table-bordered border-dark" id="modal_vejaMais_firstTable">
                                 <thead>
                                     <tr>
                                         <th scope="col">Presença</th>
-                                        <th scope="col">Atividades</th>
+                                        <th scope="col">Faltas</th>
+                                        <th scope="col">Presença(%)</th>
+                                        <th scope="col">Atividades Feitas</th>
+                                        <th scope="col">Atividades Não Feitas</th>
+                                        <th scope="col">Atividades(%)</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
                                     <tr>
+                                        <td>10</td>
+                                        <td>0</td>
                                         <td>100%</td>
+                                        <td>10</td>
+                                        <td>0</td>
                                         <td>100%</td>
                                     </tr>
                                 </tbody>
                             </table>
 
-                            <table class="table table-bordered border-dark">
+                            <table class="table table-bordered border-dark" id="modal_vejaMais_secondTable">
                                 <thead>
                                     <tr>
                                         <th scope="col">1° Bimestre</th>
@@ -805,6 +813,9 @@
 
     <!-- Script que rodará ao carregar a pagina para construir a tabela de alunos -->
     <script type="module" src="scripts/pegar_alunos.js"></script>
+
+    <!-- Script que controla os modais dinâmicos -->
+    <script type="module" src="scripts/modal_dinamico.js"></script>
 
     <!-- Script de Controle de Estilos -->
     <script type="module" src="scripts/estilos.js"></script>

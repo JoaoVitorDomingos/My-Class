@@ -1,5 +1,5 @@
 // Função para criar um linha da tabela de alunos
-export default function CriarTabelaAluno(nome, presenca, atividades, media, situacao) {
+export default function CriarTabelaAluno(nome, presenca, atividades, media, situacao, matricula) {
     let tabela = document.querySelector("#classe>table>tbody")
     let tr = document.createElement("tr")
 
@@ -22,6 +22,7 @@ export default function CriarTabelaAluno(nome, presenca, atividades, media, situ
             span.classList.add("material-symbols-outlined")
             span.setAttribute("data-bs-toggle", "modal")
             span.setAttribute("data-bs-target", "#aluno_vejaMais")
+            span.setAttribute("data-bs-whatever", `${matricula}`)
             span.innerHTML = "query_stats"
 
             td.appendChild(span)

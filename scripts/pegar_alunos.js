@@ -40,7 +40,7 @@ function AdicionarAlunos(arrayAlunos) {
 
         Dados.AdicionarAluno(objAluno)
 
-        CriarTabelaAluno(objAluno.nome, `${objAluno.presenca[1]}%`, `${objAluno.atividades[1]}%`, objAluno.MostrarMedia(), objAluno.situacao)
+        CriarTabelaAluno(objAluno.nome, `${objAluno.presenca[1]}%`, `${objAluno.atividades[1]}%`, objAluno.MostrarMedia(), objAluno.situacao, objAluno.matricula)
     })
 
     console.log("Banco de Dados - Alunos:")
@@ -80,7 +80,7 @@ function GerarDataNascAleatorio() {
 }
 
 function DefinirSexo(id) {
-    if(id == 12) {
+    if(id == 12 || id == 7) {
         return "Feminino"
     } else {
         return "Masculino"
