@@ -86,16 +86,16 @@ function IdentificacaoBtnModal(elementId) {
 function Resetar(evt, btnCancel) {
     let botaoID
 
-    console.log(btnCancel)
+    //console.log(btnCancel)
     if(btnCancel != undefined) {
-        console.log("Função Resetar - Botao")
-        console.log(btnCancel)
-        console.log("Botao Id: " + btnCancel.id)
+        //console.log("Função Resetar - Botao")
+        //console.log(btnCancel)
+        //console.log("Botao Id: " + btnCancel.id)
         botaoID = btnCancel.id
     } else {
-        console.log("Função Resetar - evt.target(this):")
-        console.log(evt.target)
-        console.log("Id: " + evt.target.id)
+        //console.log("Função Resetar - evt.target(this):")
+        //console.log(evt.target)
+        //console.log("Id: " + evt.target.id)
         botaoID = evt.target.id
     }
     
@@ -123,8 +123,10 @@ function Resetar(evt, btnCancel) {
 
 // Formulario Editar Back
 const modal_editarBack = new bootstrap.Modal("#editar_back")
+const modal_editarBack_BtnSalvar = document.querySelector("#editar_back>div>div>div.modal-footer>input")
+modal_editarBack_BtnSalvar.addEventListener("click", EditarBack)
 
-function EditarBack(btn) {
+function EditarBack(evento) {
     const editarBack_titulo = document.getElementById("titulo")
     const editarBack_corTxt = document.getElementById("corTxt")
     const editarBack_backTxt_ativado = document.getElementById("backTxt-ativado")
@@ -163,7 +165,7 @@ function EditarBack(btn) {
         //console.log(url)
         divBack.style.setProperty("background-image", `url(${url})`)
         
-        Resetar(event, btn.previousElementSibling)
+        Resetar(evento, evento.target.previousElementSibling)
 
         modal_editarBack.hide()
     }
