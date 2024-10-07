@@ -38,6 +38,12 @@
     box-shadow: 2px 2px 4px 0px rgba(238, 55, 55, 0.466);
 }
 
+.container-tabela-modal {
+    overflow-y: auto;
+    padding-bottom: 5px;
+    max-height: 250px;
+}
+
 /* Modal - Editar Back */
 #editar_back form fieldset {
     margin-bottom: 30px;
@@ -153,6 +159,10 @@
 }
 
 /* Modal - Tabela */
+.modal-conteudo table {
+    margin: 0;
+}
+
 .modal-conteudo table thead > tr > th {
     background-color: rgb(189, 184, 184);
     text-align: center;

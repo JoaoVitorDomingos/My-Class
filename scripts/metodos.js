@@ -1,6 +1,6 @@
 // Função para criar um linha da tabela de alunos
 export default function CriarTabelaAluno(nome, presenca, atividades, media, situacao, matricula) {
-    let tabela = document.querySelector("#classe>table>tbody")
+    let tabela = document.querySelector("#classe>div.container-tabela>table>tbody")
     let tr = document.createElement("tr")
 
     for(let i = 0; i < 6; i++) {
@@ -67,7 +67,7 @@ function CriarTabelaGenerica(pai, linhas, colunas, matrizValores, arrayClasses, 
         for(let j = 0; j < colunas; j++) {
             let td = document.createElement("td")
             if(matrizValores[i][j] == "input_text" || matrizValores[i][j] == "input_radio" || matrizValores[i][j] == "input_checkbox") {
-                let input = CriarInput(matrizValores[i][j], j,pai.childElementCount, nomeCheckbox)
+                let input = CriarInput(matrizValores[i][j], j, pai.childElementCount, nomeCheckbox)
                 td.appendChild(input)
 
             } else {

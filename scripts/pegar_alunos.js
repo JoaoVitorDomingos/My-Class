@@ -44,7 +44,7 @@ function AdicionarAlunos(arrayAlunos) {
 
         (
             function CriarTabelaModais() {
-                let caminho = "div>div>div.modal-body>table>tbody"
+                let caminho = "div>div>div.modal-body>div>table>tbody"
             
                 const tabela_lancarNotas = document.querySelector(`#lancar_notas>${caminho}`)
                 CriarTabelaGenerica(tabela_lancarNotas, 1, 3, [[objAluno.nome, "--", "input_text"]], ["td_nome", "td_nota", "td_observacao"])

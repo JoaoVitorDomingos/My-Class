@@ -266,11 +266,15 @@ menu button {
     color: var(--verde-claro);
 }
 
+.container-tabela { 
+    width: 65%;
+    max-height: 700px;
+    margin: 70px auto 50px auto;
+    overflow-y: auto;
+}
 
 .tabela {
-    width: 65%;
-    margin-top: 70px;
-    margin-bottom: 50px;
+    margin: 0;
     text-align: center;
 }
 
