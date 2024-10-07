@@ -34,6 +34,52 @@ export default function CriarTabelaAluno(nome, presenca, atividades, media, situ
     tabela.appendChild(tr)
 }
 
+function CriarTabelaGenerica(pai, linhas, colunas, matrizValores, arrayClasses, nomeCheckbox="") {
+    function CriarInput(tipo, coluna, filhos, checkboxName) {
+        let input = document.createElement("input")
+        if(tipo == "input_text") {
+            input.setAttribute("type", "text")
+            input.setAttribute("name", "observacao")
+            input.classList.add("observacao")
+        } else if(tipo == "input_radio") {
+            input.setAttribute("type", "radio")
+            input.setAttribute("name", `presenca${filhos + 1}`)
+            if(coluna + 1 == 2) {
+                input.setAttribute("id", `v${filhos + 1}`)
+            } else {
+                input.setAttribute("id", `f${filhos + 1}`)
+            }
+        } else if(tipo == "input_checkbox") {
+            input.setAttribute("type", "checkbox")
+            input.setAttribute("name", checkboxName)
+            input.setAttribute("id", `${checkboxName}${filhos + 1}`)
+        } else {
+            console.log("ERRO!!!")
+            console.log("Tipo: " + tipo)
+            return
+        }
+        return input
+    }
+
+    for(let i = 0; i < linhas; i++) {
+        let tr = document.createElement("tr")
+
+        for(let j = 0; j < colunas; j++) {
+            let td = document.createElement("td")
+            if(matrizValores[i][j] == "input_text" || matrizValores[i][j] == "input_radio" || matrizValores[i][j] == "input_checkbox") {
+                let input = CriarInput(matrizValores[i][j], j,pai.childElementCount, nomeCheckbox)
+                td.appendChild(input)
+
+            } else {
+                td.innerHTML = matrizValores[i][j]
+            }
+            td.classList.add(arrayClasses[j])
+            tr.appendChild(td)
+        }
+        pai.appendChild(tr)
+    }
+}
+
 function GerarNumeroAleatorioInclusivo(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min
 }
@@ -42,4 +88,4 @@ function GerarNumeroFloatAleatorioInclusivo(min, max, casasDecimais) {
     return Number.parseFloat((Math.random() * (max - min) + min).toFixed(casasDecimais))
 }
 
-export {GerarNumeroAleatorioInclusivo, GerarNumeroFloatAleatorioInclusivo}
+export {GerarNumeroAleatorioInclusivo, GerarNumeroFloatAleatorioInclusivo, CriarTabelaGenerica}
