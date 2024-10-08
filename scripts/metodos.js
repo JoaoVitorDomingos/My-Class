@@ -18,8 +18,10 @@ export default function CriarTabelaAluno(nome, presenca, atividades, media, situ
         else if(i == 3) {
             td.innerHTML = media
             td.classList.add("media")
-        } else if(i == 4) 
+        } else if(i == 4) {
             td.innerHTML = situacao
+            td.classList.add("situacao")
+        }
         else {
             let span = document.createElement("span")
             span.classList.add("material-symbols-outlined")

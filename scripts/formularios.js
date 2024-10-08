@@ -215,6 +215,7 @@ btnSave_lancarNota.addEventListener("click", evento => {
     } else {
         const tds_nomes = document.querySelectorAll("#lancar_notas>div>div>div>div>table>tbody>tr>td.td_nome")
         const mainTabela_media = [...document.getElementsByClassName("media")]
+        const mainTabela_situacao = [...document.getElementsByClassName("situacao")]
         
         // console.log(tds_nomes)
         tds_nomes.forEach((nome, indice) => {
@@ -228,6 +229,7 @@ btnSave_lancarNota.addEventListener("click", evento => {
                 if(aluno.nome == nome.innerHTML) {
                     aluno.AdicionarNota(input_bimestre.value.match(/[1-4]/)[0], tds_nota[indice].innerHTML)
                     mainTabela_media[indice].innerHTML = aluno.MostrarMedia()
+                    mainTabela_situacao[indice].innerHTML = aluno.situacao
                     // console.log("Nota do Aluno " + aluno.nome + ":")
                     // console.log(aluno.notas)
                 }
