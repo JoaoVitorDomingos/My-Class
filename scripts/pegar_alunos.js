@@ -22,7 +22,6 @@ function AdicionarAlunos(arrayAlunos) {
 
         DefinirNotas(objAluno.notas)
         objAluno.CalcularMedia()
-        objAluno.CalcularSituacao()
         objAluno.CalcularAtividades(GerarNumeroAleatorioInclusivo(0, Dados.atividades), Dados.atividades)
         objAluno.CalcularPresenca(GerarNumeroAleatorioInclusivo(0, Dados.aulas), Dados.aulas)
 

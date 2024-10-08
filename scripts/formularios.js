@@ -1,17 +1,40 @@
+import Dados from "./banco_dados.js"
+
 // Função de Validação de Formularios
 function ValidacaoFormulario(...inputs) {
     let max = inputs.length
     let contador = 0
 
     for(let i = 0; i < max; i++) {
-        //console.log(inputs[i])
-        //console.log(inputs[i].value)
+        // console.log(inputs[i])
+        // console.log(inputs[i].value)
 
-        if(inputs[i].value != "") {
-            //console.log("Esta preenchido")
-            contador++
+        if(inputs[i].tagName == "TD") {
+            //console.log("TD")
+            if(inputs[i].innerHTML != "--") {
+                contador++
+                //console.log("Esta preenchido")
+            } else {
+                //console.log("Não esta preenchido")
+            }
+        } else if(inputs[i].type == "radio") {
+            //console.log("Radio")
+            //console.log("Checado: " + inputs[i].checked)
+            //console.log("Checado:" + inputs[i+1].checked)
+            if(inputs[i].checked || inputs[i+1].checked) {
+                //console.log("Preenchido")
+                contador++
+            } else {
+                //console.log("Não esta preenchido")
+            }
+            i++
         } else {
-            //console.log("Não esta preenchido")
+            if(inputs[i].value != "") {
+                //console.log("Esta preenchido")
+                contador++
+            } else {
+                //console.log("Não esta preenchido")
+            }
         }
     }
 
@@ -52,12 +75,12 @@ function IdentificacaoBtnModal(elementId) {
     } else if(elementId == "modal_LancarNotas_BtnCancel") {
         let caminhoLN = "#modais>#lancar_notas>div>div>div>"
 
-        return [document.querySelector(`${caminhoLN}form`), ...document.querySelectorAll(`${caminhoLN}table>${caminhoTdNota}`), ...document.querySelectorAll(`${caminhoLN}table>${caminhoTdObservacao}`)]
+        return [document.querySelector(`${caminhoLN}form`), ...document.querySelectorAll(`${caminhoLN}div>table>${caminhoTdNota}`), ...document.querySelectorAll(`${caminhoLN}div>table>${caminhoTdObservacao}`)]
 
     } else if(elementId == "modal_LancarPresenca_BtnCancel") {
         let caminhoLP = "#modais>#lancar_presenca>div>div>div"
 
-        return [document.querySelector(`${caminhoLP}>form`), ...document.querySelectorAll(`${caminhoLP}>table>${caminhoTdCheckBox}`), ...document.querySelectorAll(`${caminhoLP}>table>${caminhoTdObservacao}`)]
+        return [document.querySelector(`${caminhoLP}>form`), ...document.querySelectorAll(`${caminhoLP}>div>table>${caminhoTdCheckBox}`), ...document.querySelectorAll(`${caminhoLP}>div>table>${caminhoTdObservacao}`)]
 
     } else if(elementId == "modal_AdicionarAluno_BtnCancel") {
         return [document.querySelector("#modais>#adicionar_aluno>div>div>div>form")]
@@ -65,16 +88,16 @@ function IdentificacaoBtnModal(elementId) {
     } else if(elementId == "modal_ImprimirBoletim_BtnCancel") {
         let caminhoIB = "#modais>#imprimir_boletim>div>div>div.modal-body"
 
-        return [document.querySelector(`${caminhoIB}>form`), ...document.querySelectorAll(`${caminhoIB}>table>${caminhoTdCheckBox}`)]
+        return [document.querySelector(`${caminhoIB}>form`), ...document.querySelectorAll(`${caminhoIB}>div>table>${caminhoTdCheckBox}`)]
     } else if(elementId == "modal_ImprimirPresenca_BtnCancel") {
         let caminhoIP = "#modais>#imprimir_presenca>div>div>div.modal-body"
 
-        return [document.querySelector(`${caminhoIP}>form`), ...document.querySelectorAll(`${caminhoIP}>table>${caminhoTdCheckBox}`)]
+        return [document.querySelector(`${caminhoIP}>form`), ...document.querySelectorAll(`${caminhoIP}>div>table>${caminhoTdCheckBox}`)]
 
     } else if(elementId == "modal_CriarSessao_BtnCancel") {
         let caminhoCS = "#modais>#criar_sessao>div>div>div.modal-body"
 
-        return [document.querySelector(`${caminhoCS}>fieldset>input`), ...document.querySelectorAll(`${caminhoCS}>div>table>${caminhoTdCheckBox}`)]
+        return [document.querySelector(`${caminhoCS}>fieldset>input`), ...document.querySelectorAll(`${caminhoCS}>div>div>table>${caminhoTdCheckBox}`)]
     } else if(elementId == "modal_CriarAtividade_BtnCancel") {
         let caminhoCA = "#modais>#criar_atividade>div>div>div.modal-body"
 
@@ -170,3 +193,109 @@ function EditarBack(evento) {
         modal_editarBack.hide()
     }
 }
+
+// Formulario Lançar Notas
+const modal_LancarNota = new bootstrap.Modal("#lancar_notas")
+const btnSave_lancarNota = document.getElementById("btnSave_lancarNota")
+
+btnSave_lancarNota.addEventListener("click", evento => {
+    const input_conteudo = document.getElementById("conteudo")
+    const input_data = document.getElementById("data")
+    const input_bimestre = document.getElementById("bimestre")
+    const tds_nota = document.querySelectorAll("#lancar_notas>div>div>div>div>table>tbody>tr>td.td_nota")
+    // console.log(input_conteudo)
+    // console.log(tds_nota)
+    // console.log(input_data)
+    // console.log(input_bimestre)
+
+    let validacao = ValidacaoFormulario(input_conteudo, input_data, ...tds_nota)
+
+    if(!validacao) {
+        alert("Preencha tudo!")
+    } else {
+        const tds_nomes = document.querySelectorAll("#lancar_notas>div>div>div>div>table>tbody>tr>td.td_nome")
+        const mainTabela_media = [...document.getElementsByClassName("media")]
+        
+        // console.log(tds_nomes)
+        tds_nomes.forEach((nome, indice) => {
+            // console.log(nome)
+            // console.log(indice)
+            // console.log("Nota: " + tds_nota[indice].innerHTML)
+            // console.log("Bimestre: " + input_bimestre.value.match(/[1-4]/)[0])
+
+            Dados.alunos.forEach(aluno => {
+                //console.log(aluno.nome)
+                if(aluno.nome == nome.innerHTML) {
+                    aluno.AdicionarNota(input_bimestre.value.match(/[1-4]/)[0], tds_nota[indice].innerHTML)
+                    mainTabela_media[indice].innerHTML = aluno.MostrarMedia()
+                    // console.log("Nota do Aluno " + aluno.nome + ":")
+                    // console.log(aluno.notas)
+                }
+            })
+        })
+
+        //console.log(evento.target.previousElementSibling)
+        Resetar(evento, evento.target.previousElementSibling)
+
+        modal_LancarNota.hide()
+
+        console.log("Banco de Dados - Alunos:")
+        console.log(Dados.alunos)
+    }
+})
+
+function AdicionarNota(evento) {
+    let nota = ""
+    do{
+        if(nota < 0 || nota > 10 || /[a-z]/.test(nota))
+            alert("Nota inválida!")
+        nota = prompt("Digite a nota deste aluno (0-10):")
+        // console.log(nota)
+        // console.log(typeof(nota))
+        // console.log("--------")
+        if(nota == null || nota == "") {
+            nota = ""
+            // console.log(nota)
+            // console.log(typeof(nota))
+            // console.log("Tem letra: " + /[a-z]/.test(nota))
+        } else {
+            if(/,/.test(nota)) {
+                nota = nota.replace(/,/, ".")
+            }
+            nota = Number.parseFloat(nota)
+            // console.log(nota)
+            // console.log(typeof(nota))
+            // console.log("--------")
+            nota = nota.toString()
+            // console.log(nota)
+            // console.log(typeof(nota))
+            // console.log("Tem letra: " + /[a-z]/.test(nota))
+        }
+        
+    } while(nota < 0 || nota > 10 || /[a-z]/g.test(nota))
+    
+    // console.log("--------")
+    // console.log(nota)
+    // console.log(typeof(nota))
+    // console.log("--------")
+    nota = Number.parseFloat(nota)
+    //console.log(nota)
+    //console.log(nota.toFixed(1))
+    // console.log(typeof(nota))
+    if(nota !== "") {
+        evento.target.innerHTML = nota.toFixed(1)
+        //console.log("Nota: " + nota)
+    } else {
+        console.log("Erro")
+    }
+}
+
+// const btnSave_LancarPresenca = document.getElementById("btnSave_lancarPresenca")
+// btnSave_LancarPresenca.addEventListener("click", evento => {
+//     const radios = document.querySelectorAll("#lancar_presenca>div>div>div>div>table>tbody>tr>td.check-box>input")
+//     console.log(radios)
+
+//     ValidacaoFormulario(...radios)
+// })
+
+export {AdicionarNota}

@@ -9,25 +9,32 @@ export default class Aluno {
         this.matricula = pid
 
         this.notas = []
-        this.situacao = ""
+        this.situacao = "--"
         this.presenca = []
         this.dias_presenca = []
         this.atividades = []
     }
 
     AdicionarNota = function(bimestre, nota) {
-        bimestre -= 1
+        bimestre = Number.parseInt(bimestre) - 1
         this.notas[bimestre] = nota
+        this.CalcularMedia()
     }
 
     CalcularMedia = function() {
-        let media = 0
-        for(let i = 0; i < 4; i++) {
-            media += this.notas[i]
+        if(this.notas.length >= 4) {
+            //console.log("Lenght certo")
+            let media = 0
+            for(let i = 0; i < 4; i++) {
+                media += Number.parseFloat(this.notas[i])
+            }
+            media /= 4.0
+            
+            this.notas[4] = media.toFixed(1)
+            this.CalcularSituacao()
+        } else {
+            this.notas[4] = "--"
         }
-        media /= 4.0
-        
-        this.notas[4] = media.toFixed(1)
     }
 
     MostrarMedia = function() {

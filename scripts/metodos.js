@@ -1,3 +1,5 @@
+import { AdicionarNota } from "./formularios.js"
+
 // Função para criar um linha da tabela de alunos
 export default function CriarTabelaAluno(nome, presenca, atividades, media, situacao, matricula) {
     let tabela = document.querySelector("#classe>div.container-tabela>table>tbody")
@@ -13,9 +15,10 @@ export default function CriarTabelaAluno(nome, presenca, atividades, media, situ
             td.innerHTML = presenca
         else if(i == 2) 
             td.innerHTML = atividades
-        else if(i == 3)
+        else if(i == 3) {
             td.innerHTML = media
-        else if(i == 4) 
+            td.classList.add("media")
+        } else if(i == 4) 
             td.innerHTML = situacao
         else {
             let span = document.createElement("span")
@@ -72,6 +75,9 @@ function CriarTabelaGenerica(pai, linhas, colunas, matrizValores, arrayClasses, 
 
             } else {
                 td.innerHTML = matrizValores[i][j]
+                if(matrizValores[i][j] == "--") {
+                    td.addEventListener("click", AdicionarNota)
+                }
             }
             td.classList.add(arrayClasses[j])
             tr.appendChild(td)
