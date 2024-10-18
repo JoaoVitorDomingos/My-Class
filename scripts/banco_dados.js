@@ -7,6 +7,8 @@ const Dados = {
 
     aulas: 155,
 
+    dias_aulas: [],
+
     AdicionarAula() {
         this.aulas++
     },

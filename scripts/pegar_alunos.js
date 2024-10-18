@@ -13,6 +13,7 @@ async function PegarAlunos() {
     //console.log(alunos.data)
 
     AdicionarAlunos(alunos.data)
+    CriarAulas(Dados.dias_aulas, Dados.aulas)
 }
 
 function AdicionarAlunos(arrayAlunos) {
@@ -159,5 +160,45 @@ function CriarPresenca(array_presenca, qtd_dias) {
     return presenca_total
 }
 
+function CriarAulas(array_aulas, qtd_dias) {
+    function ChecarDia(dia) {
+        let dataRetorno
+        if(dia.getDay() == 0) {
+            //console.log("Domingo")
+            dataRetorno = new Date(dia.getFullYear(), dia.getMonth(), (dia.getDate() - 2))
+            //console.log("Novo: " + data_atual)
+        } else if(dia.getDay() == 6) {
+            //console.log("Sabado")
+            dataRetorno = new Date(dia.getFullYear(), dia.getMonth(), (dia.getDate() - 1))
+            //console.log("Novo: " + data_atual)
+        } else {
+            dataRetorno = dia
+        }
+        return dataRetorno
+    }
+
+    function FormatarData(objData) {
+        let data = `${String(objData.getDate()).padStart(2, "0")}/${String(objData.getMonth() + 1).padStart(2, "0")}/${objData.getFullYear()}`
+        //console.log("Formatação: " + data)
+        return data
+    }
+
+    let data_atual = new Date()
+    //console.log("Data Atual: " + data_atual)
+
+    data_atual = ChecarDia(data_atual)
+    //console.log("Atualizado: " + data_atual)
+
+    array_aulas.push(FormatarData(data_atual))
+    for(let i = 1; i < qtd_dias; i++) {
+        data_atual = new Date(data_atual.getFullYear(), data_atual.getMonth(), (data_atual.getDate() - 1))
+        //console.log("Atualizado: " + data_atual)
+        data_atual = ChecarDia(data_atual)
+        array_aulas.push(FormatarData(data_atual))
+    }
+    array_aulas.reverse()
+    console.log("Banco de Dados - Aulas: ")
+    console.log(array_aulas)
+}
 
 PegarAlunos()
