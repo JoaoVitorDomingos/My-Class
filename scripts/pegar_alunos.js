@@ -23,7 +23,8 @@ function AdicionarAlunos(arrayAlunos) {
         DefinirNotas(objAluno.notas)
         objAluno.CalcularMedia()
         objAluno.CalcularAtividades(GerarNumeroAleatorioInclusivo(0, Dados.atividades), Dados.atividades)
-        objAluno.CalcularPresenca(GerarNumeroAleatorioInclusivo(0, Dados.aulas), Dados.aulas)
+        let presenca_total = CriarPresenca(objAluno.dias_presenca, Dados.aulas)
+        objAluno.CalcularPresenca(presenca_total, Dados.aulas)
 
         // console.log("Notas: " + objAluno.notas)
         // console.log("Média: " + objAluno.MostrarMedia())
@@ -140,6 +141,22 @@ function DefinirEndereco(id) {
 function DefinirNotas(arrayNotas) {
     for(let i = 0; i < 4; i++)
         arrayNotas.push(GerarNumeroFloatAleatorioInclusivo(0, 10, 1))
+}
+
+function CriarPresenca(array_presenca, qtd_dias) {
+    let presenca_total = 0
+    for(let i = 0; i < qtd_dias; i++) {
+        let presenca = GerarNumeroAleatorioInclusivo(0, 1)
+        if(presenca == 0) {
+            array_presenca.push("F")
+        } else {
+            array_presenca.push("V")
+            presenca_total++
+        }
+    }
+    //console.log(array_presenca)
+    //console.log("Presença Total: " + presenca_total)
+    return presenca_total
 }
 
 

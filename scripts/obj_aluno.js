@@ -11,6 +11,7 @@ export default class Aluno {
         this.notas = []
         this.situacao = "--"
         this.presenca = []
+        this.presenca_dia = []
         this.dias_presenca = []
         this.atividades = []
     }
