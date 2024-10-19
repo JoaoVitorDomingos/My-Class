@@ -246,49 +246,53 @@ btnSave_lancarNota.addEventListener("click", evento => {
     }
 })
 
-function AdicionarNota(evento) {
+function AdicionarNotaTD(evento) {
     let nota = ""
     do{
         if(nota < 0 || nota > 10 || /[a-z]/.test(nota))
             alert("Nota inválida!")
         nota = prompt("Digite a nota deste aluno (0-10):")
-        // console.log(nota)
-        // console.log(typeof(nota))
-        // console.log("--------")
+        //console.log(nota)
+        //console.log(typeof(nota))
+        //console.log("--------")
         if(nota == null || nota == "") {
+            //console.log("If - Null ou Vazio")
             nota = ""
-            // console.log(nota)
-            // console.log(typeof(nota))
-            // console.log("Tem letra: " + /[a-z]/.test(nota))
+            //console.log(nota)
+            //console.log(typeof(nota))
+            //console.log("Tem letra: " + /[a-z]/.test(nota))
         } else {
+            //console.log("If not Null ou not Vazio")
             if(/,/.test(nota)) {
                 nota = nota.replace(/,/, ".")
             }
             nota = Number.parseFloat(nota)
-            // console.log(nota)
-            // console.log(typeof(nota))
-            // console.log("--------")
+            //console.log(nota)
+            //console.log(typeof(nota))
+            //console.log("--------")
             nota = nota.toString()
-            // console.log(nota)
-            // console.log(typeof(nota))
-            // console.log("Tem letra: " + /[a-z]/.test(nota))
+            //console.log(nota)
+            //console.log(typeof(nota))
+            //console.log("Tem letra: " + /[a-z]/.test(nota))
         }
         
     } while(nota < 0 || nota > 10 || /[a-z]/g.test(nota))
     
-    // console.log("--------")
-    // console.log(nota)
-    // console.log(typeof(nota))
-    // console.log("--------")
-    nota = Number.parseFloat(nota)
+    //console.log("-------- Fora do Loop")
     //console.log(nota)
-    //console.log(nota.toFixed(1))
-    // console.log(typeof(nota))
-    if(nota !== "") {
+    //console.log(typeof(nota))
+    
+    if(nota != "") {
+        //console.log("-------- Virou numero")
+        nota = Number.parseFloat(nota)
+        //console.log(nota)
+        //console.log(nota.toFixed(1))
+        //console.log(typeof(nota))
         evento.target.innerHTML = nota.toFixed(1)
         //console.log("Nota: " + nota)
     } else {
-        console.log("Erro")
+        //console.log("--------- Vazio")
+        nota = "--"
     }
 }
 
@@ -372,4 +376,4 @@ btnSave_LancarPresenca.addEventListener("click", evento => {
     
 })
 
-export {AdicionarNota}
+export {AdicionarNotaTD}

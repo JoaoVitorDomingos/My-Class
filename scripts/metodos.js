@@ -1,4 +1,4 @@
-import { AdicionarNota } from "./formularios.js"
+import { AdicionarNotaTD } from "./formularios.js"
 
 // Função para criar um linha da tabela de alunos
 export default function CriarTabelaAluno(nome, presenca, atividades, media, situacao, matricula) {
@@ -78,7 +78,7 @@ function CriarTabelaGenerica(pai, linhas, colunas, matrizValores, arrayClasses, 
             } else {
                 td.innerHTML = matrizValores[i][j]
                 if(matrizValores[i][j] == "--") {
-                    td.addEventListener("click", AdicionarNota)
+                    td.addEventListener("click", AdicionarNotaTD)
                 }
             }
             td.classList.add(arrayClasses[j])
