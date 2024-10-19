@@ -1,4 +1,5 @@
 import Dados from "./banco_dados.js"
+import { AdicionarNotaTD } from "./formularios.js"
 
 const modal_vejaMais = document.getElementById("aluno_vejaMais")
 const div_foto = document.querySelector("div.foto-aluno")
@@ -47,12 +48,35 @@ if(modal_vejaMais) {
         td_first_table[4].innerHTML = Dados.atividades - obj_aluno.atividades[0]
         td_first_table[5].innerHTML = obj_aluno.atividades[1] + "%"
 
-        td_second_table[0].innerHTML = obj_aluno.notas[0]
-        td_second_table[1].innerHTML = obj_aluno.notas[1]
-        td_second_table[2].innerHTML = obj_aluno.notas[2]
-        td_second_table[3].innerHTML = obj_aluno.notas[3]
+        function Nota() {
+            for(let i = 0; i < 4; i++) {
+                if(obj_aluno.notas[i] == undefined) {
+                    td_second_table[i].innerHTML = "--"
+                } else {
+                    td_second_table[i].innerHTML = obj_aluno.notas[i]
+                }
+            }
+        }
+        Nota()
+        // td_second_table[0].innerHTML = obj_aluno.notas[0]
+        // td_second_table[1].innerHTML = obj_aluno.notas[1]
+        // td_second_table[2].innerHTML = obj_aluno.notas[2]
+        // td_second_table[3].innerHTML = obj_aluno.notas[3]
         td_second_table[4].innerHTML = obj_aluno.MostrarMedia()
         td_second_table[5].innerHTML = obj_aluno.situacao
-        
+
+        for(let i = 0; i < 4; i++) {
+            td_second_table[i].addEventListener("click", evento => {
+                AdicionarNotaTD(evento)
+                //console.log(evento.target)
+                obj_aluno.notas[i] = Number.parseFloat(evento.target.innerHTML)
+                obj_aluno.CalcularMedia()
+                if(obj_aluno.notas[4] != "--") {
+                    Nota()
+                    td_second_table[4].innerHTML = obj_aluno.MostrarMedia()
+                    td_second_table[5].innerHTML = obj_aluno.situacao
+                }
+            })
+        }
     })
 }

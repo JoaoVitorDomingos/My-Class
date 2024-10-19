@@ -11,7 +11,6 @@ export default class Aluno {
         this.notas = []
         this.situacao = "--"
         this.presenca = []
-        this.presenca_dia = []
         this.dias_presenca = []
         this.atividades = []
     }
@@ -23,7 +22,13 @@ export default class Aluno {
     }
 
     CalcularMedia = function() {
-        if(this.notas.length >= 4) {
+        let un = 0
+        for(let i = 0; i < 4; i++) {
+            if(this.notas[i] == undefined) {
+                un++ 
+            }
+        }
+        if(un == 0) {
             //console.log("Lenght certo")
             let media = 0
             for(let i = 0; i < 4; i++) {

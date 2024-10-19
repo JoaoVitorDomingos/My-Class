@@ -1,7 +1,7 @@
 import Aluno from "./obj_aluno.js"
 import Dados from "./banco_dados.js"
 import CriarTabelaAluno from "./metodos.js"
-import { GerarNumeroAleatorioInclusivo, GerarNumeroFloatAleatorioInclusivo , CriarTabelaGenerica} from "./metodos.js"
+import { GerarNumeroAleatorioInclusivo, GerarNumeroFloatAleatorioInclusivo , CriarTabelaGenerica, CriarTabelaModais} from "./metodos.js"
 
 async function PegarAlunos() {
     const resposta = await fetch("https://reqres.in/api/users?page=2")
@@ -43,24 +43,7 @@ function AdicionarAlunos(arrayAlunos) {
 
         CriarTabelaAluno(objAluno.nome, `${objAluno.presenca[1]}%`, `${objAluno.atividades[1]}%`, objAluno.MostrarMedia(), objAluno.situacao, objAluno.matricula);
 
-        (
-            function CriarTabelaModais() {
-                let caminho = "div>div>div.modal-body>div>table>tbody"
-            
-                const tabela_lancarNotas = document.querySelector(`#lancar_notas>${caminho}`)
-                CriarTabelaGenerica(tabela_lancarNotas, 1, 3, [[objAluno.nome, "--", "input_text"]], ["td_nome", "td_nota", "td_observacao"])
-            
-                const tabela_lancarPresenca = document.querySelector(`#lancar_presenca>${caminho}`)
-                CriarTabelaGenerica(tabela_lancarPresenca, 1, 4, [[objAluno.nome, "input_radio", "input_radio", "input_text"]], ["td_nome", "check-box", "check-box", "td_observacao"])
-    
-                const tabela_imprimirBoletim = document.querySelector(`#imprimir_boletim>${caminho}`)
-                CriarTabelaGenerica(tabela_imprimirBoletim, 1, 2, [["input_checkbox", objAluno.nome]], ["check-box", "td_nome"], "imprimir_bo_aluno")
-    
-                const tabela_imprimirPresenca = document.querySelector(`#imprimir_presenca>${caminho}`)
-                CriarTabelaGenerica(tabela_imprimirPresenca, 1, 2, [["input_checkbox", objAluno.nome]], ["check-box", "td_nome"], "imprimir_pre_aluno")
-            }
-        )
-        ();
+        CriarTabelaModais(objAluno)
     })
 
     console.log("Banco de Dados - Alunos:")
@@ -202,3 +185,5 @@ function CriarAulas(array_aulas, qtd_dias) {
 }
 
 PegarAlunos()
+
+export {CriarPresenca}

@@ -1,4 +1,7 @@
 import Dados from "./banco_dados.js"
+import Aluno from "./obj_aluno.js"
+import * as metodosjs from "./metodos.js"
+import { CriarPresenca } from "./pegar_alunos.js"
 
 // Função de Validação de Formularios
 function ValidacaoFormulario(...inputs) {
@@ -288,7 +291,9 @@ function AdicionarNotaTD(evento) {
         //console.log(nota)
         //console.log(nota.toFixed(1))
         //console.log(typeof(nota))
+        //console.log(evento.target.innerHTML)
         evento.target.innerHTML = nota.toFixed(1)
+        //console.log(evento.target.innerHTML)
         //console.log("Nota: " + nota)
     } else {
         //console.log("--------- Vazio")
@@ -374,6 +379,105 @@ btnSave_LancarPresenca.addEventListener("click", evento => {
         }
     }
     
+})
+
+// Formulário Adicionar Aluno
+const btnSave_AdicionarAluno = document.getElementById("btnSave_adicionarAluno")
+const modal_AdicionarAluno = new bootstrap.Modal("#adicionar_aluno")
+
+btnSave_AdicionarAluno.addEventListener("click", evento => {
+    const input_nome = document.getElementById("adicionar_nome")
+    const input_nascimento = document.getElementById("adicionar_nasc")
+    const radios_sexo = [...document.getElementsByName("adicionar_sexo")]
+    const input_cpf = document.getElementById("adicionar_cpf")
+    const input_endereco = document.getElementById("adicionar_end")
+    const input_foto = document.getElementById("adicionar_foto")
+
+    
+    let validacao = ValidacaoFormulario(input_nome, input_nascimento, radios_sexo, input_cpf, input_endereco, input_foto)
+
+    if(!validacao) {
+        alert("Preencha Tudo!")
+    } else {
+        if(/\W/.test(input_nome.value)) {
+            //console.log("Tem caracteres especiais")
+            if(/[ãáâçíêóô\s]/i.test(input_nome.value)) {
+                let nome_att = input_nome.value.replace(/[ãáâçíêóô\s]/ig, "_")
+                //console.log("Nome Atualizado: " + nome_att)
+                if(/\W/.test(nome_att)) {
+                    //console.log(nome_att.match(/\s/))
+                    alert("Nome Inválido!")
+                    return
+                }
+            } else {
+                alert("Nome Inválido!")
+                return
+            }
+        }
+    
+        //console.log("Nome válido")
+    
+        
+        let ano_aluno = input_nascimento.value.match(/\d{4}/)[0]
+        //console.log(ano_aluno)
+    
+        let ano_atual = new Date().getFullYear()
+    
+        //console.log("Ano resultante: " + (ano_atual - ano_aluno))
+        if(ano_atual - ano_aluno < 16 || ano_atual - ano_aluno > 19) {
+            alert("Data de nascimento inválida! O aluno tem que ter entre 16 e 19 anos.")
+        } else {
+            //alert("data ok.")
+            if(/[\Wa-z\s]/i.test(input_cpf.value) || input_cpf.value.length < 11) {
+                alert("CPF Inválido!")
+            } else {
+                //alert("CPF OK.")
+
+                //console.log((input_nascimento.value).match(/(\d{4})-(\d{2})-(\d{2})/))
+                let nasc = (input_nascimento.value).match(/(\d{4})-(\d{2})-(\d{2})/)
+                let nascimento_formatado = `${nasc[3]}/${nasc[2]}/${nasc[1]}`
+                //console.log(nascimento_formatado)
+
+                let sexo
+                if(radios_sexo[0].checked) {
+                    sexo = "Masculino"
+                } else {
+                    sexo = "Feminino"
+                }
+
+                let last_pos = Dados.alunos.length - 1
+                let id = Dados.alunos[last_pos].matricula + 1
+
+                let foto_caminho = URL.createObjectURL(input_foto.files[0])
+
+                let aluno = new Aluno(input_nome.value, nascimento_formatado, sexo, input_cpf.value, input_endereco.value, foto_caminho, id)
+
+                let presenca_total = CriarPresenca(aluno.dias_presenca, Dados.aulas)
+                aluno.CalcularPresenca(presenca_total, Dados.aulas)
+
+                aluno.CalcularAtividades(0, Dados.atividades)
+
+                aluno.notas[4] = "--"
+                aluno.situacao = "--"
+
+                console.log(aluno)
+
+                Dados.alunos.push(aluno)
+
+                metodosjs.default(input_nome.value, `${aluno.presenca[1]}%`, `${aluno.atividades[1]}%`, "--", "--", aluno.matricula)
+
+                metodosjs.CriarTabelaModais(aluno)
+
+                console.log("Banco de Dados - Alunos:")
+                console.log(Dados.alunos)
+
+                alert("Aluno Adicionado!")
+
+                Resetar(evento, evento.target.previousElementSibling)
+                modal_AdicionarAluno.hide()
+            }
+        }
+    }
 })
 
 export {AdicionarNotaTD}

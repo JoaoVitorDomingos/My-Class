@@ -96,4 +96,20 @@ function GerarNumeroFloatAleatorioInclusivo(min, max, casasDecimais) {
     return Number.parseFloat((Math.random() * (max - min) + min).toFixed(casasDecimais))
 }
 
-export {GerarNumeroAleatorioInclusivo, GerarNumeroFloatAleatorioInclusivo, CriarTabelaGenerica}
+function CriarTabelaModais(objAluno) {
+    let caminho = "div>div>div.modal-body>div>table>tbody"
+
+    const tabela_lancarNotas = document.querySelector(`#lancar_notas>${caminho}`)
+    CriarTabelaGenerica(tabela_lancarNotas, 1, 3, [[objAluno.nome, "--", "input_text"]], ["td_nome", "td_nota", "td_observacao"])
+
+    const tabela_lancarPresenca = document.querySelector(`#lancar_presenca>${caminho}`)
+    CriarTabelaGenerica(tabela_lancarPresenca, 1, 4, [[objAluno.nome, "input_radio", "input_radio", "input_text"]], ["td_nome", "check-box", "check-box", "td_observacao"])
+
+    const tabela_imprimirBoletim = document.querySelector(`#imprimir_boletim>${caminho}`)
+    CriarTabelaGenerica(tabela_imprimirBoletim, 1, 2, [["input_checkbox", objAluno.nome]], ["check-box", "td_nome"], "imprimir_bo_aluno")
+
+    const tabela_imprimirPresenca = document.querySelector(`#imprimir_presenca>${caminho}`)
+    CriarTabelaGenerica(tabela_imprimirPresenca, 1, 2, [["input_checkbox", objAluno.nome]], ["check-box", "td_nome"], "imprimir_pre_aluno")
+}
+
+export {GerarNumeroAleatorioInclusivo, GerarNumeroFloatAleatorioInclusivo, CriarTabelaGenerica, CriarTabelaModais}

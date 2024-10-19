@@ -136,6 +136,10 @@
     margin: 0 auto;
 }
 
+#aluno_vejaMais td.nota_editar:hover {
+    cursor: pointer;
+}
+
 /* Modal - Lançar Notas */
 #lancar_notas .modal-conteudo form {
     justify-content: center;
