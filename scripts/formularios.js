@@ -219,33 +219,60 @@ btnSave_lancarNota.addEventListener("click", evento => {
         const tds_nomes = document.querySelectorAll("#lancar_notas>div>div>div>div>table>tbody>tr>td.td_nome")
         const mainTabela_media = [...document.getElementsByClassName("media")]
         const mainTabela_situacao = [...document.getElementsByClassName("situacao")]
-        
-        // console.log(tds_nomes)
-        tds_nomes.forEach((nome, indice) => {
-            // console.log(nome)
-            // console.log(indice)
-            // console.log("Nota: " + tds_nota[indice].innerHTML)
-            // console.log("Bimestre: " + input_bimestre.value.match(/[1-4]/)[0])
 
-            Dados.alunos.forEach(aluno => {
-                //console.log(aluno.nome)
-                if(aluno.nome == nome.innerHTML) {
-                    aluno.AdicionarNota(input_bimestre.value.match(/[1-4]/)[0], tds_nota[indice].innerHTML)
-                    mainTabela_media[indice].innerHTML = aluno.MostrarMedia()
-                    mainTabela_situacao[indice].innerHTML = aluno.situacao
-                    // console.log("Nota do Aluno " + aluno.nome + ":")
-                    // console.log(aluno.notas)
+        let dia_input = (input_data.value).match(/(\d{4})-(\d{2})-(\d{2})/)
+
+        let dia = new Date(dia_input[1], dia_input[2] - 1, dia_input[3])
+    
+        if(dia < Dados.dias_aulas[0][1]) {
+            console.log("Data Iválida! Muito pequena!")
+            alert("Data Iválida!")
+        } else {
+
+            let last_pos = Dados.dias_aulas.length - 1
+    
+            //console.log(`Conta: ${dia.getMonth()} - ${Dados.dias_aulas[last_pos][1].getMonth() + 1} = ${(dia.getMonth() - (Dados.dias_aulas[last_pos][1].getMonth() + 1))}`)
+    
+            if((dia.getMonth() - (Dados.dias_aulas[last_pos][1].getMonth() + 1)) >= 1 || (dia.getFullYear() - Dados.dias_aulas[last_pos][1].getFullYear()) != 0) {
+                console.log("Data inválida! Muito grande")
+                alert("Data Iválida!")
+            } else {
+
+                if(dia.getDay() == 0 || dia.getDay() == 6) {
+                    console.log("Data Inválida! Final de semana!")
+                    alert("Data Iválida!")
+                } else {
+                    // console.log(tds_nomes)
+                    tds_nomes.forEach((nome, indice) => {
+                        // console.log(nome)
+                        // console.log(indice)
+                        // console.log("Nota: " + tds_nota[indice].innerHTML)
+                        // console.log("Bimestre: " + input_bimestre.value.match(/[1-4]/)[0])
+
+                        Dados.alunos.forEach(aluno => {
+                            //console.log(aluno.nome)
+                            if(aluno.nome == nome.innerHTML) {
+                                aluno.AdicionarNota(input_bimestre.value.match(/[1-4]/)[0], tds_nota[indice].innerHTML)
+                                mainTabela_media[indice].innerHTML = aluno.MostrarMedia()
+                                mainTabela_situacao[indice].innerHTML = aluno.situacao
+                                // console.log("Nota do Aluno " + aluno.nome + ":")
+                                // console.log(aluno.notas)
+                            }
+                        })
+                    })
+
+                    //console.log(evento.target.previousElementSibling)
+                    Resetar(evento, evento.target.previousElementSibling)
+
+                    modal_LancarNota.hide()
+
+                    console.log("Banco de Dados - Alunos:")
+                    console.log(Dados.alunos)
                 }
-            })
-        })
-
-        //console.log(evento.target.previousElementSibling)
-        Resetar(evento, evento.target.previousElementSibling)
-
-        modal_LancarNota.hide()
-
-        console.log("Banco de Dados - Alunos:")
-        console.log(Dados.alunos)
+            }
+        }
+        
+        
     }
 })
 

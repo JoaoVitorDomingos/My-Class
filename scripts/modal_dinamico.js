@@ -69,8 +69,9 @@ if(modal_vejaMais) {
             td_second_table[i].addEventListener("click", evento => {
                 AdicionarNotaTD(evento)
                 //console.log(evento.target)
-                obj_aluno.notas[i] = Number.parseFloat(evento.target.innerHTML)
-                obj_aluno.CalcularMedia()
+                obj_aluno.AdicionarNota(i+1, Number.parseFloat(evento.target.innerHTML))
+                //obj_aluno.notas[i] = Number.parseFloat(evento.target.innerHTML)
+                //obj_aluno.CalcularMedia()
                 if(obj_aluno.notas[4] != "--") {
                     Nota()
                     td_second_table[4].innerHTML = obj_aluno.MostrarMedia()
