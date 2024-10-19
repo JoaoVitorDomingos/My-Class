@@ -310,40 +310,64 @@ btnSave_LancarPresenca.addEventListener("click", evento => {
     if(!validacao) {
         alert("Preencha Tudo!")
     } else {
-        let dia = (input_dia.value).match(/(\d{4})-(\d{2})-(\d{2})/)
-        //console.log(dia)
 
-        dia = `${dia[3]}/${dia[2]}/${dia[1]}`
-        //console.log(dia)
+        let dia_input = (input_dia.value).match(/(\d{4})-(\d{2})-(\d{2})/)
 
-        Dados.dias_aulas.push(dia)
+        let dia = new Date(dia_input[1], dia_input[2] - 1, dia_input[3])
+    
+        if(dia < Dados.dias_aulas[0][1]) {
+            console.log("Data Iválida! Muito pequena!")
+            alert("Data Iválida!")
+        } else {
 
-        console.log("Banco de Dados - Aulas: ")
-        console.log(Dados.dias_aulas)
+            let last_pos = Dados.dias_aulas.length - 1
+    
+            //console.log(`Conta: ${dia.getMonth()} - ${Dados.dias_aulas[last_pos][1].getMonth() + 1} = ${(dia.getMonth() - (Dados.dias_aulas[last_pos][1].getMonth() + 1))}`)
+    
+            if((dia.getMonth() - (Dados.dias_aulas[last_pos][1].getMonth() + 1)) >= 1 || (dia.getFullYear() - Dados.dias_aulas[last_pos][1].getFullYear()) != 0) {
+                console.log("Data inválida! Muito grande")
+                alert("Data Iválida!")
+            } else {
 
-        const td_alunos = [...document.querySelectorAll("#lancar_presenca>div>div>div>div>table>tbody>tr>td.td_nome")]
+                if(dia.getDay() == 0 || dia.getDay() == 6) {
+                    console.log("Data Inválida! Final de semana!")
+                    alert("Data Iválida!")
+                } else {
 
-        let pos_radios = 0
-        td_alunos.forEach(aluno => {
-            Dados.alunos.forEach(objAluno => {
-                if(objAluno.nome == aluno.innerHTML) {
-                    if(radios[pos_radios].checked) {
-                        //console.log(`O aluno ${objAluno.nome} VEIO este dia`)
-                        objAluno.dias_presenca.push("V")
-                    } else {
-                        //console.log(`O aluno ${objAluno.nome} FALTOU este dia`)
-                        objAluno.dias_presenca.push("F")
-                    }
-                    pos_radios += 2
+                    let dia_formatado = `${dia_input[3]}/${dia_input[2]}/${dia_input[1]}`
+                    //console.log(dia_formatado)
+
+                    Dados.dias_aulas.push([dia_formatado, dia])
+
+                    console.log("Banco de Dados - Aulas: ")
+                    console.log(Dados.dias_aulas)
+
+                    const td_alunos = [...document.querySelectorAll("#lancar_presenca>div>div>div>div>table>tbody>tr>td.td_nome")]
+
+                    let pos_radios = 0
+                    td_alunos.forEach(aluno => {
+                        Dados.alunos.forEach(objAluno => {
+                            if(objAluno.nome == aluno.innerHTML) {
+                                if(radios[pos_radios].checked) {
+                                    //console.log(`O aluno ${objAluno.nome} VEIO este dia`)
+                                    objAluno.dias_presenca.push("V")
+                                } else {
+                                    //console.log(`O aluno ${objAluno.nome} FALTOU este dia`)
+                                    objAluno.dias_presenca.push("F")
+                                }
+                                pos_radios += 2
+                            }
+                        })
+                    })
+
+                    console.log("Banco de Dados - Alunos: ")
+                    console.log(Dados.alunos)
+
+                    Resetar(evento, evento.target.previousElementSibling)
+                    modal_LancarPresenca.hide()
                 }
-            })
-        })
-
-        console.log("Banco de Dados - Alunos: ")
-        console.log(Dados.alunos)
-
-        Resetar(evento, evento.target.previousElementSibling)
-        modal_LancarPresenca.hide()
+            }
+        }
     }
     
 })

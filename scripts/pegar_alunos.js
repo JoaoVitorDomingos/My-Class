@@ -189,12 +189,12 @@ function CriarAulas(array_aulas, qtd_dias) {
     data_atual = ChecarDia(data_atual)
     //console.log("Atualizado: " + data_atual)
 
-    array_aulas.push(FormatarData(data_atual))
+    array_aulas.push([FormatarData(data_atual), data_atual])
     for(let i = 1; i < qtd_dias; i++) {
         data_atual = new Date(data_atual.getFullYear(), data_atual.getMonth(), (data_atual.getDate() - 1))
         //console.log("Atualizado: " + data_atual)
         data_atual = ChecarDia(data_atual)
-        array_aulas.push(FormatarData(data_atual))
+        array_aulas.push([FormatarData(data_atual), data_atual])
     }
     array_aulas.reverse()
     console.log("Banco de Dados - Aulas: ")
