@@ -421,3 +421,7 @@ section#atividades div.container-sessões section div.topo div.container-span sp
 section#atividades div.container-sessões section div.topo hr {
     margin-bottom: 20px;
 }
+
+#container_impressao {
+    display: none;
+}

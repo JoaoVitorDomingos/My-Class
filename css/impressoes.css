@@ -1,0 +1,99 @@
+@charset "UTF-8";
+
+@media print {
+    header, main, footer {
+        display: none;
+    }
+
+    /* Configurações Gerais */
+    #container_impressao {
+        display: block;
+    }
+
+    #container_impressao > h1 {
+        text-align: center;
+        text-decoration: underline;
+        font-size: 3em;
+        margin-bottom: 50px;
+    }
+
+    table.tabela_impressao > thead > tr > th {
+        text-align: center;
+        background-color: rgb(189, 184, 184);
+    }
+
+    table.tabela_impressao > tbody > tr > td {
+        text-align: center;
+    }
+
+    table.tabela_impressao > tbody > tr > td.td_aluno {
+        text-align: start;
+        width: 20%;
+    }
+
+    /* Boletim Sala */
+    .boletim_sala > #presenca_sala, .boletim_sala > #bo_pre_aluno, .boletim_sala > #imprimir_tab {
+        display: none;
+    }
+
+    .boletim_sala > table#boletim_sala td.reprovado {
+        background-color: rgb(228, 63, 63);
+        color: white;
+        font-weight: bold;
+    }
+
+    .boletim_sala > table#boletim_sala td.exame {
+        background-color: rgb(238, 238, 74);
+        color: black;
+        font-weight: bold;
+    }
+
+    .boletim_sala > table#boletim_sala td.abaixo {
+        background-color: rgb(255, 203, 203);
+    }
+
+    /* Presença Sala */
+    .presenca_sala > #boletim_sala, .presenca_sala > #bo_pre_aluno, .presenca_sala > #imprimir_tab {
+        display: none;
+    }
+
+
+    /* Boletim e Presença Aluno */
+    .bo_pre_aluno > #boletim_sala, .bo_pre_aluno > #presenca_sala, .bo_pre_aluno > #imprimir_tab {
+        display: none;
+    }
+
+    #bo_pre_aluno > .info_pessoais {
+        justify-content: space-evenly;
+    }
+
+    #bo_pre_aluno > .info_pessoais > .bo_pre_foto {
+        border: 1px solid black;
+        box-shadow: 1px 0px 3px 0px rgba(0, 0, 0, 0.329);
+        width: 200px;
+        height: 200px;
+
+        /* background-image: url(../imgs/foto-alunos/Masculino/foto-aluno5.jpg); */
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 3px;
+    }
+
+    #bo_pre_aluno > .info_pessoais > .bo_pre_dados {
+        font-size: 1.3em;
+    }
+
+    #bo_pre_aluno > .info_pessoais > .bo_pre_dados > .dado_nome, #bo_pre_aluno > .info_pessoais > .bo_pre_dados > p > span {
+        font-weight: bold;
+    }
+
+    #bo_pre_aluno > .info_escolar > .tab1 {
+        max-width: 50%;
+    }
+
+    /* Imprimir Tabela */
+    .imprimir_tab > #boletim_sala, .imprimir_tab > #presenca_sala, .imprimir_tab > #bo_pre_aluno {
+        display: none;
+    }
+}

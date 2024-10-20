@@ -24,9 +24,12 @@
     <link rel="stylesheet" href="css/style.css">
 
     <!-- Estilo dos Modais -->
-     <link rel="stylesheet" href="css/modais.css">
+    <link rel="stylesheet" href="css/modais.css">
+
+    <!-- Estilo das Impressões -->
+    <link rel="stylesheet" href="css/impressoes.css">
 </head>
-<body>
+<body class="imprimir_tab">
     
     <header class="p-4">
         <div class="div_logo">
@@ -799,10 +802,170 @@
         </div>
     </section>
 
+    <section class="my-5 boletim_sala" id="container_impressao">
+        <h1>Matemática 2ºB</h1>
+
+        <table id="boletim_sala" class="tabela_impressao table table-striped table-bordered border-dark mx-auto my-3 w-75">
+            <thead>
+                <tr>
+                    <th scope="col">Matrícula</th>
+                    <th scope="col">Alunos</th>
+                    <th scope="col">1º Bimestre</th>
+                    <th scope="col">2º Bimestre</th>
+                    <th scope="col">3º Bimestre</th>
+                    <th scope="col">4º Bimestre</th>
+                    <th scope="col">Média Final</th>
+                    <th scope="col">Situação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="td_matricula">1</td>
+                    <td class="td_aluno">João Vitor</td>
+                    <td class="td_nota">10</td>
+                    <td class="td_nota">10</td>
+                    <td class="td_nota">10</td>
+                    <td class="td_nota">10</td>
+                    <td class="td_nota">10</td>
+                    <td class="td_situacao reprovado">Reprovado</td>
+                </tr>
+                <tr>
+                    <td class="td_matricula">2</td>
+                    <td class="td_aluno">Guilherme</td>
+                    <td class="td_nota">7</td>
+                    <td class="td_nota">10</td>
+                    <td class="td_nota">8</td>
+                    <td class="td_nota">5</td>
+                    <td class="td_nota abaixo">5</td>
+                    <td class="td_situacao exame">Exame</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table id="presenca_sala" class="tabela_impressao table table-striped table-bordered border-dark mx-auto my-3 w-75">
+            <thead>
+                <tr>
+                    <th scope="col">Matrícula</th>
+                    <th scope="col">Alunos</th>
+                    <th scope="col">Presença</th>
+                    <th scope="col">16/10/2024</th>
+                    <th scope="col">16/10/2024</th>
+                    <th scope="col">16/10/2024</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="td_matricula">1</td>
+                    <td class="td_aluno">João Vitor</td>
+                    <td class="td_nota">50%</td>
+                    <td class="td_nota">V</td>
+                    <td class="td_nota">V</td>
+                    <td class="td_nota">F</td>
+                </tr>
+                <tr>
+                    <td class="td_matricula">2</td>
+                    <td class="td_aluno">Guilherme</td>
+                    <td class="td_nota">70%</td>
+                    <td class="td_nota">V</td>
+                    <td class="td_nota">F</td>
+                    <td class="td_nota">F</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div id="bo_pre_aluno" class="w-75 mx-auto">
+            <div class="info_pessoais row">
+                <div class="bo_pre_foto col-md-4"></div>
+                <div class="bo_pre_dados col-md-8 row">
+                    <p class="dado_nome col-md-12">Nome do Aluno</p>
+                    <p class="dado_nasc col-md-6"><span>Data de Nascimento:</span> </p>
+                    <p class="dado_cpf col-md-6"><span>CPF:</span> </p>
+                    <p class="dado_end col-md-12"><span>Endereço</span>: </p>
+                    <p class="dado_id col-md-12"><span>Matricula:</span> </p>
+                </div>
+            </div>
+            <div class="info_escolar">
+                <table class="tab1 tabela_impressao table table-striped table-bordered border-dark mx-auto my-3">
+                    <thead>
+                        <tr>
+                            <th scope="col">Atividades Feitas</th>
+                            <th scope="col">Atividades Não Feitas</th>
+                            <th scope="col">Atividades (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>5</td>
+                            <td>6</td>
+                            <td>30%</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table class="tab2 tabela_impressao table table-striped table-bordered border-dark mx-auto my-3">
+                    <thead>
+                        <tr>
+                            <th>1º Bimestre</th>
+                            <th>2º Bimestre</th>
+                            <th>3º Bimestre</th>
+                            <th>4º Bimestre</th>
+                            <th>Média Final</th>
+                            <th>Situação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>10</td>
+                            <td>10</td>
+                            <td>10</td>
+                            <td>10</td>
+                            <td>10</td>
+                            <td>Aprovado</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <table id="imprimir_tab" class="tabela_impressao table table-striped table-bordered border-dark mx-auto my-3 w-75">
+            <thead>
+                <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Presença</th>
+                    <th scope="col">Atividades</th>
+                    <th scope="col">Média</th>
+                    <th scope="col">Situação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="nome">João Vitor C. Domingos</td>
+                    <td>100%</td>
+                    <td>100%</td>
+                    <td>10.0</td>
+                    <td>Aprovado</td>
+                </tr>
+                <tr>
+                    <td class="nome">Guilherme Henrique</td>
+                    <td>100%</td>
+                    <td>80%</td>
+                    <td>9.0</td>
+                    <td>Exame</td>
+                </tr>
+                <tr>
+                    <td class="nome">Igor</td>
+                    <td>80%</td>
+                    <td>90%</td>
+                    <td>7.0</td>
+                    <td>Reprovado</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
     <footer>
         <p>&copy; Feito por <a href="https://github.com/JoaoVitorDomingos" target="_blank">João Vitor C. Domingos</a></p>
     </footer>
-
 
     <!-- Bootstrap Script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
