@@ -112,4 +112,29 @@ modal_editarBack_formRadios.addEventListener("click", evt => {
     }
 })
 
+// Mostra e esconde a tabela dos modais
+const imprimirBo_table = document.querySelector("#imprimir_boletim>div>div>div>div>table")
+const imprimirPre_table = document.querySelector("#imprimir_presenca>div>div>div>div>table")
+const radios_imprimir = [...document.getElementsByName("imprimir_bo_tipo"), ...document.getElementsByName("imprimir_pre_tipo")]
 
+radios_imprimir.forEach(el => {
+    el.addEventListener("click", evento => {
+        console.log(evento.target)
+        console.log(evento.target.name)
+        if(evento.target.name == "imprimir_bo_tipo") {
+            console.log(evento.target.id)
+            if(evento.target.id == "imprimir_bo_sala" && evento.target.checked) {
+                imprimirBo_table.classList.add("esconder")
+            } else if(evento.target.id == "imprimir_bo_escolher" && evento.target.checked) {
+                imprimirBo_table.classList.remove("esconder")
+            }
+        } else if(evento.target.name == "imprimir_pre_tipo") {
+            console.log(evento.target.id)
+            if(evento.target.id == "imprimir_pre_sala" && evento.target.checked) {
+                imprimirPre_table.classList.add("esconder")
+            } else if(evento.target.id == "imprimir_pre_escolher" && evento.target.checked) {
+                imprimirPre_table.classList.remove("esconder")
+            }
+        }
+    })
+})

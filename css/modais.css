@@ -44,6 +44,10 @@
     max-height: 250px;
 }
 
+.esconder {
+    display: none;
+}
+
 /* Modal - Editar Back */
 #editar_back form fieldset {
     margin-bottom: 30px;
