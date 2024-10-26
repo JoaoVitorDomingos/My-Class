@@ -635,7 +635,7 @@
 
                     <div class="modal-footer modal-botoes">
                         <button type="button" data-bs-dismiss="modal" class="modal-btn btn-cancel" id="modal_ImprimirBoletim_BtnCancel">Cancelar</button>
-                        <input type="submit" value="Salvar" data-bs-dismiss="modal" class="modal-btn btn-salvar" >
+                        <input type="submit" value="Salvar" class="modal-btn btn-salvar" id="btnSave_imprimirBoletim">
                     </div>
                 </div>
             </div>
@@ -705,7 +705,7 @@
 
                     <div class="modal-footer modal-botoes">
                         <button type="button" data-bs-dismiss="modal" class="modal-btn btn-cancel" id="modal_ImprimirPresenca_BtnCancel">Cancelar</button>
-                        <input type="submit" value="Salvar" data-bs-dismiss="modal" class="modal-btn btn-salvar" >
+                        <input type="submit" value="Salvar" data-bs-dismiss="modal" class="modal-btn btn-salvar" id="btnSave_imprimirPresenca">
                     </div>
                 </div>
             </div>
@@ -802,7 +802,7 @@
         </div>
     </section>
 
-    <section class="my-5 boletim_sala" id="container_impressao">
+    <section class="my-5 bo_pre_aluno" id="container_impressao">
         <h1>Matemática 2ºB</h1>
 
         <table id="boletim_sala" class="tabela_impressao table table-striped table-bordered border-dark mx-auto my-3 w-75">
@@ -819,14 +819,14 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <!-- <tr>
                     <td class="td_matricula">1</td>
                     <td class="td_aluno">João Vitor</td>
                     <td class="td_nota">10</td>
                     <td class="td_nota">10</td>
                     <td class="td_nota">10</td>
                     <td class="td_nota">10</td>
-                    <td class="td_nota">10</td>
+                    <td class="td_media">10</td>
                     <td class="td_situacao reprovado">Reprovado</td>
                 </tr>
                 <tr>
@@ -835,10 +835,10 @@
                     <td class="td_nota">7</td>
                     <td class="td_nota">10</td>
                     <td class="td_nota">8</td>
-                    <td class="td_nota">5</td>
+                    <td class="td_media">5</td>
                     <td class="td_nota abaixo">5</td>
                     <td class="td_situacao exame">Exame</td>
-                </tr>
+                </tr> -->
             </tbody>
         </table>
 
@@ -854,7 +854,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <!-- <tr>
                     <td class="td_matricula">1</td>
                     <td class="td_aluno">João Vitor</td>
                     <td class="td_nota">50%</td>
@@ -869,61 +869,67 @@
                     <td class="td_nota">V</td>
                     <td class="td_nota">F</td>
                     <td class="td_nota">F</td>
-                </tr>
+                </tr> -->
             </tbody>
         </table>
 
-        <div id="bo_pre_aluno" class="w-75 mx-auto">
-            <div class="info_pessoais row">
-                <div class="bo_pre_foto col-md-4"></div>
-                <div class="bo_pre_dados col-md-8 row">
-                    <p class="dado_nome col-md-12">Nome do Aluno</p>
-                    <p class="dado_nasc col-md-6"><span>Data de Nascimento:</span> </p>
-                    <p class="dado_cpf col-md-6"><span>CPF:</span> </p>
-                    <p class="dado_end col-md-12"><span>Endereço</span>: </p>
-                    <p class="dado_id col-md-12"><span>Matricula:</span> </p>
-                </div>
-            </div>
-            <div class="info_escolar">
-                <table class="tab1 tabela_impressao table table-striped table-bordered border-dark mx-auto my-3">
-                    <thead>
-                        <tr>
-                            <th scope="col">Atividades Feitas</th>
-                            <th scope="col">Atividades Não Feitas</th>
-                            <th scope="col">Atividades (%)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>5</td>
-                            <td>6</td>
-                            <td>30%</td>
-                        </tr>
-                    </tbody>
-                </table>
+        <div id="container_bo_pre_aluno">
+            <div class="w-75 mx-auto bo_pre_aluno">
+                <!-- <h1>Matemática 2ºB</h1>
 
-                <table class="tab2 tabela_impressao table table-striped table-bordered border-dark mx-auto my-3">
-                    <thead>
-                        <tr>
-                            <th>1º Bimestre</th>
-                            <th>2º Bimestre</th>
-                            <th>3º Bimestre</th>
-                            <th>4º Bimestre</th>
-                            <th>Média Final</th>
-                            <th>Situação</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>10</td>
-                            <td>10</td>
-                            <td>10</td>
-                            <td>10</td>
-                            <td>10</td>
-                            <td>Aprovado</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="info_pessoais row">
+                    <div class="bo_pre_foto col-md-4"></div>
+                    <div class="bo_pre_dados col-md-8 row">
+                        <p class="dado_nome col-md-12">Nome do Aluno</p>
+                        <p class="dado_nasc col-md-6"><span>Data de Nascimento:</span> </p>
+                        <p class="dado_cpf col-md-6"><span>CPF:</span> </p>
+                        <p class="dado_end col-md-12"><span>Endereço</span>: </p>
+                        <p class="dado_id col-md-12"><span>Matricula:</span> </p>
+                    </div>
+                </div>
+                <div class="info_escolar">
+                    <table class="tab1 tabela_impressao table table-striped table-bordered border-dark mx-auto my-3">
+                        <thead>
+                            <tr>
+                                <th scope="col">Atividades Feitas</th>
+                                <th scope="col">Atividades Não Feitas</th>
+                                <th scope="col">Atividades (%)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>5</td>
+                                <td>6</td>
+                                <td>30%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="tab2 tabela_impressao table table-striped table-bordered border-dark mx-auto my-3">
+                        <thead>
+                            <tr>
+                                <th>16/10/2024</th>
+                                <th>16/10/2024</th>
+                                <th>16/10/2024</th>
+                                <th>16/10/2024</th>
+                                <th>16/10/2024</th>
+                                <th>16/10/2024</th>
+                                <th>16/10/2024</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>v</td>
+                                <td>v</td>
+                                <td>v</td>
+                                <td>v</td>
+                                <td>v</td>
+                                <td>v</td>
+                                <td>v</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div> -->
             </div>
         </div>
 
@@ -990,5 +996,8 @@
 
     <!-- Script para realizar as ações dos formulários -->
     <script type="module" src="scripts/formularios.js"></script>
+
+    <!-- Script de impressão -->
+    <script type="module" src="scripts/impressao.js"></script>
 </body>
 </html>

@@ -10,7 +10,7 @@
         display: block;
     }
 
-    #container_impressao > h1 {
+    #container_impressao > h1, #container_impressao > #container_bo_pre_aluno > div > h1 {
         text-align: center;
         text-decoration: underline;
         font-size: 3em;
@@ -19,11 +19,13 @@
 
     table.tabela_impressao > thead > tr > th {
         text-align: center;
+        vertical-align: middle;
         background-color: rgb(189, 184, 184);
     }
 
     table.tabela_impressao > tbody > tr > td {
         text-align: center;
+        vertical-align: middle;
     }
 
     table.tabela_impressao > tbody > tr > td.td_aluno {
@@ -32,7 +34,7 @@
     }
 
     /* Boletim Sala */
-    .boletim_sala > #presenca_sala, .boletim_sala > #bo_pre_aluno, .boletim_sala > #imprimir_tab {
+    .boletim_sala > #presenca_sala, .boletim_sala > #container_bo_pre_aluno, .boletim_sala > #imprimir_tab {
         display: none;
     }
 
@@ -53,21 +55,25 @@
     }
 
     /* Presença Sala */
-    .presenca_sala > #boletim_sala, .presenca_sala > #bo_pre_aluno, .presenca_sala > #imprimir_tab {
+    .presenca_sala > #boletim_sala, .presenca_sala > #container_bo_pre_aluno, .presenca_sala > #imprimir_tab {
         display: none;
     }
 
 
     /* Boletim e Presença Aluno */
-    .bo_pre_aluno > #boletim_sala, .bo_pre_aluno > #presenca_sala, .bo_pre_aluno > #imprimir_tab {
+    .bo_pre_aluno > #boletim_sala, .bo_pre_aluno > #presenca_sala, .bo_pre_aluno > #imprimir_tab, section.bo_pre_aluno > h1 {
         display: none;
     }
 
-    #bo_pre_aluno > .info_pessoais {
+    #container_bo_pre_aluno > .bo_pre_aluno {
+        page-break-after: always;
+    }
+
+    #container_bo_pre_aluno > .bo_pre_aluno > .info_pessoais {
         justify-content: space-evenly;
     }
 
-    #bo_pre_aluno > .info_pessoais > .bo_pre_foto {
+    #container_bo_pre_aluno > .bo_pre_aluno > .info_pessoais > .bo_pre_foto {
         border: 1px solid black;
         box-shadow: 1px 0px 3px 0px rgba(0, 0, 0, 0.329);
         width: 200px;
@@ -80,20 +86,20 @@
         border-radius: 3px;
     }
 
-    #bo_pre_aluno > .info_pessoais > .bo_pre_dados {
+    #container_bo_pre_aluno > .bo_pre_aluno > .info_pessoais > .bo_pre_dados {
         font-size: 1.3em;
     }
 
-    #bo_pre_aluno > .info_pessoais > .bo_pre_dados > .dado_nome, #bo_pre_aluno > .info_pessoais > .bo_pre_dados > p > span {
+    #container_bo_pre_aluno > .bo_pre_aluno > .info_pessoais > .bo_pre_dados > .dado_nome, #container_bo_pre_aluno > .bo_pre_aluno > .info_pessoais > .bo_pre_dados > p > span {
         font-weight: bold;
     }
 
-    #bo_pre_aluno > .info_escolar > .tab1 {
+    #container_bo_pre_aluno > .bo_pre_aluno > .info_escolar > .tab1 {
         max-width: 50%;
     }
 
     /* Imprimir Tabela */
-    .imprimir_tab > #boletim_sala, .imprimir_tab > #presenca_sala, .imprimir_tab > #bo_pre_aluno {
+    .imprimir_tab > #boletim_sala, .imprimir_tab > #presenca_sala, .imprimir_tab > #container_bo_pre_aluno {
         display: none;
     }
 }

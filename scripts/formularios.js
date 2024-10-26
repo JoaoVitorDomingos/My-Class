@@ -2,6 +2,7 @@ import Dados from "./banco_dados.js"
 import Aluno from "./obj_aluno.js"
 import * as metodosjs from "./metodos.js"
 import { CriarPresenca } from "./pegar_alunos.js"
+import * as impressaojs from "./impressao.js"
 
 // Função de Validação de Formularios
 function ValidacaoFormulario(...inputs) {
@@ -91,11 +92,12 @@ function IdentificacaoBtnModal(elementId) {
     } else if(elementId == "modal_ImprimirBoletim_BtnCancel") {
         let caminhoIB = "#modais>#imprimir_boletim>div>div>div.modal-body"
 
-        return [document.querySelector(`${caminhoIB}>form`), ...document.querySelectorAll(`${caminhoIB}>div>table>${caminhoTdCheckBox}`)]
+        return [document.querySelector(`${caminhoIB}>form`), ...document.querySelectorAll(`${caminhoIB}>div>table>${caminhoTdCheckBox}`), document.querySelector(`${caminhoIB}>div>table`)]
+
     } else if(elementId == "modal_ImprimirPresenca_BtnCancel") {
         let caminhoIP = "#modais>#imprimir_presenca>div>div>div.modal-body"
 
-        return [document.querySelector(`${caminhoIP}>form`), ...document.querySelectorAll(`${caminhoIP}>div>table>${caminhoTdCheckBox}`)]
+        return [document.querySelector(`${caminhoIP}>form`), ...document.querySelectorAll(`${caminhoIP}>div>table>${caminhoTdCheckBox}`), document.querySelector(`${caminhoIP}>div>table`)]
 
     } else if(elementId == "modal_CriarSessao_BtnCancel") {
         let caminhoCS = "#modais>#criar_sessao>div>div>div.modal-body"
@@ -143,6 +145,8 @@ function Resetar(evt, btnCancel) {
                 el.value = ""
             else if(el.type == "radio" || el.type == "checkbox")
                 el.checked = false
+        } else if(el.tagName == "TABLE") {
+            el.classList.add("esconder")
         }
     })
 }
@@ -504,6 +508,101 @@ btnSave_AdicionarAluno.addEventListener("click", evento => {
                 modal_AdicionarAluno.hide()
             }
         }
+    }
+})
+
+// Formulários de Impressão - Boletim e Presença
+const container_impressao = document.getElementById("container_impressao")
+
+const modal_imprimirBo = new bootstrap.Modal("#imprimir_boletim")
+const btnsave_imprimirBo = document.getElementById("btnSave_imprimirBoletim")
+const radios_boletim = [...document.getElementsByName("imprimir_bo_tipo")]
+
+btnsave_imprimirBo.addEventListener("click", evento => {
+    if(radios_boletim[0].checked) {
+        container_impressao.classList.add("boletim_sala")
+        container_impressao.classList.remove("presenca_sala")
+        container_impressao.classList.remove("bo_pre_aluno")
+        container_impressao.classList.remove("imprimir_tab")
+
+        const boletim_tab_tbody = document.querySelector("#boletim_sala>tbody")
+        boletim_tab_tbody.innerHTML = ""
+
+        let matrizValores = []
+        let arrayClasses = ["td_matricula", "td_aluno", "td_nota", "td_nota", "td_nota", "td_nota", "td_media", "td_situacao"]
+
+        for(let i = 0; i < Dados.alunos.length; i++) {
+            (
+                function() {
+                    let valores = [Dados.alunos[i].matricula, Dados.alunos[i].nome, ...Dados.alunos[i].notas, Dados.alunos[i].situacao]
+                    matrizValores.push(valores)
+                }
+            ) ();
+        }
+
+        metodosjs.CriarTabelaGenerica(boletim_tab_tbody, Dados.alunos.length, 8, matrizValores, arrayClasses)
+
+        const tds_nota = [...document.querySelectorAll("#boletim_sala>tbody>tr>td.td_nota")]
+        tds_nota.forEach(td => {
+            if(td.innerHTML < 7.0) {
+                td.classList.add("abaixo")
+            }
+        })
+
+        const tds_situacao = [...document.querySelectorAll("#boletim_sala>tbody>tr>td.td_situacao")]
+        tds_situacao.forEach(td => {
+            if(td.innerHTML == "Reprovado") {
+                td.classList.add("reprovado")
+            } else if(td.innerHTML == "Exame") {
+                td.classList.add("exame")
+            }
+        })
+
+        Resetar(evento, evento.target.previousElementSibling)
+        modal_imprimirBo.hide()
+
+        setTimeout(() => {
+            alert("Ative o 'gráficos de segundo plano' em 'mais definições' para ter a melhor impressão")
+            window.print()
+        }, 500)
+        
+    } else {
+        container_impressao.classList.add("bo_pre_aluno")
+        container_impressao.classList.remove("boletim_sala")
+        container_impressao.classList.remove("presenca_sala")
+        container_impressao.classList.remove("imprimir_tab")
+
+        const checkbox = [...document.getElementsByName("imprimir_bo_aluno")]
+        const tds_nome = [...document.querySelectorAll("#imprimir_boletim>div>div>div>div>table>tbody>tr>td.td_nome")]
+
+        if(checkbox.some(check => check.checked)) {
+            let alunos_escolhidos = []
+
+            checkbox.forEach((box, indice) => {
+                if(box.checked) {
+                    console.log(box);
+                    let a = Dados.alunos.find(aluno => {
+                        return aluno.nome == tds_nome[indice].innerHTML
+                    })
+                    alunos_escolhidos.push(a)
+                }
+            })
+            console.log(alunos_escolhidos)
+
+            impressaojs.CriarDivAluno(alunos_escolhidos, 1)
+
+            Resetar(evento, evento.target.previousElementSibling)
+            modal_imprimirBo.hide()
+
+            setTimeout(() => {
+                alert("Ative o 'gráficos de segundo plano' em 'mais definições' para ter a melhor impressão")
+                window.print()
+            }, 500)
+
+        } else {
+            alert("Selecione pelo menos um aluno!")
+        }
+        
     }
 })
 
