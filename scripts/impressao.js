@@ -8,7 +8,7 @@ function CriarDivAluno(arrayAlunosObj, tipo, diasPresenca=0, objDateInicial, pos
     for(let i = 0; i < arrayAlunosObj.length; i++) {
         // Container
         const container = document.createElement("div")
-        container.classList.add("w-75", "mx-auto", "bo_pre_aluno")
+        container.classList.add("mx-auto", "bo_pre_aluno")
         pai.appendChild(container)
 
         // Titulo
@@ -39,12 +39,12 @@ function CriarDivAluno(arrayAlunosObj, tipo, diasPresenca=0, objDateInicial, pos
         div_dados.appendChild(nome)
 
         const nasc = document.createElement("p")
-        nasc.classList.add("dado_nasc", "col-md-6")
+        nasc.classList.add("dado_nasc", "col-md-7")
         nasc.innerHTML = `<span>Data de Nascimento:</span> ${arrayAlunosObj[i].nascimento}`
         div_dados.appendChild(nasc)
 
         const cpf = document.createElement("p")
-        cpf.classList.add("dado_cpf", "col-md-6")
+        cpf.classList.add("dado_cpf", "col-md-5")
         cpf.innerHTML = `<span>CPF:</span> ${arrayAlunosObj[i].cpf}`
         div_dados.appendChild(cpf)
 

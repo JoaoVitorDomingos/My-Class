@@ -17,6 +17,10 @@
         margin-bottom: 50px;
     }
 
+    table.tabela_impressao {
+        width: 90%;
+    }
+
     table.tabela_impressao > thead > tr > th {
         text-align: center;
         vertical-align: middle;
@@ -67,6 +71,7 @@
 
     #container_bo_pre_aluno > .bo_pre_aluno {
         page-break-after: always;
+        width: 90%;
     }
 
     #container_bo_pre_aluno > .bo_pre_aluno > .info_pessoais {

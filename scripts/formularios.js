@@ -511,7 +511,7 @@ btnSave_AdicionarAluno.addEventListener("click", evento => {
     }
 })
 
-// Formulários de Impressão - Boletim e Presença
+// Formulário Imprimir Boletim
 const container_impressao = document.getElementById("container_impressao")
 
 const modal_imprimirBo = new bootstrap.Modal("#imprimir_boletim")
@@ -580,14 +580,14 @@ btnsave_imprimirBo.addEventListener("click", evento => {
 
             checkbox.forEach((box, indice) => {
                 if(box.checked) {
-                    console.log(box);
+                    //console.log(box);
                     let a = Dados.alunos.find(aluno => {
                         return aluno.nome == tds_nome[indice].innerHTML
                     })
                     alunos_escolhidos.push(a)
                 }
             })
-            console.log(alunos_escolhidos)
+            //console.log(alunos_escolhidos)
 
             impressaojs.CriarDivAluno(alunos_escolhidos, 1)
 
@@ -602,6 +602,22 @@ btnsave_imprimirBo.addEventListener("click", evento => {
         } else {
             alert("Selecione pelo menos um aluno!")
         }
+        
+    }
+})
+
+// Formulário Imprimir Presença
+const modal_imprimirPre = new bootstrap.Modal("#imprimir_presenca")
+const btnsave_imprimirPre = document.getElementById("btnSave_imprimirPresenca")
+const radios_presenca = [...document.getElementsByName("imprimir_pre_tipo")]
+
+btnsave_imprimirPre.addEventListener("click", evento => {
+    if(radios_presenca[0].checked) {
+        container_impressao.classList.add("presenca_sala")
+        container_impressao.classList.remove("boletim_sala")
+        container_impressao.classList.remove("bo_pre_aluno")
+        container_impressao.classList.remove("imprimir_tab")
+
         
     }
 })
