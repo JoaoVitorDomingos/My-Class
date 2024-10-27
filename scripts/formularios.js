@@ -610,14 +610,64 @@ btnsave_imprimirBo.addEventListener("click", evento => {
 const modal_imprimirPre = new bootstrap.Modal("#imprimir_presenca")
 const btnsave_imprimirPre = document.getElementById("btnSave_imprimirPresenca")
 const radios_presenca = [...document.getElementsByName("imprimir_pre_tipo")]
+const input_dataInicial = document.getElementById("imprimir_pre_data_inicial")
+const input_dataFinal = document.getElementById("imprimir_pre_data_final")
 
 btnsave_imprimirPre.addEventListener("click", evento => {
-    if(radios_presenca[0].checked) {
-        container_impressao.classList.add("presenca_sala")
-        container_impressao.classList.remove("boletim_sala")
-        container_impressao.classList.remove("bo_pre_aluno")
-        container_impressao.classList.remove("imprimir_tab")
 
+    let validacao = ValidacaoFormulario(input_dataInicial, input_dataFinal)
+
+    if(!validacao) {
+        alert("Selecione as datas!")
+    } else {
+        let dataInicial_input = (input_dataInicial.value).match(/(\d{4})-(\d{2})-(\d{2})/)
+        let dataFinal_input = (input_dataFinal.value).match(/(\d{4})-(\d{2})-(\d{2})/)
+
+        let dataInicial = `${dataInicial_input[3]}/${dataInicial_input[2]}/${dataInicial_input[1]}`
+        let dataFinal = `${dataFinal_input[3]}/${dataFinal_input[2]}/${dataFinal_input[1]}`
+
+        let dataInicialIndex = Dados.dias_aulas.findIndex(dia => dia[0] == dataInicial)
+        let dataFinalIndex = Dados.dias_aulas.findIndex(dia => dia[0] == dataFinal)
+
+        if(dataInicialIndex != -1 && dataFinalIndex != -1) {
+            
+            if(Dados.dias_aulas[dataFinalIndex][1] < Dados.dias_aulas[dataInicialIndex][1]) {
+                alert("A data final não pode ser menor que a inicial!")
+            } else {
+                //console.log("Quantidade de Dias: " + (dataFinalIndex - dataInicialIndex + 1))
+                let qtdDias = (dataFinalIndex - dataInicialIndex) + 1
+                if(qtdDias > 30) {
+                    alert("O máximo de dias é 30!")
+                } else {
+                    if(qtdDias < 5) {
+                        alert("O mínimo de dias é 5")
+                    } else {
+                        if(radios_presenca[0].checked) {
+                            container_impressao.classList.add("presenca_sala")
+                            container_impressao.classList.remove("boletim_sala")
+                            container_impressao.classList.remove("bo_pre_aluno")
+                            container_impressao.classList.remove("imprimir_tab")
+
+                            //console.log("Data Inicial: " + dataInicial)
+                            //console.log("Data Final: " + dataFinal)
+    
+                            impressaojs.CriarTabelaPresenca(qtdDias, dataInicialIndex)
+    
+                            Resetar(evento, evento.target.previousElementSibling)
+                            modal_imprimirPre.hide()
+    
+                            setTimeout(() => {
+                                alert("Ative o 'gráficos de segundo plano' em 'mais definições' para ter a melhor impressão")
+                                window.print()
+                            }, 500)
+                        }
+                    }
+                }
+            }
+
+        } else {
+            alert("Datas Inválidas!")
+        }
         
     }
 })

@@ -63,6 +63,10 @@
         display: none;
     }
 
+    #presenca_sala > .tabela_impressao {
+        page-break-after: always;
+    }
+
 
     /* Boletim e Presença Aluno */
     .bo_pre_aluno > #boletim_sala, .bo_pre_aluno > #presenca_sala, .bo_pre_aluno > #imprimir_tab, section.bo_pre_aluno > h1 {

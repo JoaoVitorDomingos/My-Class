@@ -1,4 +1,5 @@
 import Dados from "./banco_dados.js"
+import { CriarTabelaGenerica } from "./metodos.js"
 
 function CriarDivAluno(arrayAlunosObj, tipo, diasPresenca=0, objDateInicial, posDateInicial) {
     const tituloMain = document.querySelector("main>#classe>div>h2")
@@ -221,4 +222,77 @@ function CriarDivAluno(arrayAlunosObj, tipo, diasPresenca=0, objDateInicial, pos
     }
 }
 
-export {CriarDivAluno}
+function CriarTabelaPresenca(qtdDias, dataInicialIndex) {
+    const div_presenca = document.getElementById("presenca_sala")
+    div_presenca.innerHTML = ""
+    let pos = dataInicialIndex
+    let posPresenca = dataInicialIndex
+
+    function CriarTabela(colunas) {
+        const tabela = document.createElement("table")
+        tabela.classList.add("tabela_impressao", "table", "table-striped", "table-bordered", "border-dark", "mx-auto", "my-3")
+        div_presenca.appendChild(tabela)
+
+        const thead = document.createElement("thead")
+        tabela.appendChild(thead)
+
+        const thead_tr = document.createElement("tr")
+        thead.appendChild(thead_tr)
+
+        const th1 = document.createElement("th")
+        th1.innerHTML = "Matricula"
+        const th2 = document.createElement("th")
+        th2.innerHTML = "Alunos"
+        const th3 = document.createElement("th")
+        th3.innerHTML = "Presença";
+        [th1, th2, th3].forEach(th => {
+            th.setAttribute("scope", "col")
+            thead_tr.appendChild(th)
+        });
+
+        //console.log("Pos: " + pos)
+        for(let i = 0; i < colunas; i++) {
+            let th = document.createElement("th")
+            //console.log(Dados.dias_aulas[pos][0])
+            th.innerHTML = Dados.dias_aulas[pos][0]
+            thead_tr.appendChild(th)
+            pos++
+        }
+
+        const tbody = document.createElement("tbody")
+        tabela.appendChild(tbody)
+
+        let matrizValores = []
+        let arrayClasses = ["td_matricula", "td_aluno"]
+        for(let i = 0; i < Dados.alunos.length; i++) {
+            (
+                function() {
+                    let valores = [Dados.alunos[i].matricula, Dados.alunos[i].nome, Dados.alunos[i].presenca[1]]
+                    for(let j = posPresenca; j < (posPresenca + colunas); j++) {
+                        valores.push(Dados.alunos[i].dias_presenca[j])
+                        if(j == 3)
+                            posPresenca = j+1
+                    }
+                    matrizValores.push(valores)
+                }
+            ) ();
+        }
+
+
+        CriarTabelaGenerica(tbody, Dados.alunos.length, (colunas + 3), matrizValores, arrayClasses)
+    }
+    
+    let repeticao = Number.parseInt(qtdDias / 5)
+    let resto = qtdDias % 5
+    //console.log("Repetição: " + Number.parseInt(qtdDias / 5))
+    //console.log("Resto: " + qtdDias % 5)
+
+    for(let i = 0; i < repeticao; i++) {
+        CriarTabela(5)
+    }
+    if(resto != 0) {
+        CriarTabela(resto)
+    }
+}
+
+export {CriarDivAluno, CriarTabelaPresenca}
