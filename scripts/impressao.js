@@ -1,7 +1,7 @@
 import Dados from "./banco_dados.js"
 import { CriarTabelaGenerica } from "./metodos.js"
 
-function CriarDivAluno(arrayAlunosObj, tipo, diasPresenca=0, objDateInicial, posDateInicial) {
+function CriarDivAluno(arrayAlunosObj, tipo, diasPresenca=0, posDateInicial) {
     const tituloMain = document.querySelector("main>#classe>div>h2")
     const pai = document.getElementById("container_bo_pre_aluno")
     pai.innerHTML = ""
@@ -91,23 +91,6 @@ function CriarDivAluno(arrayAlunosObj, tipo, diasPresenca=0, objDateInicial, pos
         const tbody1_td3 = document.createElement("td");
         [tbody1_td1, tbody1_td2 , tbody1_td3].forEach(td => tbody1_tr.appendChild(td))
 
-        // Tabela 2
-        const table2 = document.createElement("table")
-        table2.classList.add("tab2", "tabela_impressao", "table", "table-striped", "table-bordered", "border-dark", "mx-auto", "my-3")
-        div_infoEscolares.appendChild(table2)
-
-        const thead2 = document.createElement("thead")
-        table2.appendChild(thead2)
-
-        const thead2_tr = document.createElement("tr")
-        thead2.appendChild(thead2_tr)
-
-        const tbody2 = document.createElement("tbody")
-        table2.appendChild(tbody2)
-
-        const tbody2_tr = document.createElement("tr")
-        tbody2.appendChild(tbody2_tr)
-
         if(tipo == 1) {// Boletim
             // Tabela 1
             thead1_th1.innerHTML = "Atividades Feitas"
@@ -119,13 +102,29 @@ function CriarDivAluno(arrayAlunosObj, tipo, diasPresenca=0, objDateInicial, pos
             tbody1_td3.innerHTML = `${arrayAlunosObj[i].atividades[1]}%`
 
             //Tabela 2
+            const table2 = document.createElement("table")
+            table2.classList.add("tab2", "tabela_impressao", "table", "table-striped", "table-bordered", "border-dark", "mx-auto", "my-3")
+            div_infoEscolares.appendChild(table2)
+
+            const thead2 = document.createElement("thead")
+            table2.appendChild(thead2)
+
+            const thead2_tr = document.createElement("tr")
+            thead2.appendChild(thead2_tr)
+
             const thead2_th1 = document.createElement("th")
             const thead2_th2 = document.createElement("th")
             const thead2_th3 = document.createElement("th")
             const thead2_th4 = document.createElement("th")
             const thead2_th5 = document.createElement("th")
             const thead2_th6 = document.createElement("th");
-            [thead2_th1, thead2_th2 , thead2_th3, thead2_th4, thead2_th5, thead2_th6].forEach(th => thead2_tr.appendChild(th))
+            [thead2_th1, thead2_th2 , thead2_th3, thead2_th4, thead2_th5, thead2_th6].forEach(th => thead2_tr.appendChild(th));
+
+            const tbody2 = document.createElement("tbody")
+            table2.appendChild(tbody2)
+
+            const tbody2_tr = document.createElement("tr")
+            tbody2.appendChild(tbody2_tr)
 
             const tbody2_td1 = document.createElement("td")
             const tbody2_td2 = document.createElement("td")
@@ -133,7 +132,7 @@ function CriarDivAluno(arrayAlunosObj, tipo, diasPresenca=0, objDateInicial, pos
             const tbody2_td4 = document.createElement("td")
             const tbody2_td5 = document.createElement("td")
             const tbody2_td6 = document.createElement("td");
-            [tbody2_td1, tbody2_td2 , tbody2_td3, tbody2_td4, tbody2_td5, tbody2_td6].forEach(td => tbody2_tr.appendChild(td))
+            [tbody2_td1, tbody2_td2 , tbody2_td3, tbody2_td4, tbody2_td5, tbody2_td6].forEach(td => tbody2_tr.appendChild(td));
 
             thead2_th1.innerHTML = "1º Bimestre"
             thead2_th2.innerHTML = "2º Bimestre"
@@ -153,23 +152,26 @@ function CriarDivAluno(arrayAlunosObj, tipo, diasPresenca=0, objDateInicial, pos
             // Tabela 1
             thead1_th1.innerHTML = "Presença"
             thead1_th2.innerHTML = "Faltas"
-            thead1_th3.innerHTML = "Presença (%)"
+            thead1_th3.innerHTML = "Presença (%)";
+            [thead1_th1, thead1_th2, thead1_th3].forEach(th => thead1_tr.appendChild(th));
 
-            tbody_td1.innerHTML = arrayAlunosObj[i].presenca[0]
-            tbody_td2.innerHTML = Dados.aulas - arrayAlunosObj[i].presenca[0]
-            tbody_td3.innerHTML = `${arrayAlunosObj[i].presenca[1]}%`
+            tbody1_td1.innerHTML = arrayAlunosObj[i].presenca[0]
+            tbody1_td2.innerHTML = Dados.aulas - arrayAlunosObj[i].presenca[0]
+            tbody1_td3.innerHTML = `${arrayAlunosObj[i].presenca[1]}%`;
+            [tbody1_td1, tbody1_td2, tbody1_td3].forEach(td => tbody1_tr.appendChild(td));
 
             //Tabela 2
             let max = Number.parseInt(diasPresenca / 7)
-            if(diasPresenca % 7 != 0) {
-                max++
-            }
+            let resto = diasPresenca % 7
+            //console.log("Repetições Inteiras: " + max)
+            //console.log("Resto: " + resto)
 
-            let data = objDateInicial
+            let data = posDateInicial
+            let presenca = posDateInicial
 
-            for(let i = 0; i < max; i++) {
+            function CriarTabelaPresencaAluno(repeticoes) {
                 const table2 = document.createElement("table")
-                table2.classList.add(["tab2", "tabela_impressao", "table", "table-striped", "table-bordered", "border-dark", "mx-auto", "my-3"])
+                table2.classList.add("tab2", "tabela_impressao", "table", "table-striped", "table-bordered", "border-dark", "mx-auto", "my-3")
                 div_infoEscolares.appendChild(table2)
 
                 const thead2 = document.createElement("thead")
@@ -184,39 +186,29 @@ function CriarDivAluno(arrayAlunosObj, tipo, diasPresenca=0, objDateInicial, pos
                 const tbody2_tr = document.createElement("tr")
                 tbody2.appendChild(tbody2_tr)
 
-                if(i != (max - 1)) {
-                    for(let j = 0; j < 7; j++) {
-                        let th = document.createElement("th")
-                        th.innerHTML = `${(data.getDate()).padStart("2", "0")}/${(data.getMonth() + 1).padStart("2", "0")}/${data.getFullYear()}`
-                        thead2_tr.appendChild(th)
-                        data = new Date(data.getFullYear(), data.getMonth(), (data.getDate() + 1))
-                    }
-    
-    
-                    for(let j = 0; j < 7; j++) {
-                        let td = document.createElement("td")
-                        td.innerHTML = arrayAlunosObj[i].dias_presenca[posDateInicial]
-                        tbody2_tr.appendChild(td)
-                        posDateInicial++
-                    }
-                } else {
-                    let resto = diasPresenca % 7
-
-                    for(let j = 0; j < resto; j++) {
-                        let th = document.createElement("th")
-                        th.innerHTML = `${(data.getDate()).padStart("2", "0")}/${(data.getMonth() + 1).padStart("2", "0")}/${data.getFullYear()}`
-                        thead2_tr.appendChild(th)
-                        data = new Date(data.getFullYear(), data.getMonth(), (data.getDate() + 1))
-                    }
-    
-    
-                    for(let j = 0; j < resto; j++) {
-                        let td = document.createElement("td")
-                        td.innerHTML = arrayAlunosObj[i].dias_presenca[posDateInicial]
-                        tbody2_tr.appendChild(td)
-                        posDateInicial++
-                    }
+                for(let j = 0; j < repeticoes; j++) {
+                    let th = document.createElement("th")
+                    //console.log(Dados.dias_aulas[data][0])
+                    th.innerHTML = Dados.dias_aulas[data][0]
+                    thead2_tr.appendChild(th)
+                    data++
                 }
+
+                for(let j = 0; j < repeticoes; j++) {
+                    let td = document.createElement("td")
+                    //console.log(arrayAlunosObj[i].dias_presenca[presenca])
+                    td.innerHTML = arrayAlunosObj[i].dias_presenca[presenca]
+                    tbody2_tr.appendChild(td)
+                    presenca++
+                }
+            }
+
+            for(let i = 0; i < max; i++) {
+                CriarTabelaPresencaAluno(7)
+            }
+
+            if(resto != 0) {
+                CriarTabelaPresencaAluno(resto)
             }
         }
     }

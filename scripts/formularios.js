@@ -660,6 +660,41 @@ btnsave_imprimirPre.addEventListener("click", evento => {
                                 alert("Ative o 'gráficos de segundo plano' em 'mais definições' para ter a melhor impressão")
                                 window.print()
                             }, 500)
+                        } else {
+                            const checkboxs = [...document.getElementsByName("imprimir_pre_aluno")]
+                            const td_alunos = [...document.querySelectorAll("#imprimir_presenca>div>div>div>div>table>tbody>tr>td.td_nome")]
+
+                            if(checkboxs.some(check => check.checked)) {
+                                container_impressao.classList.add("bo_pre_aluno")
+                                container_impressao.classList.remove("presenca_sala")
+                                container_impressao.classList.remove("boletim_sala")
+                                container_impressao.classList.remove("imprimir_tab")
+
+                                let alunos_escolhidos = []
+
+                                checkboxs.forEach((box, indice) => {
+                                    if(box.checked) {
+                                        //console.log(box);
+                                        let a = Dados.alunos.find(aluno => {
+                                            return aluno.nome == td_alunos[indice].innerHTML
+                                        })
+                                        alunos_escolhidos.push(a)
+                                    }
+                                })
+                                
+                                impressaojs.CriarDivAluno(alunos_escolhidos, 2, qtdDias, dataInicialIndex)
+                                
+                                Resetar(evento, evento.target.previousElementSibling)
+                                modal_imprimirPre.hide()
+        
+                                setTimeout(() => {
+                                    alert("Ative o 'gráficos de segundo plano' em 'mais definições' para ter a melhor impressão")
+                                    window.print()
+                                }, 500)
+
+                            } else {
+                                alert("Selecione pelo menos um aluno!")
+                            }
                         }
                     }
                 }
