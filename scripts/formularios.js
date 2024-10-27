@@ -707,4 +707,30 @@ btnsave_imprimirPre.addEventListener("click", evento => {
     }
 })
 
+// Botão Imprimir Tabela
+const btnImprimirTabela = document.getElementById("btn_imprimirTabela")
+const tabelaMain = document.querySelector("#imprimir_tab>tbody")
+
+btnImprimirTabela.addEventListener("click", () => {
+    tabelaMain.innerHTML = ""
+
+    container_impressao.classList.add("imprimir_tab")
+    container_impressao.classList.remove("presenca_sala")
+    container_impressao.classList.remove("boletim_sala")
+    container_impressao.classList.remove("bo_pre_aluno")
+
+    let arrayClasses = ["nome"]
+    let matrizValores = []
+    for(let i = 0; i < Dados.alunos.length; i++) {
+        let valores = [Dados.alunos[i].matricula, Dados.alunos[i].nome, `${Dados.alunos[i].atividades[1]}%`, Dados.alunos[i].MostrarMedia(), Dados.alunos[i].situacao]
+        matrizValores.push(valores)
+    }
+
+    metodosjs.CriarTabelaGenerica(tabelaMain, Dados.alunos.length, 5, matrizValores, arrayClasses)
+
+    setTimeout(() => {
+        window.print()
+    }, 100)
+})
+
 export {AdicionarNotaTD}

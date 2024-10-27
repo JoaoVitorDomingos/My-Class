@@ -7,6 +7,56 @@ const p_infoAluno = [...document.querySelectorAll("div.informacoes-aluno>div.col
 const td_first_table = [...document.querySelectorAll("#modal_vejaMais_firstTable>tbody>tr>td")]
 const td_second_table = [...document.querySelectorAll("#modal_vejaMais_secondTable>tbody>tr>td")]
 
+for(let i = 0; i < 4; i++) {
+    td_second_table[i].addEventListener("click", evento => {
+        AdicionarNotaTD(evento)
+
+        //console.log(evento.target)
+        let td_index = td_second_table.findIndex(td => td == evento.target)
+        //console.log(td_index)
+
+        let obj_aluno = Dados.alunos.find(aluno => {
+            //console.log(aluno.nome)
+            //console.log(p_infoAluno[0].children[0].innerHTML)
+            return aluno.nome == p_infoAluno[0].children[0].innerHTML
+        })
+        //console.log(obj_aluno)
+
+        obj_aluno.AdicionarNota(td_index+1, Number.parseFloat(evento.target.innerHTML))
+        //obj_aluno.notas[i] = Number.parseFloat(evento.target.innerHTML)
+        //obj_aluno.CalcularMedia()
+
+        const trs_mainTable = [...document.querySelectorAll("main>#classe>div>table>tbody>tr")]
+        //console.log(trs_mainTable)
+        //console.log(trs_mainTable[0].firstElementChild.innerHTML)
+        //console.log(obj_aluno.nome)
+        let tr_indice = trs_mainTable.findIndex(tr => {
+            return tr.firstElementChild.innerHTML == obj_aluno.nome
+        })
+        //console.log(trs_mainTable[tr_indice].children)
+
+        let td_media
+        let td_situacao
+        let tds = [...trs_mainTable[tr_indice].children]
+        tds.forEach(el => {
+            if(el.className == "media") {
+                td_media = el 
+            } else if(el.className == "situacao") {
+                td_situacao = el
+            }
+        })
+        //console.log(td_media)
+        //console.log(td_situacao)
+
+        if(obj_aluno.notas[4] != "--") {
+            td_second_table[4].innerHTML = obj_aluno.MostrarMedia()
+            td_second_table[5].innerHTML = obj_aluno.situacao
+            td_media.innerHTML = obj_aluno.MostrarMedia()
+            td_situacao.innerHTML = obj_aluno.situacao
+        }
+    })
+}
+
 // console.log("Div Foto:")
 // console.log(div_foto)
 // console.log("Paragrafos:")
@@ -48,36 +98,20 @@ if(modal_vejaMais) {
         td_first_table[4].innerHTML = Dados.atividades - obj_aluno.atividades[0]
         td_first_table[5].innerHTML = obj_aluno.atividades[1] + "%"
 
-        function Nota() {
-            for(let i = 0; i < 4; i++) {
-                if(obj_aluno.notas[i] == undefined) {
-                    td_second_table[i].innerHTML = "--"
-                } else {
-                    td_second_table[i].innerHTML = obj_aluno.notas[i]
-                }
+        
+        for(let i = 0; i < 4; i++) {
+            if(obj_aluno.notas[i] == undefined) {
+                td_second_table[i].innerHTML = "--"
+            } else {
+                td_second_table[i].innerHTML = obj_aluno.notas[i]
             }
         }
-        Nota()
+        
         // td_second_table[0].innerHTML = obj_aluno.notas[0]
         // td_second_table[1].innerHTML = obj_aluno.notas[1]
         // td_second_table[2].innerHTML = obj_aluno.notas[2]
         // td_second_table[3].innerHTML = obj_aluno.notas[3]
         td_second_table[4].innerHTML = obj_aluno.MostrarMedia()
         td_second_table[5].innerHTML = obj_aluno.situacao
-
-        for(let i = 0; i < 4; i++) {
-            td_second_table[i].addEventListener("click", evento => {
-                AdicionarNotaTD(evento)
-                //console.log(evento.target)
-                obj_aluno.AdicionarNota(i+1, Number.parseFloat(evento.target.innerHTML))
-                //obj_aluno.notas[i] = Number.parseFloat(evento.target.innerHTML)
-                //obj_aluno.CalcularMedia()
-                if(obj_aluno.notas[4] != "--") {
-                    Nota()
-                    td_second_table[4].innerHTML = obj_aluno.MostrarMedia()
-                    td_second_table[5].innerHTML = obj_aluno.situacao
-                }
-            })
-        }
     })
 }
