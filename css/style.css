@@ -405,20 +405,19 @@ section#atividades section#atividades_topo div.topo_botoes p:first-of-type {
 }
 
 /* Container Sessões */
-section#atividades div.container-sessões section {
-    width: 60%;
+section#atividades div.container-sessoes section {
     margin-bottom: 130px;
 }
 
-section#atividades div.container-sessões section div.topo h2 {
+section#atividades div.container-sessoes section div.topo h2 {
     margin-bottom: -15px;
 }
 
-section#atividades div.container-sessões section div.topo div.container-span span {
+section#atividades div.container-sessoes section div.topo div.container-span span {
     font-size: 2em;
 }
 
-section#atividades div.container-sessões section div.topo hr {
+section#atividades div.container-sessoes section div.topo hr {
     margin-bottom: 20px;
 }
 

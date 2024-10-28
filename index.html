@@ -168,7 +168,7 @@
                                 <span class="material-symbols-outlined">edit</span>
                                 <div>
                                     <span class="material-symbols-outlined">article</span>
-                                    <h3>Titulo</h3>
+                                    <h3>Atividade 3</h3>
                                 </div>
                             </div>
                             <hr>
@@ -181,7 +181,7 @@
                                 <span class="material-symbols-outlined">edit</span>
                                 <div>
                                     <span class="material-symbols-outlined">article</span>
-                                    <h3>Titulo</h3>
+                                    <h3>Atividade 4</h3>
                                 </div>
                             </div>
                             <hr>
@@ -207,7 +207,7 @@
                                 <span class="material-symbols-outlined">edit</span>
                                 <div>
                                     <span class="material-symbols-outlined">article</span>
-                                    <h3>Titulo</h3>
+                                    <h3>Atividade 5</h3>
                                 </div>
                             </div>
                             <hr>
@@ -220,7 +220,7 @@
                                 <span class="material-symbols-outlined">edit</span>
                                 <div>
                                     <span class="material-symbols-outlined">article</span>
-                                    <h3>Titulo</h3>
+                                    <h3>Atividade 6</h3>
                                 </div>
                             </div>
                             <hr>
@@ -719,13 +719,13 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
-                    <div class="modal-body modal-conteudo w-75 row mx-auto">
-                        <fieldset class="col-md-12 mb-4">
+                    <div class="modal-body modal-conteudo w-75 row mx-auto my-3">
+                        <fieldset class="col-md-12 mb-4 p-0">
                             <label for="sessao_nome" class="form-label">Nome:</label>
                             <input type="text" name="sessao_nome" id="sessao_nome" class="form-control">
                         </fieldset>
 
-                        <div>
+                        <div class="container-tabela-modal p-0">
                             <p>Selecione as atividades desta sessão:</p>
                             <table class="table table-striped table-bordered border-dark">
                                 <thead>
@@ -748,6 +748,18 @@
                                         <td class="check-box"><input type="checkbox" name="selecionar_atividade" id="atividade3"></td>
                                         <td>Atividade 3</td>
                                     </tr>
+                                    <tr>
+                                        <td class="check-box"><input type="checkbox" name="selecionar_atividade" id="atividade3"></td>
+                                        <td>Atividade 4</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="check-box"><input type="checkbox" name="selecionar_atividade" id="atividade3"></td>
+                                        <td>Atividade 5</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="check-box"><input type="checkbox" name="selecionar_atividade" id="atividade3"></td>
+                                        <td>Atividade 6</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -755,7 +767,7 @@
 
                     <div class="modal-footer modal-botoes">
                         <button type="button" data-bs-dismiss="modal" class="modal-btn btn-cancel" id="modal_CriarSessao_BtnCancel">Cancelar</button>
-                        <input type="submit" value="Salvar" data-bs-dismiss="modal" class="modal-btn btn-salvar" >
+                        <input type="submit" value="Salvar" class="modal-btn btn-salvar" id="btnSave_criarSec">
                     </div>
                 </div>
             </div>
@@ -795,7 +807,7 @@
 
                     <div class="modal-footer modal-botoes">
                         <button type="button" data-bs-dismiss="modal" class="modal-btn btn-cancel" id="modal_CriarAtividade_BtnCancel">Cancelar</button>
-                        <input type="submit" value="Salvar" data-bs-dismiss="modal" class="modal-btn btn-salvar" >
+                        <input type="submit" value="Salvar" class="modal-btn btn-salvar" id="btnSave_criarAtv">
                     </div>
                 </div>
             </div>

@@ -3,6 +3,7 @@ import Aluno from "./obj_aluno.js"
 import * as metodosjs from "./metodos.js"
 import { CriarPresenca } from "./pegar_alunos.js"
 import * as impressaojs from "./impressao.js"
+import { ExpandirAtv } from "./estilos.js"
 
 // Função de Validação de Formularios
 function ValidacaoFormulario(...inputs) {
@@ -732,5 +733,75 @@ btnImprimirTabela.addEventListener("click", () => {
         window.print()
     }, 100)
 })
+
+// Formulario Criar Atividade
+const modal_criarAtv = new bootstrap.Modal("#criar_atividade")
+const nomeAtv_input = document.getElementById("atividade_nome")
+const desc_input = document.getElementById("atividade_descricao")
+const btnSave_criarAtv = document.getElementById("btnSave_criarAtv")
+
+const modal_criarSesao_tab = document.querySelector("#criar_sessao>div>div>div>div>table>tbody")
+
+btnSave_criarAtv.addEventListener("click", evento => {
+    let validacao = ValidacaoFormulario(nomeAtv_input, desc_input)
+
+    if(!validacao) {
+        alert("Preecha pelo menos o NOME e DESCRIÇÃO")
+    } else {
+        const sessoes = [...document.querySelectorAll("#atividades>.container-sessoes>section>.container-atividades")]
+        let last_pos = sessoes.length - 1
+        console.log(sessoes)
+
+        // Criação da atividade
+        const atividade = document.createElement("div")
+        atividade.classList.add("atividade")
+        sessoes[last_pos].appendChild(atividade)
+
+        const div = document.createElement("div")
+        atividade.appendChild(div)
+
+        const span = document.createElement("span")
+        span.classList.add("material-symbols-outlined")
+        span.innerHTML = "edit"
+        div.appendChild(span)
+
+        const div_filho = document.createElement("div")
+        div.appendChild(div_filho)
+
+        const span2 = document.createElement("span")
+        span2.classList.add("material-symbols-outlined")
+        span2.innerHTML = "article"
+        div_filho.appendChild(span2)
+
+        const h3 = document.createElement("h3")
+        h3.innerHTML = nomeAtv_input.value 
+        div_filho.appendChild(h3)
+
+        const hr = document.createElement("hr")
+        atividade.appendChild(hr)
+
+        const p = document.createElement("p")
+        p.innerHTML = desc_input.value
+        atividade.appendChild(p)
+        
+        const btn = document.createElement("p")
+        btn.classList.add("botao")
+        btn.innerHTML = "Ver Atividade"
+        atividade.appendChild(btn)
+
+        // Adicionar na tabela do Modal Criar Sessão
+        metodosjs.CriarTabelaGenerica(modal_criarSesao_tab, 1, 2, [["input_checkbox", nomeAtv_input.value]], ["check-box"], "selecionar_atividade")
+
+        // Adicionar Evento de click
+        atividade.addEventListener("click", ExpandirAtv);
+        [span, p, btn].forEach(icone => icone.addEventListener("click", evt => evt.stopPropagation()));
+
+        // Fechar Modal
+        Resetar(evento, evento.target.previousElementSibling)
+        modal_criarAtv.hide()
+
+    }
+})
+
 
 export {AdicionarNotaTD}

@@ -16,13 +16,14 @@ const line_view = document.querySelector("#line-view")
 const container_sessoes = document.querySelectorAll("div.container-atividades")
 let icones_layout = [grid_view, line_view]
 
-let atividades = document.querySelectorAll(".atividade")
 let line_view_ativada = false
 
 //console.log(atividades)
 //console.log(container_sessoes)
 
 icones_layout.forEach(el => {el.addEventListener("click", evt => {
+    let atividades = document.querySelectorAll(".atividade")
+
     icones_layout.forEach(icone => {
         icone.classList.remove("view-active")
     })
@@ -56,7 +57,7 @@ let nome_classe = /[atividade]/
 
 elementos_stop.forEach(icone => icone.addEventListener("click", evt => evt.stopPropagation()))
 
-atividades.forEach(el => el.addEventListener("click", evt => {
+function ExpandirAtv(evt) {
     if(line_view_ativada) {
         //console.log("Fui clicado enquanto line view ativado")
         //console.log("Alvo:")
@@ -92,7 +93,10 @@ atividades.forEach(el => el.addEventListener("click", evt => {
             }
         }
     }
-}))
+}
+
+let atividades = document.querySelectorAll(".atividade")
+atividades.forEach(el => el.addEventListener("click", ExpandirAtv))
 
 
 // Desativa ou Ativa um elemento do form
@@ -138,3 +142,6 @@ radios_imprimir.forEach(el => {
         }
     })
 })
+
+
+export {ExpandirAtv}
