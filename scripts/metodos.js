@@ -112,23 +112,23 @@ function CriarTabelaModais(objAluno) {
     CriarTabelaGenerica(tabela_imprimirPresenca, 1, 2, [["input_checkbox", objAluno.nome]], ["check-box", "td_nome"], "imprimir_pre_aluno")
 }
 
-function AcharPai(elemento) {
+function AcharPai(elemento, tagNamePai, classeNamePaiReg) {
     let terminar = false
     let pai = elemento.parentNode
     let classes = pai.className
-    console.log('Pai: ')
-    console.log(pai)
-    console.log(classes)
+    //console.log('Pai: ')
+    //console.log(pai)
+    //console.log(classes)
 
     while(!terminar) {
-        if(pai.nodeName == "DIV" && /container\-atividades/.test(classes)) {
-            console.log("É o elemento certo")
+        if(pai.nodeName == tagNamePai && classeNamePaiReg.test(classes)) {
+            //console.log("É o elemento certo")
             terminar = true
         } else {
-            console.log("NÃO é o elemento certo")
-            console.log("Pai:")
-            console.log(pai.parentNode)
-            console.log(pai.parentNode.className)
+            //console.log("NÃO é o elemento certo")
+            //console.log("Pai:")
+            //console.log(pai.parentNode)
+            //console.log(pai.parentNode.className)
             pai = pai.parentNode
             classes = pai.className
         }
@@ -137,4 +137,32 @@ function AcharPai(elemento) {
     return pai
 }
 
-export {GerarNumeroAleatorioInclusivo, GerarNumeroFloatAleatorioInclusivo, CriarTabelaGenerica, CriarTabelaModais, AcharPai}
+function AcharFilho(pai, tagNameFilho, classeNameFilhoReg=/.*/) {
+    let filhos = [...pai.children]
+    let filho
+    //console.log("Filhos:")
+    //console.log(filhos)
+
+    function Buscar(array) {
+        array.forEach(el => {
+            //console.log("Elemento:")
+            //console.log(el)
+            //console.log(el.tagName)
+            //console.log(el.className)
+            if(el.tagName == tagNameFilho && classeNameFilhoReg.test(el.className)) {
+                //console.log("É O QUE EU QUERO")
+                filho = el
+            } else if(el.tagName == "DIV") {
+                //console.log("DIV - CHAMANDO FUNÇÃO NOVAMENTE")
+                Buscar([...el.children])
+            } else {
+                //console.log("NÃO É O QUE EU QUERO")
+            }
+        })
+    }
+    Buscar(filhos)
+
+    return filho
+}
+
+export {GerarNumeroAleatorioInclusivo, GerarNumeroFloatAleatorioInclusivo, CriarTabelaGenerica, CriarTabelaModais, AcharPai, AcharFilho}

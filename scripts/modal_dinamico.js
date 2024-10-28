@@ -1,6 +1,7 @@
 import Dados from "./banco_dados.js"
 import { AdicionarNotaTD } from "./formularios.js"
 
+// Modal Veja Mais
 const modal_vejaMais = document.getElementById("aluno_vejaMais")
 const div_foto = document.querySelector("div.foto-aluno")
 const p_infoAluno = [...document.querySelectorAll("div.informacoes-aluno>div.col-md-8>div.row>p")]
@@ -113,5 +114,47 @@ if(modal_vejaMais) {
         // td_second_table[3].innerHTML = obj_aluno.notas[3]
         td_second_table[4].innerHTML = obj_aluno.MostrarMedia()
         td_second_table[5].innerHTML = obj_aluno.situacao
+    })
+}
+
+
+// Modal Criar e Editar Atividade
+const modal_Atividade = document.getElementById("criar_atividade")
+const titulo_modal = document.querySelector("#criar_atividade>div>div>div.modal-header>h2")
+window.spanAtivador = null
+
+if(modal_Atividade) {
+    modal_Atividade.addEventListener("show.bs.modal", evento => {
+        const ativador = evento.relatedTarget
+
+        const identificacao = ativador.getAttribute("data-bs-whatever")
+
+        if(identificacao == "btn") {
+            titulo_modal.innerHTML = "Criar Atividade"
+        } else if(identificacao == "span") {
+            titulo_modal.innerHTML = "Editar Atividade"
+            window.spanAtivador = ativador
+        }
+    })
+}
+
+
+// Modal Criar e Editar Sessão 
+const modal_Sessao = document.getElementById("criar_sessao")
+const titulo_sessao = document.querySelector("#criar_sessao>div>div>div.modal-header>h2")
+
+if(modal_Sessao) {
+    modal_Sessao.addEventListener("show.bs.modal", evento => {
+        const ativador = evento.relatedTarget
+        //console.log(ativador)
+
+        const identificacao = ativador.getAttribute("data-bs-whatever")
+
+        if(identificacao == "btn") {
+            titulo_sessao.innerHTML = "Criar Sessão"
+        } else if(identificacao == "span") {
+            titulo_sessao.innerHTML = "Editar Sessão"
+            window.spanAtivador = ativador
+        }
     })
 }
