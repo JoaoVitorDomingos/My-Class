@@ -748,61 +748,74 @@ btnSave_criarAtv.addEventListener("click", evento => {
     if(!validacao) {
         alert("Preecha pelo menos o NOME e DESCRIÇÃO")
     } else {
-        const sessoes = [...document.querySelectorAll("#atividades>.container-sessoes>section>.container-atividades")]
-        let last_pos = sessoes.length - 1
-        console.log(sessoes)
-        let classesAdd = []
-        const atividades = [...document.querySelectorAll(".atividade")]
-        console.log(atividades)
-        atividades[0].classList.forEach(classe => classesAdd.push(classe))
 
-        // Criação da atividade
-        const atividade = document.createElement("div")
-        atividade.classList.add(...classesAdd)
-        sessoes[last_pos].appendChild(atividade)
+        let jaExiste = false
+        let atividades_nome = [...document.querySelectorAll(".atividade>div>div>h3")]
+        atividades_nome.forEach(h3 => {
+            if(h3.innerHTML == nomeAtv_input.value) {
+                jaExiste = true
+            }
+        })
 
-        const div = document.createElement("div")
-        atividade.appendChild(div)
+        if(jaExiste) {
+            alert("Este nome de atividade JÁ existe!")
+        } else {
+            const sessoes = [...document.querySelectorAll("#atividades>.container-sessoes>section>.container-atividades")]
+            let last_pos = sessoes.length - 1
+            console.log(sessoes)
+            let classesAdd = []
+            const atividades = [...document.querySelectorAll(".atividade")]
+            console.log(atividades)
+            atividades[0].classList.forEach(classe => classesAdd.push(classe))
 
-        const span = document.createElement("span")
-        span.classList.add("material-symbols-outlined")
-        span.innerHTML = "edit"
-        div.appendChild(span)
+            // Criação da atividade
+            const atividade = document.createElement("div")
+            atividade.classList.add(...classesAdd)
+            sessoes[last_pos].appendChild(atividade)
 
-        const div_filho = document.createElement("div")
-        div.appendChild(div_filho)
+            const div = document.createElement("div")
+            atividade.appendChild(div)
 
-        const span2 = document.createElement("span")
-        span2.classList.add("material-symbols-outlined")
-        span2.innerHTML = "article"
-        div_filho.appendChild(span2)
+            const span = document.createElement("span")
+            span.classList.add("material-symbols-outlined")
+            span.innerHTML = "edit"
+            div.appendChild(span)
 
-        const h3 = document.createElement("h3")
-        h3.innerHTML = nomeAtv_input.value 
-        div_filho.appendChild(h3)
+            const div_filho = document.createElement("div")
+            div.appendChild(div_filho)
 
-        const hr = document.createElement("hr")
-        atividade.appendChild(hr)
+            const span2 = document.createElement("span")
+            span2.classList.add("material-symbols-outlined")
+            span2.innerHTML = "article"
+            div_filho.appendChild(span2)
 
-        const p = document.createElement("p")
-        p.innerHTML = desc_input.value
-        atividade.appendChild(p)
-        
-        const btn = document.createElement("p")
-        btn.classList.add("botao")
-        btn.innerHTML = "Ver Atividade"
-        atividade.appendChild(btn)
+            const h3 = document.createElement("h3")
+            h3.innerHTML = nomeAtv_input.value 
+            div_filho.appendChild(h3)
 
-        // Adicionar na tabela do Modal Criar Sessão
-        metodosjs.CriarTabelaGenerica(modal_criarSesao_tab, 1, 2, [["input_checkbox", nomeAtv_input.value]], ["check-box", "nome_atv"], "selecionar_atividade")
+            const hr = document.createElement("hr")
+            atividade.appendChild(hr)
 
-        // Adicionar Evento de click
-        atividade.addEventListener("click", ExpandirAtv);
-        [span, p, btn].forEach(icone => icone.addEventListener("click", evt => evt.stopPropagation()));
+            const p = document.createElement("p")
+            p.innerHTML = desc_input.value
+            atividade.appendChild(p)
+            
+            const btn = document.createElement("p")
+            btn.classList.add("botao")
+            btn.innerHTML = "Ver Atividade"
+            atividade.appendChild(btn)
 
-        // Fechar Modal
-        Resetar(evento, evento.target.previousElementSibling)
-        modal_criarAtv.hide()
+            // Adicionar na tabela do Modal Criar Sessão
+            metodosjs.CriarTabelaGenerica(modal_criarSesao_tab, 1, 2, [["input_checkbox", nomeAtv_input.value]], ["check-box", "nome_atv"], "selecionar_atividade")
+
+            // Adicionar Evento de click
+            atividade.addEventListener("click", ExpandirAtv);
+            [span, p, btn].forEach(icone => icone.addEventListener("click", evt => evt.stopPropagation()));
+
+            // Fechar Modal
+            Resetar(evento, evento.target.previousElementSibling)
+            modal_criarAtv.hide()
+        }
 
     }
 })
@@ -819,83 +832,98 @@ btnSave_CriarSec.addEventListener("click", evento => {
     if(!validacao) {
         alert("Preencha o nome da sessão!")
     } else {
-        // Vendo qual estilo esta selecionado
-        let classeAdd = []
-        let otherContainers = [...document.querySelectorAll("#atividades>.container-sessoes>section>.container-atividades")]
-        console.log(otherContainers)
-        otherContainers[0].classList.forEach(classe => classeAdd.push(classe))
-        
+        // Checando se já existe uma sessão com o nome digitado
+        let jaExiste = false
+        let sessoes_nome = [...document.querySelectorAll(".container-sessoes>section>div>h2")]
+        sessoes_nome.forEach(sessao => {
+            if(sessao.innerHTML == criarSec_inputNome.value) {
+                jaExiste = true
+            }
+        })
 
-        // Criação da Sessão
-        const sessao = document.createElement("section")
-        sessao.classList.add("container-md")
-        container_sessoes.appendChild(sessao)
+        if(jaExiste) {
+            alert("JÁ existe uma sessão com este nome!")
+        } else {
+            // Vendo qual estilo esta selecionado
+            let classeAdd = []
+            let otherContainers = [...document.querySelectorAll("#atividades>.container-sessoes>section>.container-atividades")]
+            console.log(otherContainers)
+            otherContainers[0].classList.forEach(classe => classeAdd.push(classe))
+            
 
-        const divTopo = document.createElement("div")
-        divTopo.classList.add("topo", "mb-2")
-        sessao.appendChild(divTopo)
+            // Criação da Sessão
+            const sessao = document.createElement("section")
+            sessao.classList.add("container-md")
+            container_sessoes.appendChild(sessao)
 
-        const h2 = document.createElement("h2")
-        h2.innerHTML = criarSec_inputNome.value
-        divTopo.appendChild(h2)
+            const divTopo = document.createElement("div")
+            divTopo.classList.add("topo", "mb-2")
+            sessao.appendChild(divTopo)
 
-        const div_filho = document.createElement("div")
-        div_filho.classList.add("container-span")
-        divTopo.appendChild(div_filho)
+            const h2 = document.createElement("h2")
+            h2.innerHTML = criarSec_inputNome.value
+            divTopo.appendChild(h2)
 
-        const span = document.createElement("span")
-        span.classList.add("material-symbols-outlined")
-        span.innerHTML = "edit"
-        div_filho.appendChild(span)
+            const div_filho = document.createElement("div")
+            div_filho.classList.add("container-span")
+            divTopo.appendChild(div_filho)
 
-        const hr = document.createElement("hr")
-        divTopo.appendChild(hr)
+            const span = document.createElement("span")
+            span.classList.add("material-symbols-outlined")
+            span.innerHTML = "edit"
+            div_filho.appendChild(span)
 
-        const divAtividades = document.createElement("div")
-        divAtividades.classList.add(...classeAdd)
-        sessao.appendChild(divAtividades)
+            const hr = document.createElement("hr")
+            divTopo.appendChild(hr)
 
-        // Colocando as Atividades na Sessão
-        const checkboxs = [...document.getElementsByName("selecionar_atividade")]
-        const tds_nomeAtv = [...document.querySelectorAll("#criar_sessao>div>div>div>div>table>tbody>tr>td.nome_atv")]
+            const divAtividades = document.createElement("div")
+            divAtividades.classList.add(...classeAdd)
+            sessao.appendChild(divAtividades)
 
-        //console.log(checkboxs)
-        //console.log(tds_nomeAtv)
+            // Colocando as Atividades na Sessão
+            const checkboxs = [...document.getElementsByName("selecionar_atividade")]
+            const tds_nomeAtv = [...document.querySelectorAll("#criar_sessao>div>div>div>div>table>tbody>tr>td.nome_atv")]
 
-        if(checkboxs.some(box => box.checked)) {
-            let atividades = [...document.querySelectorAll(".atividade")]
-            let atividades_h3 = [...document.querySelectorAll(".atividade>div>div>h3")]
-            let checkeds_index = []
-            console.log(atividades)
-            console.log(atividades_h3)
+            //console.log(checkboxs)
+            //console.log(tds_nomeAtv)
 
-            checkboxs.filter((check, indice) => {
-                if(check.checked) {
-                    checkeds_index.push(indice)
-                }
-            })
-            console.log(checkeds_index)
+            if(checkboxs.some(box => box.checked)) {
+                let atividades = [...document.querySelectorAll(".atividade")]
+                let atividades_h3 = [...document.querySelectorAll(".atividade>div>div>h3")]
+                let checkeds_index = []
+                console.log(atividades)
+                console.log(atividades_h3)
 
-            for(let i = 0; i < checkeds_index.length; i++) {
-                atividades_h3.forEach((h3, indice) => {
-                    console.log(h3.innerHTML)
-                    console.log(tds_nomeAtv[checkeds_index[i]].innerHTML)
-                    if(h3.innerHTML == tds_nomeAtv[checkeds_index[i]].innerHTML) {
-                        let pai = metodosjs.AcharPai(h3)
-                        console.log("Pai: ")
-                        console.log(pai)
-                        console.log("Filho Remover: ")
-                        console.log(atividades[indice])
-                        
-                        pai.removeChild(atividades[indice])
-                        divAtividades.appendChild(atividades[indice])
+                checkboxs.filter((check, indice) => {
+                    if(check.checked) {
+                        checkeds_index.push(indice)
                     }
                 })
+                console.log(checkeds_index)
+
+                for(let i = 0; i < checkeds_index.length; i++) {
+                    atividades_h3.forEach((h3, indice) => {
+                        console.log(h3.innerHTML)
+                        console.log(tds_nomeAtv[checkeds_index[i]].innerHTML)
+                        if(h3.innerHTML == tds_nomeAtv[checkeds_index[i]].innerHTML) {
+                            let pai = metodosjs.AcharPai(h3)
+                            console.log("Pai: ")
+                            console.log(pai)
+                            console.log("Filho Remover: ")
+                            console.log(atividades[indice])
+                            
+                            pai.removeChild(atividades[indice])
+                            divAtividades.appendChild(atividades[indice])
+                        }
+                    })
+                }
             }
+
+            Resetar(evento, evento.target.previousElementSibling)
+            modal_criarSection.hide()
         }
 
-        Resetar(evento, evento.target.previousElementSibling)
-        modal_criarSection.hide()
+        
     
     }
 })
