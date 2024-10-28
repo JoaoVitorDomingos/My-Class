@@ -103,7 +103,7 @@ function IdentificacaoBtnModal(elementId) {
     } else if(elementId == "modal_CriarSessao_BtnCancel") {
         let caminhoCS = "#modais>#criar_sessao>div>div>div.modal-body"
 
-        return [document.querySelector(`${caminhoCS}>fieldset>input`), ...document.querySelectorAll(`${caminhoCS}>div>div>table>${caminhoTdCheckBox}`)]
+        return [document.querySelector(`${caminhoCS}>fieldset>input`), ...document.querySelectorAll(`${caminhoCS}>div>table>${caminhoTdCheckBox}`)]
     } else if(elementId == "modal_CriarAtividade_BtnCancel") {
         let caminhoCA = "#modais>#criar_atividade>div>div>div.modal-body"
 
@@ -751,10 +751,14 @@ btnSave_criarAtv.addEventListener("click", evento => {
         const sessoes = [...document.querySelectorAll("#atividades>.container-sessoes>section>.container-atividades")]
         let last_pos = sessoes.length - 1
         console.log(sessoes)
+        let classesAdd = []
+        const atividades = [...document.querySelectorAll(".atividade")]
+        console.log(atividades)
+        atividades[0].classList.forEach(classe => classesAdd.push(classe))
 
         // Criação da atividade
         const atividade = document.createElement("div")
-        atividade.classList.add("atividade")
+        atividade.classList.add(...classesAdd)
         sessoes[last_pos].appendChild(atividade)
 
         const div = document.createElement("div")
@@ -790,7 +794,7 @@ btnSave_criarAtv.addEventListener("click", evento => {
         atividade.appendChild(btn)
 
         // Adicionar na tabela do Modal Criar Sessão
-        metodosjs.CriarTabelaGenerica(modal_criarSesao_tab, 1, 2, [["input_checkbox", nomeAtv_input.value]], ["check-box"], "selecionar_atividade")
+        metodosjs.CriarTabelaGenerica(modal_criarSesao_tab, 1, 2, [["input_checkbox", nomeAtv_input.value]], ["check-box", "nome_atv"], "selecionar_atividade")
 
         // Adicionar Evento de click
         atividade.addEventListener("click", ExpandirAtv);
@@ -800,6 +804,99 @@ btnSave_criarAtv.addEventListener("click", evento => {
         Resetar(evento, evento.target.previousElementSibling)
         modal_criarAtv.hide()
 
+    }
+})
+
+// Formulario Criar Sessão 
+const modal_criarSection = new bootstrap.Modal("#criar_sessao")
+const criarSec_inputNome = document.getElementById("sessao_nome")
+const btnSave_CriarSec = document.getElementById("btnSave_criarSec")
+const container_sessoes = document.querySelector("#atividades>.container-sessoes")
+
+btnSave_CriarSec.addEventListener("click", evento => {
+    let validacao = ValidacaoFormulario(criarSec_inputNome)
+
+    if(!validacao) {
+        alert("Preencha o nome da sessão!")
+    } else {
+        // Vendo qual estilo esta selecionado
+        let classeAdd = []
+        let otherContainers = [...document.querySelectorAll("#atividades>.container-sessoes>section>.container-atividades")]
+        console.log(otherContainers)
+        otherContainers[0].classList.forEach(classe => classeAdd.push(classe))
+        
+
+        // Criação da Sessão
+        const sessao = document.createElement("section")
+        sessao.classList.add("container-md")
+        container_sessoes.appendChild(sessao)
+
+        const divTopo = document.createElement("div")
+        divTopo.classList.add("topo", "mb-2")
+        sessao.appendChild(divTopo)
+
+        const h2 = document.createElement("h2")
+        h2.innerHTML = criarSec_inputNome.value
+        divTopo.appendChild(h2)
+
+        const div_filho = document.createElement("div")
+        div_filho.classList.add("container-span")
+        divTopo.appendChild(div_filho)
+
+        const span = document.createElement("span")
+        span.classList.add("material-symbols-outlined")
+        span.innerHTML = "edit"
+        div_filho.appendChild(span)
+
+        const hr = document.createElement("hr")
+        divTopo.appendChild(hr)
+
+        const divAtividades = document.createElement("div")
+        divAtividades.classList.add(...classeAdd)
+        sessao.appendChild(divAtividades)
+
+        // Colocando as Atividades na Sessão
+        const checkboxs = [...document.getElementsByName("selecionar_atividade")]
+        const tds_nomeAtv = [...document.querySelectorAll("#criar_sessao>div>div>div>div>table>tbody>tr>td.nome_atv")]
+
+        //console.log(checkboxs)
+        //console.log(tds_nomeAtv)
+
+        if(checkboxs.some(box => box.checked)) {
+            let atividades = [...document.querySelectorAll(".atividade")]
+            let atividades_h3 = [...document.querySelectorAll(".atividade>div>div>h3")]
+            let checkeds_index = []
+            console.log(atividades)
+            console.log(atividades_h3)
+
+            checkboxs.filter((check, indice) => {
+                if(check.checked) {
+                    checkeds_index.push(indice)
+                }
+            })
+            console.log(checkeds_index)
+
+            for(let i = 0; i < checkeds_index.length; i++) {
+                atividades_h3.forEach((h3, indice) => {
+                    console.log(h3.innerHTML)
+                    console.log(tds_nomeAtv[checkeds_index[i]].innerHTML)
+                    if(h3.innerHTML == tds_nomeAtv[checkeds_index[i]].innerHTML) {
+                        let pai = metodosjs.AcharPai(h3)
+                        console.log("Pai: ")
+                        console.log(pai)
+                        console.log("Filho Remover: ")
+                        console.log(atividades[indice])
+                        
+                        pai.removeChild(atividades[indice])
+                        divAtividades.appendChild(atividades[indice])
+                    }
+                })
+            }
+        }
+
+        Resetar(evento, evento.target.previousElementSibling)
+        modal_criarSection.hide()
+    
     }
 })
 

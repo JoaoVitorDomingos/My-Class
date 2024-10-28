@@ -13,7 +13,6 @@ links_navegacao.forEach(el => el.addEventListener("click", evt => {
 // Troca do tipo de layout na página atividade
 const grid_view = document.querySelector("#grid-view")
 const line_view = document.querySelector("#line-view")
-const container_sessoes = document.querySelectorAll("div.container-atividades")
 let icones_layout = [grid_view, line_view]
 
 let line_view_ativada = false
@@ -22,6 +21,7 @@ let line_view_ativada = false
 //console.log(container_sessoes)
 
 icones_layout.forEach(el => {el.addEventListener("click", evt => {
+    let container_sessoes = document.querySelectorAll("div.container-atividades")
     let atividades = document.querySelectorAll(".atividade")
 
     icones_layout.forEach(icone => {
@@ -74,7 +74,7 @@ function ExpandirAtv(evt) {
             let terminar = false
             let pai = evt.target.parentNode
             while(!terminar) {
-                if(pai.parentNode.nodeName == "DIV" & nome_classe.test(pai.className)) {
+                if(pai.parentNode.nodeName == "DIV" && nome_classe.test(pai.className)) {
                     //console.log("É o elemento certo")
                     //console.log(pai)
                     //console.log(pai.className)

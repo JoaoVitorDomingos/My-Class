@@ -112,4 +112,29 @@ function CriarTabelaModais(objAluno) {
     CriarTabelaGenerica(tabela_imprimirPresenca, 1, 2, [["input_checkbox", objAluno.nome]], ["check-box", "td_nome"], "imprimir_pre_aluno")
 }
 
-export {GerarNumeroAleatorioInclusivo, GerarNumeroFloatAleatorioInclusivo, CriarTabelaGenerica, CriarTabelaModais}
+function AcharPai(elemento) {
+    let terminar = false
+    let pai = elemento.parentNode
+    let classes = pai.className
+    console.log('Pai: ')
+    console.log(pai)
+    console.log(classes)
+
+    while(!terminar) {
+        if(pai.nodeName == "DIV" && /container\-atividades/.test(classes)) {
+            console.log("É o elemento certo")
+            terminar = true
+        } else {
+            console.log("NÃO é o elemento certo")
+            console.log("Pai:")
+            console.log(pai.parentNode)
+            console.log(pai.parentNode.className)
+            pai = pai.parentNode
+            classes = pai.className
+        }
+    }
+
+    return pai
+}
+
+export {GerarNumeroAleatorioInclusivo, GerarNumeroFloatAleatorioInclusivo, CriarTabelaGenerica, CriarTabelaModais, AcharPai}
