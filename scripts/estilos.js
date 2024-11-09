@@ -117,8 +117,8 @@ modal_editarBack_formRadios.addEventListener("click", evt => {
 })
 
 // Mostra e esconde a tabela dos modais
-const imprimirBo_table = document.querySelector("#imprimir_boletim>div>div>div>div>table")
-const imprimirPre_table = document.querySelector("#imprimir_presenca>div>div>div>div>table")
+const imprimirBo_table = document.querySelector("#imprimir_boletim>div>div>div>div.container-tabela-modal")
+const imprimirPre_table = document.querySelector("#imprimir_presenca>div>div>div>div.container-tabela-modal")
 const radios_imprimir = [...document.getElementsByName("imprimir_bo_tipo"), ...document.getElementsByName("imprimir_pre_tipo")]
 
 radios_imprimir.forEach(el => {

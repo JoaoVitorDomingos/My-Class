@@ -180,8 +180,8 @@ function CriarAulas(array_aulas, qtd_dias) {
         array_aulas.push([FormatarData(data_atual), data_atual])
     }
     array_aulas.reverse()
-    console.log("Banco de Dados - Aulas: ")
-    console.log(array_aulas)
+    //console.log("Banco de Dados - Aulas: ")
+    //console.log(array_aulas)
 }
 
 PegarAlunos()

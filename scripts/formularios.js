@@ -44,10 +44,10 @@ function ValidacaoFormulario(...inputs) {
     }
 
     if(contador == max) {
-        console.log("Tudo Preechido")
+        //console.log("Tudo Preechido")
         return true
     } else {
-        console.log("Nem tudo esta preenchido")
+        //console.log("Nem tudo esta preenchido")
         return false
     }
         
@@ -93,12 +93,12 @@ function IdentificacaoBtnModal(elementId) {
     } else if(elementId == "modal_ImprimirBoletim_BtnCancel") {
         let caminhoIB = "#modais>#imprimir_boletim>div>div>div.modal-body"
 
-        return [document.querySelector(`${caminhoIB}>form`), ...document.querySelectorAll(`${caminhoIB}>div>table>${caminhoTdCheckBox}`), document.querySelector(`${caminhoIB}>div>table`)]
+        return [document.querySelector(`${caminhoIB}>form`), ...document.querySelectorAll(`${caminhoIB}>div>table>${caminhoTdCheckBox}`), document.querySelector(`${caminhoIB}>div.container-tabela-modal`)]
 
     } else if(elementId == "modal_ImprimirPresenca_BtnCancel") {
         let caminhoIP = "#modais>#imprimir_presenca>div>div>div.modal-body"
 
-        return [document.querySelector(`${caminhoIP}>form`), ...document.querySelectorAll(`${caminhoIP}>div>table>${caminhoTdCheckBox}`), document.querySelector(`${caminhoIP}>div>table`)]
+        return [document.querySelector(`${caminhoIP}>form`), ...document.querySelectorAll(`${caminhoIP}>div>table>${caminhoTdCheckBox}`), document.querySelector(`${caminhoIP}>div.container-tabela-modal`)]
 
     } else if(elementId == "modal_CriarSessao_BtnCancel") {
         let caminhoCS = "#modais>#criar_sessao>div>div>div.modal-body"
@@ -146,7 +146,7 @@ function Resetar(evt, btnCancel) {
                 el.value = ""
             else if(el.type == "radio" || el.type == "checkbox")
                 el.checked = false
-        } else if(el.tagName == "TABLE") {
+        } else if(el.tagName == "DIV") {
             el.classList.add("esconder")
         }
     })
@@ -230,7 +230,7 @@ btnSave_lancarNota.addEventListener("click", evento => {
         let dia = new Date(dia_input[1], dia_input[2] - 1, dia_input[3])
     
         if(dia < Dados.dias_aulas[0][1]) {
-            console.log("Data Iválida! Muito pequena!")
+            //console.log("Data Iválida! Muito pequena!")
             alert("Data Iválida!")
         } else {
 
@@ -239,12 +239,12 @@ btnSave_lancarNota.addEventListener("click", evento => {
             //console.log(`Conta: ${dia.getMonth()} - ${Dados.dias_aulas[last_pos][1].getMonth() + 1} = ${(dia.getMonth() - (Dados.dias_aulas[last_pos][1].getMonth() + 1))}`)
     
             if((dia.getMonth() - (Dados.dias_aulas[last_pos][1].getMonth() + 1)) >= 1 || (dia.getFullYear() - Dados.dias_aulas[last_pos][1].getFullYear()) != 0) {
-                console.log("Data inválida! Muito grande")
+                //console.log("Data inválida! Muito grande")
                 alert("Data Iválida!")
             } else {
 
                 if(dia.getDay() == 0 || dia.getDay() == 6) {
-                    console.log("Data Inválida! Final de semana!")
+                    //console.log("Data Inválida! Final de semana!")
                     alert("Data Iválida!")
                 } else {
                     // console.log(tds_nomes)
@@ -271,8 +271,8 @@ btnSave_lancarNota.addEventListener("click", evento => {
 
                     modal_LancarNota.hide()
 
-                    console.log("Banco de Dados - Alunos:")
-                    console.log(Dados.alunos)
+                    //console.log("Banco de Dados - Alunos:")
+                    //console.log(Dados.alunos)
                 }
             }
         }
@@ -357,7 +357,7 @@ btnSave_LancarPresenca.addEventListener("click", evento => {
         let dia = new Date(dia_input[1], dia_input[2] - 1, dia_input[3])
     
         if(dia < Dados.dias_aulas[0][1]) {
-            console.log("Data Iválida! Muito pequena!")
+            //console.log("Data Iválida! Muito pequena!")
             alert("Data Iválida!")
         } else {
 
@@ -366,12 +366,12 @@ btnSave_LancarPresenca.addEventListener("click", evento => {
             //console.log(`Conta: ${dia.getMonth()} - ${Dados.dias_aulas[last_pos][1].getMonth() + 1} = ${(dia.getMonth() - (Dados.dias_aulas[last_pos][1].getMonth() + 1))}`)
     
             if((dia.getMonth() - (Dados.dias_aulas[last_pos][1].getMonth() + 1)) >= 1 || (dia.getFullYear() - Dados.dias_aulas[last_pos][1].getFullYear()) != 0) {
-                console.log("Data inválida! Muito grande")
+                //console.log("Data inválida! Muito grande")
                 alert("Data Iválida!")
             } else {
 
                 if(dia.getDay() == 0 || dia.getDay() == 6) {
-                    console.log("Data Inválida! Final de semana!")
+                    //console.log("Data Inválida! Final de semana!")
                     alert("Data Iválida!")
                 } else {
 
@@ -380,8 +380,8 @@ btnSave_LancarPresenca.addEventListener("click", evento => {
 
                     Dados.dias_aulas.push([dia_formatado, dia])
 
-                    console.log("Banco de Dados - Aulas: ")
-                    console.log(Dados.dias_aulas)
+                    //console.log("Banco de Dados - Aulas: ")
+                    //console.log(Dados.dias_aulas)
 
                     const td_alunos = [...document.querySelectorAll("#lancar_presenca>div>div>div>div>table>tbody>tr>td.td_nome")]
 
@@ -401,8 +401,8 @@ btnSave_LancarPresenca.addEventListener("click", evento => {
                         })
                     })
 
-                    console.log("Banco de Dados - Alunos: ")
-                    console.log(Dados.alunos)
+                    //console.log("Banco de Dados - Alunos: ")
+                    //console.log(Dados.alunos)
 
                     Resetar(evento, evento.target.previousElementSibling)
                     modal_LancarPresenca.hide()
@@ -492,7 +492,7 @@ btnSave_AdicionarAluno.addEventListener("click", evento => {
                 aluno.notas[4] = "--"
                 aluno.situacao = "--"
 
-                console.log(aluno)
+                //console.log(aluno)
 
                 Dados.alunos.push(aluno)
 
@@ -500,8 +500,8 @@ btnSave_AdicionarAluno.addEventListener("click", evento => {
 
                 metodosjs.CriarTabelaModais(aluno)
 
-                console.log("Banco de Dados - Alunos:")
-                console.log(Dados.alunos)
+                //console.log("Banco de Dados - Alunos:")
+                //console.log(Dados.alunos)
 
                 alert("Aluno Adicionado!")
 
@@ -838,11 +838,11 @@ btnSave_criarAtv.addEventListener("click", evento => {
         } else {
 
             if(titulo.innerHTML == "Criar Atividade") {
-                console.log("CRIANDO ATIVIDADE...")
+                //console.log("CRIANDO ATIVIDADE...")
                 CriarAtividade()
             } else if(titulo.innerHTML == "Editar Atividade") {
-                console.log("EDITANDO ATIVIDADE...")
-                console.log(window.spanAtivador)
+                //console.log("EDITANDO ATIVIDADE...")
+                //console.log(window.spanAtivador)
                 EditarAtividade(window.spanAtivador)
             }
             // Fechar Modal

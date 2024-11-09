@@ -61,6 +61,7 @@ function CriarTabelaGenerica(pai, linhas, colunas, matrizValores, arrayClasses, 
         } else {
             console.log("ERRO!!!")
             console.log("Tipo: " + tipo)
+            alert("Algum erro ocorreu! Abra o console (CTRL+SHIFT+I)")
             return
         }
         return input
