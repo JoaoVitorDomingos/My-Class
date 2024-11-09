@@ -109,7 +109,123 @@
         </section>
 
         <section id="atividades" class="tab-pane fade" role="tabpanel" aria-labelledby="atividades-tab" tabindex="0">
-            
+            <section id="atividades_topo" class="container-md topo">
+                <h1>Matemática - 2°B</h1>
+                <div class="container-span">
+                    <span class="material-symbols-outlined view-active">grid_view</span>
+                    <span class="material-symbols-outlined">view_list</span>
+                </div>
+                <hr>
+                <div class="topo_botoes">
+                    <p class="botao" data-bs-toggle="modal" data-bs-target="#criar_sessao">Criar Sessão</p>
+                    <p class="botao" data-bs-toggle="modal" data-bs-target="#criar_atividade">Criar Atividade</p>
+                </div>
+            </section>
+
+            <div class="container-sessões">
+                <section class="container-md">
+                    <div class="topo mb-2">
+                        <h2>1° Bimestre</h2>
+                        <div class="container-span">
+                            <span class="material-symbols-outlined">edit</span>
+                        </div>
+                        <hr>
+                    </div>
+
+                    <div class="container-atividades grid-view">
+                        <div class="atividade">
+                            <div>
+                                <span class="material-symbols-outlined">edit</span>
+                                <div>
+                                    <span class="material-symbols-outlined">article</span>
+                                    <h3>Titulo</h3>
+                                </div>
+                            </div>
+                            <hr>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, aliquam quisquam, sit blanditiis aspernatur minus possimus ducimus sequi odit numquam dignissimos enim voluptatum quos totam unde vero temporibus, accusantium quidem.</p>
+                            <p class="botao">Ver Atividade</p>
+                        </div>
+
+                        <div class="atividade">
+                            <div>
+                                <span class="material-symbols-outlined">edit</span>
+                                <div>
+                                    <span class="material-symbols-outlined">article</span>
+                                    <h3>Atividade 2</h3>
+                                </div>
+                            </div>
+                            <hr>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, aliquam quisquam, sit blanditiis aspernatur minus possimus duc</p>
+                            <p class="botao">Ver Atividade</p>
+                        </div>
+
+                        <div class="atividade">
+                            <div>
+                                <span class="material-symbols-outlined">edit</span>
+                                <div>
+                                    <span class="material-symbols-outlined">article</span>
+                                    <h3>Titulo</h3>
+                                </div>
+                            </div>
+                            <hr>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, aliquam quisquam, sit blanditiis aspernatur minus possimus ducimus sequi odit numquam dignissimos enim voluptatum quos totam unde vero temporibus, accusantium quidem.</p>
+                            <p class="botao">Ver Atividade</p>
+                        </div>
+
+                        <div class="atividade">
+                            <div>
+                                <span class="material-symbols-outlined">edit</span>
+                                <div>
+                                    <span class="material-symbols-outlined">article</span>
+                                    <h3>Titulo</h3>
+                                </div>
+                            </div>
+                            <hr>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, aliquam quisquam, sit blanditiis aspernatur minus possimus ducimus sequi odit numquam dignissimos enim voluptatum quos totam unde vero temporibus, accusantium quidem.</p>
+                            <p class="botao">Ver Atividade</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="container-md">
+                    <div class="topo mb-2">
+                        <h2>2° Bimestre</h2>
+                        <div class="container-span">
+                            <span class="material-symbols-outlined">edit</span>
+                        </div>
+                        <hr>
+                    </div>
+
+                    <div class="container-atividades grid-view">
+
+                        <div class="atividade">
+                            <div>
+                                <span class="material-symbols-outlined">edit</span>
+                                <div>
+                                    <span class="material-symbols-outlined">article</span>
+                                    <h3>Titulo</h3>
+                                </div>
+                            </div>
+                            <hr>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, aliquam quisquam, sit blanditiis aspernatur minus possimus ducimus sequi odit numquam dignissimos enim voluptatum quos totam unde vero temporibus, accusantium quidem.</p>
+                            <p class="botao">Ver Atividade</p>
+                        </div>
+                        
+                        <div class="atividade">
+                            <div>
+                                <span class="material-symbols-outlined">edit</span>
+                                <div>
+                                    <span class="material-symbols-outlined">article</span>
+                                    <h3>Titulo</h3>
+                                </div>
+                            </div>
+                            <hr>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, aliquam quisquam, sit blanditiis aspernatur minus possimus ducimus sequi odit numquam dignissimos enim voluptatum quos totam unde vero temporibus, accusantium quidem.</p>
+                            <p class="botao">Ver Atividade</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
         </section>
 
     </main>
@@ -566,6 +682,96 @@
                                 </tr>
                             </tbody>
                         </table>
+                    </div>
+
+                    <div class="modal-footer modal-botoes">
+                        <button type="button" data-bs-dismiss="modal" class="modal-btn btn-cancel">Cancelar</button>
+                        <input type="submit" value="Salvar" data-bs-dismiss="modal" class="modal-btn btn-salvar" >
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="criar_sessao" class="modal fade">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Criar Sessão</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body modal-conteudo w-75 row mx-auto">
+                        <fieldset class="col-md-12 mb-4">
+                            <label for="sessao_nome" class="form-label">Nome:</label>
+                            <input type="text" name="sessao_nome" id="sessao_nome" class="form-control">
+                        </fieldset>
+
+                        <div>
+                            <p>Selecione as atividades desta sessão:</p>
+                            <table class="table table-striped table-bordered border-dark">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Selecionar</th>
+                                        <th scope="col">Atividade</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr>
+                                        <td class="check-box"><input type="checkbox" name="selecionar_atividade" id="atividade1"></td>
+                                        <td>Atividade 1</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="check-box"><input type="checkbox" name="selecionar_atividade" id="atividade2"></td>
+                                        <td>Atividade 2</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="check-box"><input type="checkbox" name="selecionar_atividade" id="atividade3"></td>
+                                        <td>Atividade 3</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer modal-botoes">
+                        <button type="button" data-bs-dismiss="modal" class="modal-btn btn-cancel">Cancelar</button>
+                        <input type="submit" value="Salvar" data-bs-dismiss="modal" class="modal-btn btn-salvar" >
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="criar_atividade" class="modal fade">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Criar Atividade</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body modal-conteudo row mx-auto mt-3">
+                        <form method="post">
+                            <fieldset>
+                                <label for="atividade_nome" class="form-label">Nome:</label>
+                                <input type="text" name="atividade_nome" id="atividade_nome" class="form-control">
+                            </fieldset>
+
+                            <fieldset>
+                                <label for="atividade_descricao" class="form-label">Descrição:</label>
+                                <input type="text" name="atividade_descricao" id="atividade_descricao" class="form-control">
+                            </fieldset>
+
+                            <fieldset>
+                                <label for="atividade_conteudo" class="form-label">Conteúdo:</label>
+                                <textarea name="atividade_conteudo" id="atividade_conteudo" class="form-control" rows="5"></textarea>
+                            </fieldset>
+
+                            <fieldset>
+                                <label for="atividade_arquivo" class="form-label">Arquivo:</label>
+                                <input type="file" name="atividade_arquivo" id="atividade_arquivo" class="form-control">
+                            </fieldset>
+                        </form>
                     </div>
 
                     <div class="modal-footer modal-botoes">

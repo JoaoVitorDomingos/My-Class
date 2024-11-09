@@ -43,6 +43,146 @@
     font-weight: bold;
 }
 
+.view-active {
+    color: var(--azul);
+}
+
+
+/* Atividade */
+.atividade {
+    border: 1px solid transparent;
+    border-radius: 3px;
+    background-color: var(--azul);
+    box-shadow: 1px 1px 3px #2a1cf56e;
+    height: 450px;
+    color: white;
+    padding: 20px;
+    text-align: end;
+}
+
+.atividade span:hover {
+    color: var(--verde-claro);
+    cursor: pointer;
+}
+
+.atividade > div > div > h3 {
+    text-align: center;
+    font-weight: bold;
+    margin-top: -30px;
+}
+
+.atividade p:first-of-type {
+    text-align: justify;
+    text-indent: 15px;
+    font-weight: bold;
+    height: calc(450px - 140px);
+}
+
+.atividade p.botao {
+    border: 1px solid transparent;
+    background-color: var(--verde-claro);
+    box-shadow: 1px 1px 3px 0px #1edfd96c;
+    text-align: center;
+    font-weight: bold;
+    color: black;
+    transition: 0.8s;
+} 
+
+.atividade p.botao:hover {
+    box-shadow: none;
+    background-color: transparent;
+    color: white;
+    text-decoration: underline;
+    border: 3px solid var(--verde-claro);
+}
+
+
+/* Grid View */
+.grid-view {
+    display: grid;
+    grid-template-columns: 25% 25% 25%;
+    justify-content: center;
+    gap: 40px 30px;
+}
+
+div.grid-view > div.atividade > div > div > span {
+    display: none;
+}
+
+div.grid-view > div.atividade > hr {
+    display: none;
+}
+
+/* Line View - Closed */
+.line-view .atividade {
+    height: 60px;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+.line-view .atividade:hover {
+    cursor: pointer;
+}
+
+.line-view .atividade div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto 7px;
+}
+
+.line-view .atividade h3 {
+    margin: 0;
+    font-size: 2em;
+}
+
+.line-view .atividade > div > span {
+    font-size: 1.7em;
+    order: 2;
+}
+
+.line-view .atividade > div > div span {
+    font-size: 3em;
+    margin-right: 10px;
+}
+
+.line-view .atividade > div > div span:hover {
+    cursor: default;
+    color: white;
+}
+
+div.line-view > div.atividade p, div.line-view > div.atividade hr {
+    display: none;
+}
+
+/* Line View - Opened */
+.opened .atividade {
+    height: 250px;
+}
+
+div.opened > div.atividade p, div.opened > div.atividade hr {
+    display: block;
+}
+
+div.opened > div.atividade hr {
+    opacity: 1;
+    width: 88%;
+    border: 1px solid white;
+    margin: 5px auto 20px auto;
+}
+
+div.opened > div.atividade p:first-of-type {
+    height: 70px;
+    width: 88%;
+    margin: 0 auto 30px auto;
+}
+
+div.opened > div.atividade p.botao {
+    width: 15%;
+    margin: 0 auto auto;
+}
+
+
 
 /* Header */
 header {
@@ -204,3 +344,72 @@ footer a:hover {
     cursor: pointer;
 }
 
+
+/* Main - Atividades */
+/* Topo */
+section#atividades section#atividades_topo {
+    margin-bottom: 140px;
+}
+
+.topo h1 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 3em;
+}
+
+.topo h2 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 2.5em;
+}
+
+.topo div.container-span {
+    text-align: end;
+}
+
+.topo div.container-span span {
+    font-size: 2em;
+}
+
+.topo div.container-span span:hover {
+    cursor: pointer;
+    color: #1edfd98c;
+}
+
+.topo hr {
+    margin-top: 0;
+    margin-bottom: 30px;
+    opacity: 1;
+}
+
+section#atividades section#atividades_topo div.topo_botoes {
+    text-align: center;
+}
+
+section#atividades section#atividades_topo div.topo_botoes p {
+    display: inline;
+    padding: 8px 20px;
+    font-size: 1.5em;
+}
+
+section#atividades section#atividades_topo div.topo_botoes p:first-of-type {
+    margin-right: 20px;
+}
+
+/* Container Sessões */
+section#atividades div.container-sessões section {
+    width: 60%;
+    margin-bottom: 130px;
+}
+
+section#atividades div.container-sessões section div.topo h2 {
+    margin-bottom: -15px;
+}
+
+section#atividades div.container-sessões section div.topo div.container-span span {
+    font-size: 2em;
+}
+
+section#atividades div.container-sessões section div.topo hr {
+    margin-bottom: 20px;
+}
