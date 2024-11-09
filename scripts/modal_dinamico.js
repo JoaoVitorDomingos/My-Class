@@ -148,6 +148,14 @@ if(modal_Sessao) {
         const ativador = evento.relatedTarget
         //console.log(ativador)
 
+        let modal_criarSesao_tds = [...document.querySelectorAll("#criar_sessao>div>div>div>div>table>tbody>tr>td.nome_atv")]
+        let atividades_nome = [...document.querySelectorAll("#atividades>.container-sessoes>section>.container-atividades>.atividade>div>div>h3")]
+
+        modal_criarSesao_tds.forEach((td, pos) => {
+            td.innerHTML = atividades_nome[pos].innerHTML
+        })
+
+
         const identificacao = ativador.getAttribute("data-bs-whatever")
 
         if(identificacao == "btn") {
