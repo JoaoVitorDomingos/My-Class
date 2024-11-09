@@ -1,0 +1,257 @@
+@charset "UTF-8";
+
+/* Fontes e Cores */
+:root {
+    --azul: #2C1CF5;
+    --verde-claro: #1EDFD8;
+    --preto: #000500;
+    --branco: #f4f9e9;
+
+    --principal: "Inter";
+    --secundaria: "Roboto";
+    --terciaria: "Open Sans";
+}
+
+
+/* Configurações Gerais */
+.modal-btn {
+    padding: 5px 30px;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    font-size: 1.2em;
+    transition: 0.9s;
+}
+
+.modal-btn:hover {
+    font-weight: bold;
+    box-shadow: none;
+}
+
+.btn-salvar {
+    box-shadow: 2px 2px 4px 0px #1edfd971;
+    background-color: var(--verde-claro);
+}
+
+.btn-cancel {
+    background-color: rgb(238, 55, 55);
+    box-shadow: 2px 2px 4px 0px rgba(238, 55, 55, 0.466);
+}
+
+/* Modal - Editar Back */
+#editar_back form fieldset {
+    margin-bottom: 30px;
+}
+
+#editar_back form fieldset:last-of-type {
+    margin-bottom: 0;
+}
+
+.area-color {
+    display: flex;
+    align-items: center;
+}
+
+.area-color label {
+    font-weight: bold;
+    margin-right: 7px;
+}
+
+.area-radio {
+    display: flex;
+    align-items: center;
+}
+
+.area-radio p {
+    margin: 0;
+    margin-right: 10px;
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+.area-radio div.div-radios {
+    display: flex;
+    flex-direction: column;
+}
+
+.area-radio .div-radios label {
+    font-size: 1em;
+    font-weight: normal;
+}
+
+.modal-botoes {
+    display: flex;
+    justify-content: end;
+    padding: 20px 10px;
+}
+
+.modal-botoes button{
+    margin-right: 30px;
+}
+
+
+/* Modal - Veja Mais */
+#aluno_vejaMais .modal-conteudo .informacoes-aluno {
+    justify-content: space-around;
+}
+
+#aluno_vejaMais .modal-conteudo .foto-aluno {
+    border: 2px solid black;
+    border-radius: 3px;
+    width: 140px;
+    height: 158px;
+    background-image: url(../imgs/foto-alunos/foto-aluno1.jpg);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#aluno_vejaMais .modal-conteudo p {
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+#aluno_vejaMais .modal-conteudo .tabelas-aluno table {
+    text-align: center;
+}
+
+#aluno_vejaMais .modal-conteudo .tabelas-aluno table:first-of-type {
+    text-align: center;
+    width: 20%;
+    margin: 0 auto 20px auto;
+}
+
+#aluno_vejaMais .modal-conteudo .tabelas-aluno table:last-of-type {
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* Modal - Lançar Notas */
+#lancar_notas .modal-conteudo form {
+    justify-content: center;
+}
+
+#lancar_notas .modal-conteudo fieldset {
+    margin-bottom: 20px;
+}
+
+.modal-conteudo label {
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+.modal-conteudo .area-data input {
+    display: block;
+    padding: .375rem .375rem .375rem .75rem;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    color: #212529;
+}
+
+/* Modal - Tabela */
+.modal-conteudo table thead > tr > th {
+    background-color: rgb(189, 184, 184);
+    text-align: center;
+    font-size: 1.1em;
+}
+
+.modal-conteudo table .td_nome {
+    font-size: 1em;
+}
+
+#lancar_notas .modal-conteudo table .td_nota {
+    text-align: center;
+    font-style: 1em;
+}
+
+#lancar_notas .modal-conteudo table .td_nota:hover {
+    cursor: pointer;
+}
+
+.modal-conteudo table .td_observacao {
+    width: 40%;
+    padding: 5px;
+}
+
+.modal-conteudo table .observacao {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    font-size: 1em;
+}
+
+.modal-conteudo table .observacao:hover {
+    cursor: pointer;
+}
+
+.modal-conteudo table .observacao:focus {
+    cursor: text;
+}
+
+
+.check-box {
+    width: 10%;
+    text-align: center;
+}
+
+
+/* Modal - Adicionar Aluno */
+#adicionar_aluno form {
+    width: 80%;
+}
+
+#adicionar_aluno .area-data {
+    display: flex;
+    align-items: center;
+}
+
+#adicionar_aluno .area-data label {
+    margin-bottom: 0;
+    margin-right: 5px;
+}
+
+
+/* Modal - Imprimir Boletim */
+#imprimir_boletim .modal-conteudo form fieldset:first-of-type {
+    display: flex;
+    align-items: center;
+}
+
+#imprimir_boletim .modal-conteudo form fieldset:first-of-type label {
+    margin-right: 10px;
+}
+
+#imprimir_boletim .modal-conteudo form fieldset:first-of-type select {
+    width: 60%;
+}
+
+#imprimir_boletim .area-radio label, #imprimir_presenca form .area-radio label {
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+#imprimir_boletim table .check-box, #imprimir_presenca table .check-box {
+    width: 30%;
+}
+
+#imprimir_boletim table .td_nome, #imprimir_presenca table .td_nome {
+    text-align: center;
+}
+
+
+/* Modal - Imprimir Presença */
+#imprimir_presenca form {
+    align-items: center;
+}
+
+#imprimir_presenca form .presenca_datas fieldset {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#imprimir_presenca form .presenca_datas fieldset label {
+    margin-right: 10px;
+}

@@ -19,3 +19,188 @@
     box-sizing: border-box;
     font-family: var(--principal), var(--secundaria), var(--terciaria), sans-serif;
 }
+
+/* Estilos Gerais */
+.link-active {
+    color: var(--verde-claro);
+    text-decoration: underline;
+}
+
+.botao {
+    padding: 7px 10px;
+    border-radius: 5px;
+    box-shadow: 2px 3px 4px 0px #2a1cf562;
+    background-color: var(--azul);
+    color: white;
+    font-size: 1.2em;
+    transition: 0.3s;
+}
+
+.botao:hover {
+    cursor: pointer;
+    box-shadow: none;
+    background-color: var(--verde-claro);
+    font-weight: bold;
+}
+
+
+/* Header */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 100px;
+    background-color: var(--azul);
+    color: white;
+}
+
+.div_logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.div_logo > span {
+    font-size: 7em;
+    margin-right: 10px;
+}
+
+menu li:first-child {
+    margin-right: 50px;
+}
+
+menu a {
+    font-size: 2.5em;
+    color: white;
+    text-decoration: none;
+}
+
+menu a:hover, menu button:hover {
+    color: var(--verde-claro);
+    cursor: pointer;
+    border: none;
+}
+
+menu button {
+    font-size: 2em;
+    color: white;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+}
+
+
+/* Main - Classe */
+.back {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 300px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-image: url(../imgs/backs/back-math-medio.jpg);
+    background-position: center center;
+}
+
+.back > h2 {
+    display: inline;
+    padding: 5px 15px;
+    border-radius: 10px;
+    /* background-color: black; */
+    font-weight: bold;
+    color: white;
+}
+
+.back > span {
+    font-size: 2.3em;
+    padding: 5px;
+    color: white;
+}
+
+.back > span:hover {
+    cursor: pointer;
+    color: var(--verde-claro);
+}
+
+
+.tabela {
+    width: 65%;
+    margin-top: 70px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.tabela > thead > tr > th {
+    background-color: rgb(189, 184, 184);
+}
+
+.tabela td, .tabela th {
+    border: 1px solid black;
+}
+
+.tabela th {
+    font-size: 1.4em;
+}
+
+.tabela td {
+    font-size: 1.2em;
+}
+
+.nome {
+    text-align: start;
+    text-indent: 7px;
+}
+
+.tabela span {
+    color: black;
+    padding: 0px 7px;
+}
+
+.tabela span:hover {
+    cursor: pointer;
+    color: var(--verde-claro);
+    font-weight: bold;
+}
+
+.botoes {
+    display: grid;
+    grid-template-columns: 200px 200px 200px;
+    justify-content: center;
+    gap: 20px;
+    width: 65%;
+    margin-bottom: 40px;
+}
+
+.botoes p {
+    margin: 0;
+    text-align: center;
+    align-self: center;
+}
+
+
+
+footer {
+    background-color: var(--azul);
+    padding: 40px;
+    margin-top: 100px;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+    color: white;
+    font-size: 1.3em;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: var(--verde-claro);
+    text-decoration: underline;
+    font-weight: bold;
+    cursor: pointer;
+}
+

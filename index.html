@@ -22,10 +22,564 @@
 
     <!-- Estilo Principal -->
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- Estilo dos Modais -->
+     <link rel="stylesheet" href="css/modais.css">
 </head>
 <body>
     
+    <header class="p-4">
+        <div class="div_logo">
+            <span class="material-symbols-outlined">school</span>
+            <h1>MyClass</h1>
+        </div>
 
+        <menu>
+            <nav>
+                <ul class="nav nav-underline" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <!-- <a class="link-active" href="#classe" data-bs-toggle="tab">Classe</a> -->
+                        <button class="link-active active" data-bs-toggle="tab" data-bs-target="#classe" type="button" role="tab" aria-controls="classe" aria-selected="true">Classe</button>
+                    </li>
+                    <li class="nav-item" role="presentation"> 
+                        <!-- <a class="" href="#atividades" data-bs-toggle="tab">Atividades</a> -->
+                        <button data-bs-toggle="tab" data-bs-target="#atividades" type="button" role="tab" aria-controls="atividades" aria-selected="false">Atividades</button>
+                    </li>
+                </ul>
+            </nav>
+        </menu>
+    </header>
+
+    <main class="tab-content">
+
+        <section id="classe" class="tab-pane fade show active" role="tabpanel" aria-labelledby="classe-tab" tabindex="0">
+            <div class="back container-md">
+                <h2>Matemática - 2°B</h2>
+                <span class="material-symbols-outlined" data-bs-toggle="modal" data-bs-target="#editar_back">edit</span>
+            </div>
+
+            <table class="table table-striped mx-auto tabela">
+                <thead>
+                    <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Presença</th>
+                        <th scope="col">Atividades</th>
+                        <th scope="col">Média</th>
+                        <th scope="col">Situação</th>
+                        <th scope="col">Veja Mais</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td class="nome">João Vitor C. Domingos</td>
+                        <td>100%</td>
+                        <td>100%</td>
+                        <td>10.0</td>
+                        <td>Aprovado</td>
+                        <td><span class="material-symbols-outlined" data-bs-toggle="modal" data-bs-target="#aluno_vejaMais">query_stats</span></td>
+                    </tr>
+                    <tr>
+                        <td class="nome">Guilherme Henrique</td>
+                        <td>100%</td>
+                        <td>80%</td>
+                        <td>9.0</td>
+                        <td>Exame</td>
+                        <td><span class="material-symbols-outlined" data-bs-toggle="modal" data-bs-target="#aluno_vejaMais">query_stats</span></td>
+                    </tr>
+                    <tr>
+                        <td class="nome">Igor</td>
+                        <td>80%</td>
+                        <td>90%</td>
+                        <td>7.0</td>
+                        <td>Reprovado</td>
+                        <td><span class="material-symbols-outlined" data-bs-toggle="modal" data-bs-target="#aluno_vejaMais">query_stats</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="botoes mx-auto">
+                <p class="botao" data-bs-toggle="modal" data-bs-target="#lancar_notas">Lançar Notas</p>
+                <p class="botao" data-bs-toggle="modal" data-bs-target="#lancar_presenca">Lançar Presença</p>
+                <p class="botao" data-bs-toggle="modal" data-bs-target="#adicionar_aluno">Adicionar Aluno</p>
+                <p class="botao" data-bs-toggle="modal" data-bs-target="#imprimir_boletim">Imprimir Boletim</p>
+                <p class="botao" data-bs-toggle="modal" data-bs-target="#imprimir_presenca">Imprimir Presença</p>
+                <p class="botao" data-bs-toggle="modal" data-bs-target="#">Imprimir Tabela</p>
+            </div>
+        </section>
+
+        <section id="atividades" class="tab-pane fade" role="tabpanel" aria-labelledby="atividades-tab" tabindex="0">
+            
+        </section>
+
+    </main>
+
+    <section id="modais">
+        <div id="editar_back" class="modal fade">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header modal-topo">
+                        <h2>Editar Imagem de Visita</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <form method="post" class="modal-conteudo modal-body row w-75 mx-auto my-4">
+                        <fieldset id="area-titulo" class="col-md-7">
+                            <label for="titulo" class="form-label">Título:</label>
+                            <input type="text" name="titulo" id="titulo" class="form-control">
+                        </fieldset>
+
+                        <fieldset id="cor-texto" class="area-color col-md-5 justify-content-end">
+                            <label for="corTxt" class="form-label">Cor do Texto:</label>
+                            <input type="color" name="corTxt" id="corTxt" value="#FFFFFF" class="form-control form-control-color">
+                        </fieldset>
+
+                        <fieldset id="area-fundotxt" class="area-radio col-md-7">
+                            <p>Fundo do texto:</p>
+                            <div class="div-radios">
+                                <div>
+                                    <input type="radio" name="backTxt" id="backTxt-ativado" value="ativado">
+                                    <label for="backTxt-ativado">Ativado</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="backTxt" id="backTxt-desativado" value="desativado" checked>
+                                    <label for="backTxt-desativado">Desativado</label>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="area-color col-md-5 justify-content-end" id="cor-back">
+                            <label for="backCor" class="form-label">Cor de Fundo:</label>
+                            <input type="color" name="backCor" id="backCor" class="form-control-color">
+                        </fieldset>
+
+                        <fieldset id="img-back" class="col-md-12">
+                            <label for="backImg" class="form-label">Imagem de Fundo:</label>
+                            <input type="file" name="backImg" id="backImg" class="form-control">
+                        </fieldset>
+                    </form>
+
+                    <div class="modal-botoes modal-footer">
+                        <button type="button" data-bs-dismiss="modal" class="modal-btn btn-cancel">Cancelar</button>
+                        <input type="submit" value="Salvar" data-bs-dismiss="modal" class="modal-btn btn-salvar" >
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="aluno_vejaMais" class="modal fade">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header modal-topo">
+                        <h2>Veja Mais Sobre este Aluno</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body modal-conteudo my-4">
+                        <div class="mb-3 row informacoes-aluno w-75 mx-auto">
+                            <div class="foto-aluno col-md-4"></div>
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <p class="col-md-12">Nome do Aluno</p>
+                                </div>
+                                <div class="row">
+                                    <p class="col-md-6">Data Nasc Aluno</p>
+                                    <p class="col-md-6">CPF do Aluno</p>
+                                </div>
+                                <div class="row">
+                                    <p class="col-md-12">Endereço do Aluno</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tabelas-aluno">
+                            <table class="table table-bordered border-dark">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Presença</th>
+                                        <th scope="col">Atividades</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr>
+                                        <td>100%</td>
+                                        <td>100%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table table-bordered border-dark">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">1° Bimestre</th>
+                                        <th scope="col">2° Bimestre</th>
+                                        <th scope="col">3° Bimestre</th>
+                                        <th scope="col">4° Bimestre</th>
+                                        <th scope="col">Média Final</th>
+                                        <th scope="col">Situação</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr>
+                                        <td>10.0</td>
+                                        <td>9.0</td>
+                                        <td>9.9</td>
+                                        <td>10.0</td>
+                                        <td>9.7</td>
+                                        <td>Aprovado</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="modal-botoes modal-footer">
+                        <button type="button" data-bs-dismiss="modal" class="modal-btn btn-salvar">Sair</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="lancar_notas" class="modal fade">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Lançar Notas</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body modal-conteudo">
+                        <form class="row mb-4">
+                            <fieldset class="col-md-4">
+                                <label for="tipo" class="form-label">Tipo:</label>
+                                <select name="tipo" id="tipo" class="form-select w-75">
+                                    <option value="prova">Prova</option>
+                                    <option value="trabalho">Trabalho</option>
+                                </select>
+                            </fieldset>
+
+                            <fieldset class="col-md-5">
+                                <label for="conteudo" class="form-label">Conteudo:</label>
+                                <input type="text" name="conteudo" id="conteudo" autocomplete="off" class="form-control">
+                            </fieldset>
+
+                            <fieldset class="col-md-4 area-data">
+                                <label for="data" class="form-label">Data:</label>
+                                <input type="date" name="data" id="data">
+                            </fieldset>
+
+                            <fieldset class="col-md-5">
+                                <label for="bimestre" class="form-label">Bimestre:</label>
+                                <select name="bimestre" id="bimestre" class="form-select w-75">
+                                    <option value="1b">1° Bimestre</option>
+                                    <option value="2b">2° Bimestre</option>
+                                    <option value="3b">3° Bimestre</option>
+                                    <option value="4b">4° Bimestre</option>
+                                </select>
+                            </fieldset>
+                        </form>
+
+                        <table class="table table-striped table-bordered border-dark w-75 mx-auto">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nome</th>
+                                    <th scope="col">Nota</th>
+                                    <th scope="col">Observação</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td class="td_nome">João Vitor</td>
+                                    <td class="td_nota">--</td>
+                                    <td class="td_observacao"><input type="text" name="observacao" class="observacao"></td>
+                                </tr>
+                                <tr>
+                                    <td class="td_nome">Igor</td>
+                                    <td class="td_nota">--</td>
+                                    <td class="td_observacao"><input type="text" name="observacao" class="observacao"></td>
+                                </tr>
+                                <tr>
+                                    <td class="td_nome">Guilherme</td>
+                                    <td class="td_nota">--</td>
+                                    <td class="td_observacao"><input type="text" name="observacao" class="observacao"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="modal-footer modal-botoes">
+                        <button type="button" data-bs-dismiss="modal" class="modal-btn btn-cancel">Cancelar</button>
+                        <input type="submit" value="Salvar" data-bs-dismiss="modal" class="modal-btn btn-salvar" >
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="lancar_presenca" class="modal fade">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Lançar Presença</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body modal-conteudo">
+                        <form class="mb-4 mx-auto w-75">  
+                            <fieldset class="mb-3">
+                                <label for="presenca_conteudo" class="form-label">Conteudo do dia:</label>
+                                <input type="text" name="presenca_conteudo" id="presenca_conteudo" class="form-control">
+                            </fieldset>
+
+                            <fieldset class="area-data">
+                                <label for="presenca_data">Data:</label>
+                                <input type="date" name="presenca_data" id="presenca_data">
+                            </fieldset>
+                        </form>
+
+                        <table class="table table-striped table-bordered border-dark mx-auto w-75">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Alunos</th>
+                                    <th scope="col">Presença</th>
+                                    <th scope="col">Falta</th>
+                                    <th scope="col">Observação</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td class="td_nome">João Vitor</td>
+                                    <td class="check-box"><input type="radio" name="presenca1" id="v"></td>
+                                    <td class="check-box"><input type="radio" name="presenca1" id="f"></td>
+                                    <td class="td_observacao"><input type="text" name="observacao" class="observacao"></td>
+                                </tr>
+                                <tr>
+                                    <td class="td_nome">Igor</td>
+                                    <td class="check-box"><input type="radio" name="presenca2" id="v"></td>
+                                    <td class="check-box"><input type="radio" name="presenca2" id="f"></td>
+                                    <td class="td_observacao"><input type="text" name="observacao" class="observacao"></td>
+                                </tr>
+                                <tr>
+                                    <td class="td_nome">Guilherme</td>
+                                    <td class="check-box"><input type="radio" name="presenca3" id="v"></td>
+                                    <td class="check-box"><input type="radio" name="presenca3" id="f"></td>
+                                    <td class="td_observacao"><input type="text" name="observacao" class="observacao"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="modal-footer modal-botoes">
+                        <button type="button" data-bs-dismiss="modal" class="modal-btn btn-cancel">Cancelar</button>
+                        <input type="submit" value="Salvar" data-bs-dismiss="modal" class="modal-btn btn-salvar" >
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="adicionar_aluno" class="modal fade">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Adicionar Aluno</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    
+                    <div class="modal-body modal-conteudo">
+                        <form method="post" class="my-4 mx-auto row">
+                            <fieldset class="col-md-12 mb-4">
+                                <label for="adicionar_nome" class="form-label">Nome:</label>
+                                <input type="text" name="adicionar_nome" id="adicionar_nome" class="form-control" required>
+                            </fieldset>
+
+                            <fieldset class="area-data col-md-8 mb-4">
+                                <label for="adicionar_nasc" class="form-label">Data de Nascimento:</label>
+                                <input type="date" name="adicionar_nasc" id="adicionar_nasc" required>
+                            </fieldset>
+
+                            <fieldset class="area-radio col-md-4 mb-4">
+                                <p>Sexo:</p>
+                                <div class="div-radios">
+                                    <div>
+                                        <input type="radio" name="adicionar_sexo" id="adsexo_masculino" value="Masculino" checked>
+                                        <label for="adsexo_masculino">Masculino</label>
+                                    </div>
+
+                                    <div>
+                                        <input type="radio" name="adicionar_sexo" id="adsexo_feminino" value="Feminino">
+                                        <label for="adsexo_feminino">Feminino</label>
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <fieldset class="col-md-4 mb-4">
+                                <label for="adicionar_cpf" class="form-label">CPF:</label>
+                                <input type="text" name="adicionar_cpf" id="adicionar_cpf" required maxlength="11" placeholder="12345678912" class="form-control">
+                            </fieldset>
+
+                            <fieldset class="col-md-8 mb-4">
+                                <label for="adicionar_end" class="form-label">Endereço:</label>
+                                <input type="text" name="adicionar_end" id="adicionar_end" required class="form-control">
+                            </fieldset>
+
+                            <fieldset class="col-md-12">
+                                <label for="adicionar_foto" class="form-label">Foto:</label>
+                                <input type="file" name="adicionar_foto" id="adicionar_foto" class="form-control">
+                            </fieldset>
+                        </form>
+                    </div>
+
+                    <div class="modal-footer modal-botoes">
+                        <button type="button" data-bs-dismiss="modal" class="modal-btn btn-cancel">Cancelar</button>
+                        <input type="submit" value="Salvar" data-bs-dismiss="modal" class="modal-btn btn-salvar" >
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="imprimir_boletim" class="modal fade">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Imprimir Boletim</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body modal-conteudo">
+                        <form action="" method="get" class="w-75 mx-auto my-4 row">
+                            <fieldset class="col-md-7">
+                                <label for="imprimir_bo_bimestre" class="form-label">Bimestre:</label>
+                                <select name="imprimir_bo_bimestre" id="imprimir_bo_bimestre" class="form-select">
+                                    <option value="1b">1° Bimestre</option>
+                                    <option value="2b">2° Bimestre</option>
+                                    <option value="3b">3° Bimestre</option>
+                                    <option value="4b">4° Bimestre</option>
+                                </select>
+                            </fieldset>
+
+                            <fieldset class="area-radio col-md-5">
+                                <div class="div-radios">
+                                    <div>
+                                        <input type="radio" name="imprimir_bo_tipo" id="imprimir_bo_sala" checked>
+                                        <label for="imprimir_bo_sala">Sala Toda</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" name="imprimir_bo_tipo" id="imprimir_bo_escolher">
+                                        <label for="imprimir_bo_escolher">Escolher Aluno</label>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+
+                        <table class="table table-striped table-bordered border-dark mx-auto w-75 mb-4">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Escolher</th>
+                                    <th scope="col">Aluno</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td class="check-box"><input type="checkbox" name="imprimir_bo_aluno" id="aluno1"></td>
+                                    <td class="td_nome">João Vitor</td>
+                                </tr>
+                                <tr>
+                                    <td class="check-box"><input type="checkbox" name="imprimir_bo_aluno" id="aluno2"></td>
+                                    <td class="td_nome">Igor</td>
+                                </tr>
+                                <tr>
+                                    <td class="check-box"><input type="checkbox" name="imprimir_bo_aluno" id="aluno3"></td>
+                                    <td class="td_nome">Guilherme</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="modal-footer modal-botoes">
+                        <button type="button" data-bs-dismiss="modal" class="modal-btn btn-cancel">Cancelar</button>
+                        <input type="submit" value="Salvar" data-bs-dismiss="modal" class="modal-btn btn-salvar" >
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="imprimir_presenca" class="modal fade">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Imprimir Presença</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body modal-conteudo">
+                        <form action="" method="get" class="w-75 mx-auto my-4 row">
+                            <div class="presenca_datas col-md-7">
+                                <fieldset class="area-data">
+                                    <label for="imprimir_pre_data_inicial">Data Inicial:</label>
+                                    <input type="date" name="imprimir_pre_data_inicial" id="imprimir_pre_data_inicial">
+                                </fieldset>
+
+                                <fieldset class="area-data">
+                                    <label for="imprimir_pre_data_final">Data Final:</label>
+                                    <input type="date" name="imprimir_pre_data_final" id="imprimir_pre_data_final">
+                                </fieldset>
+                            </div>
+
+                            <fieldset class="area-radio col-md-5">
+                                <div class="div-radios">
+                                    <div>
+                                        <input type="radio" name="imprimir_pre_tipo" id="imprimir_pre_sala" checked>
+                                        <label for="imprimir_pre_sala">Sala Toda</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" name="imprimir_pre_tipo" id="imprimir_pre_escolher">
+                                        <label for="imprimir_pre_escolher">Escolher Aluno</label>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+
+                        <table class="table table-striped table-bordered border-dark mx-auto w-75 mb-4">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Escolher</th>
+                                    <th scope="col">Aluno</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td class="check-box"><input type="checkbox" name="imprimir_pre_aluno" id="aluno1"></td>
+                                    <td class="td_nome">João Vitor</td>
+                                </tr>
+                                <tr>
+                                    <td class="check-box"><input type="checkbox" name="imprimir_pre_aluno" id="aluno2"></td>
+                                    <td class="td_nome">Igor</td>
+                                </tr>
+                                <tr>
+                                    <td class="check-box"><input type="checkbox" name="imprimir_pre_aluno" id="aluno3"></td>
+                                    <td class="td_nome">Guilherme</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="modal-footer modal-botoes">
+                        <button type="button" data-bs-dismiss="modal" class="modal-btn btn-cancel">Cancelar</button>
+                        <input type="submit" value="Salvar" data-bs-dismiss="modal" class="modal-btn btn-salvar" >
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; Feito por <a href="https://github.com/JoaoVitorDomingos" target="_blank">João Vitor C. Domingos</a></p>
+    </footer>
 
 
     <!-- Bootstrp Script -->
