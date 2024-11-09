@@ -24,9 +24,12 @@
     <link rel="stylesheet" href="css/style.css">
 
     <!-- Estilo dos Modais -->
-     <link rel="stylesheet" href="css/modais.css">
+    <link rel="stylesheet" href="css/modais.css">
+
+    <!-- Estilo das Impressões -->
+    <link rel="stylesheet" href="css/impressoes.css">
 </head>
-<body>
+<body class="imprimir_tab">
     
     <header class="p-4">
         <div class="div_logo">
@@ -39,11 +42,11 @@
                 <ul class="nav nav-underline" role="tablist">
                     <li class="nav-item" role="presentation">
                         <!-- <a class="link-active" href="#classe" data-bs-toggle="tab">Classe</a> -->
-                        <button class="link-active active" data-bs-toggle="tab" data-bs-target="#classe" type="button" role="tab" aria-controls="classe" aria-selected="true">Classe</button>
+                        <button class="link-navegacao link-active active" data-bs-toggle="tab" data-bs-target="#classe" type="button" role="tab" aria-controls="classe" aria-selected="true">Classe</button>
                     </li>
                     <li class="nav-item" role="presentation"> 
                         <!-- <a class="" href="#atividades" data-bs-toggle="tab">Atividades</a> -->
-                        <button data-bs-toggle="tab" data-bs-target="#atividades" type="button" role="tab" aria-controls="atividades" aria-selected="false">Atividades</button>
+                        <button data-bs-toggle="tab" data-bs-target="#atividades" type="button" role="tab" aria-controls="atividades" aria-selected="false" class="link-navegacao">Atividades</button>
                     </li>
                 </ul>
             </nav>
@@ -58,45 +61,46 @@
                 <span class="material-symbols-outlined" data-bs-toggle="modal" data-bs-target="#editar_back">edit</span>
             </div>
 
-            <table class="table table-striped mx-auto tabela">
-                <thead>
-                    <tr>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Presença</th>
-                        <th scope="col">Atividades</th>
-                        <th scope="col">Média</th>
-                        <th scope="col">Situação</th>
-                        <th scope="col">Veja Mais</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    <tr>
-                        <td class="nome">João Vitor C. Domingos</td>
-                        <td>100%</td>
-                        <td>100%</td>
-                        <td>10.0</td>
-                        <td>Aprovado</td>
-                        <td><span class="material-symbols-outlined" data-bs-toggle="modal" data-bs-target="#aluno_vejaMais">query_stats</span></td>
-                    </tr>
-                    <tr>
-                        <td class="nome">Guilherme Henrique</td>
-                        <td>100%</td>
-                        <td>80%</td>
-                        <td>9.0</td>
-                        <td>Exame</td>
-                        <td><span class="material-symbols-outlined" data-bs-toggle="modal" data-bs-target="#aluno_vejaMais">query_stats</span></td>
-                    </tr>
-                    <tr>
-                        <td class="nome">Igor</td>
-                        <td>80%</td>
-                        <td>90%</td>
-                        <td>7.0</td>
-                        <td>Reprovado</td>
-                        <td><span class="material-symbols-outlined" data-bs-toggle="modal" data-bs-target="#aluno_vejaMais">query_stats</span></td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="container-tabela">
+                <table class="table table-striped mx-auto tabela">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Presença</th>
+                            <th scope="col">Atividades</th>
+                            <th scope="col">Média</th>
+                            <th scope="col">Situação</th>
+                            <th scope="col">Veja Mais</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- <tr>
+                            <td class="nome">João Vitor C. Domingos</td>
+                            <td>100%</td>
+                            <td>100%</td>
+                            <td>10.0</td>
+                            <td>Aprovado</td>
+                            <td><span class="material-symbols-outlined" data-bs-toggle="modal" data-bs-target="#aluno_vejaMais">query_stats</span></td>
+                        </tr>
+                        <tr>
+                            <td class="nome">Guilherme Henrique</td>
+                            <td>100%</td>
+                            <td>80%</td>
+                            <td>9.0</td>
+                            <td>Exame</td>
+                            <td><span class="material-symbols-outlined" data-bs-toggle="modal" data-bs-target="#aluno_vejaMais">query_stats</span></td>
+                        </tr>
+                        <tr>
+                            <td class="nome">Igor</td>
+                            <td>80%</td>
+                            <td>90%</td>
+                            <td>7.0</td>
+                            <td>Reprovado</td>
+                            <td><span class="material-symbols-outlined" data-bs-toggle="modal" data-bs-target="#aluno_vejaMais">query_stats</span></td>
+                        </tr> -->
+                    </tbody>
+                </table>
+            </div>
 
             <div class="botoes mx-auto">
                 <p class="botao" data-bs-toggle="modal" data-bs-target="#lancar_notas">Lançar Notas</p>
@@ -104,7 +108,7 @@
                 <p class="botao" data-bs-toggle="modal" data-bs-target="#adicionar_aluno">Adicionar Aluno</p>
                 <p class="botao" data-bs-toggle="modal" data-bs-target="#imprimir_boletim">Imprimir Boletim</p>
                 <p class="botao" data-bs-toggle="modal" data-bs-target="#imprimir_presenca">Imprimir Presença</p>
-                <p class="botao" data-bs-toggle="modal" data-bs-target="#">Imprimir Tabela</p>
+                <p class="botao" id="btn_imprimirTabela">Imprimir Tabela</p>
             </div>
         </section>
 
@@ -112,22 +116,22 @@
             <section id="atividades_topo" class="container-md topo">
                 <h1>Matemática - 2°B</h1>
                 <div class="container-span">
-                    <span class="material-symbols-outlined view-active">grid_view</span>
-                    <span class="material-symbols-outlined">view_list</span>
+                    <span class="material-symbols-outlined view-active" id="grid-view">grid_view</span>
+                    <span class="material-symbols-outlined" id="line-view">view_list</span>
                 </div>
                 <hr>
                 <div class="topo_botoes">
-                    <p class="botao" data-bs-toggle="modal" data-bs-target="#criar_sessao">Criar Sessão</p>
-                    <p class="botao" data-bs-toggle="modal" data-bs-target="#criar_atividade">Criar Atividade</p>
+                    <p class="botao" data-bs-toggle="modal" data-bs-target="#criar_sessao" data-bs-whatever="btn">Criar Sessão</p>
+                    <p class="botao" data-bs-toggle="modal" data-bs-target="#criar_atividade" data-bs-whatever="btn">Criar Atividade</p>
                 </div>
             </section>
 
-            <div class="container-sessões">
+            <div class="container-sessoes">
                 <section class="container-md">
                     <div class="topo mb-2">
                         <h2>1° Bimestre</h2>
                         <div class="container-span">
-                            <span class="material-symbols-outlined">edit</span>
+                            <span class="material-symbols-outlined" data-bs-whatever="span" data-bs-toggle="modal" data-bs-target="#criar_sessao">edit</span>
                         </div>
                         <hr>
                     </div>
@@ -135,7 +139,7 @@
                     <div class="container-atividades grid-view">
                         <div class="atividade">
                             <div>
-                                <span class="material-symbols-outlined">edit</span>
+                                <span class="material-symbols-outlined" data-bs-toggle="modal" data-bs-target="#criar_atividade" data-bs-whatever="span">edit</span>
                                 <div>
                                     <span class="material-symbols-outlined">article</span>
                                     <h3>Titulo</h3>
@@ -148,7 +152,7 @@
 
                         <div class="atividade">
                             <div>
-                                <span class="material-symbols-outlined">edit</span>
+                                <span class="material-symbols-outlined" data-bs-toggle="modal" data-bs-target="#criar_atividade" data-bs-whatever="span">edit</span>
                                 <div>
                                     <span class="material-symbols-outlined">article</span>
                                     <h3>Atividade 2</h3>
@@ -161,10 +165,10 @@
 
                         <div class="atividade">
                             <div>
-                                <span class="material-symbols-outlined">edit</span>
+                                <span class="material-symbols-outlined" data-bs-toggle="modal" data-bs-target="#criar_atividade" data-bs-whatever="span">edit</span>
                                 <div>
                                     <span class="material-symbols-outlined">article</span>
-                                    <h3>Titulo</h3>
+                                    <h3>Atividade 3</h3>
                                 </div>
                             </div>
                             <hr>
@@ -174,10 +178,10 @@
 
                         <div class="atividade">
                             <div>
-                                <span class="material-symbols-outlined">edit</span>
+                                <span class="material-symbols-outlined" data-bs-toggle="modal" data-bs-target="#criar_atividade" data-bs-whatever="span">edit</span>
                                 <div>
                                     <span class="material-symbols-outlined">article</span>
-                                    <h3>Titulo</h3>
+                                    <h3>Atividade 4</h3>
                                 </div>
                             </div>
                             <hr>
@@ -191,7 +195,7 @@
                     <div class="topo mb-2">
                         <h2>2° Bimestre</h2>
                         <div class="container-span">
-                            <span class="material-symbols-outlined">edit</span>
+                            <span class="material-symbols-outlined" data-bs-whatever="span" data-bs-toggle="modal" data-bs-target="#criar_sessao">edit</span>
                         </div>
                         <hr>
                     </div>
@@ -200,10 +204,10 @@
 
                         <div class="atividade">
                             <div>
-                                <span class="material-symbols-outlined">edit</span>
+                                <span class="material-symbols-outlined" data-bs-toggle="modal" data-bs-target="#criar_atividade" data-bs-whatever="span">edit</span>
                                 <div>
                                     <span class="material-symbols-outlined">article</span>
-                                    <h3>Titulo</h3>
+                                    <h3>Atividade 5</h3>
                                 </div>
                             </div>
                             <hr>
@@ -213,10 +217,10 @@
                         
                         <div class="atividade">
                             <div>
-                                <span class="material-symbols-outlined">edit</span>
+                                <span class="material-symbols-outlined" data-bs-toggle="modal" data-bs-target="#criar_atividade" data-bs-whatever="span">edit</span>
                                 <div>
                                     <span class="material-symbols-outlined">article</span>
-                                    <h3>Titulo</h3>
+                                    <h3>Atividade 6</h3>
                                 </div>
                             </div>
                             <hr>
@@ -239,10 +243,10 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
-                    <form method="post" class="modal-conteudo modal-body row w-75 mx-auto my-4">
+                    <form method="post" enctype="multipart/form-data" class="modal-conteudo modal-body row w-75 mx-auto my-4">
                         <fieldset id="area-titulo" class="col-md-7">
                             <label for="titulo" class="form-label">Título:</label>
-                            <input type="text" name="titulo" id="titulo" class="form-control">
+                            <input type="text" name="titulo" id="titulo" class="form-control" required>
                         </fieldset>
 
                         <fieldset id="cor-texto" class="area-color col-md-5 justify-content-end">
@@ -264,20 +268,20 @@
                             </div>
                         </fieldset>
 
-                        <fieldset class="area-color col-md-5 justify-content-end" id="cor-back">
+                        <fieldset class="area-color col-md-5 justify-content-end form-desativado" id="cor-back" disabled>
                             <label for="backCor" class="form-label">Cor de Fundo:</label>
                             <input type="color" name="backCor" id="backCor" class="form-control-color">
                         </fieldset>
 
                         <fieldset id="img-back" class="col-md-12">
                             <label for="backImg" class="form-label">Imagem de Fundo:</label>
-                            <input type="file" name="backImg" id="backImg" class="form-control">
+                            <input type="file" name="backImg" id="backImg" class="form-control" accept="image/*" required>
                         </fieldset>
                     </form>
 
                     <div class="modal-botoes modal-footer">
-                        <button type="button" data-bs-dismiss="modal" class="modal-btn btn-cancel">Cancelar</button>
-                        <input type="submit" value="Salvar" data-bs-dismiss="modal" class="modal-btn btn-salvar" >
+                        <button type="button" data-bs-dismiss="modal" class="modal-btn btn-cancel" id="modal_editarBack_btnCancel">Cancelar</button>
+                        <input type="submit" value="Salvar" class="modal-btn btn-salvar">
                     </div>
                 </div>
             </div>
@@ -305,27 +309,38 @@
                                 <div class="row">
                                     <p class="col-md-12">Endereço do Aluno</p>
                                 </div>
+                                <div class="row">
+                                    <p class="col-md-12">Número da Matricula</p>
+                                </div>
                             </div>
                         </div>
 
                         <div class="tabelas-aluno">
-                            <table class="table table-bordered border-dark">
+                            <table class="table table-bordered border-dark" id="modal_vejaMais_firstTable">
                                 <thead>
                                     <tr>
                                         <th scope="col">Presença</th>
-                                        <th scope="col">Atividades</th>
+                                        <th scope="col">Faltas</th>
+                                        <th scope="col">Presença(%)</th>
+                                        <th scope="col">Atividades Feitas</th>
+                                        <th scope="col">Atividades Não Feitas</th>
+                                        <th scope="col">Atividades(%)</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
                                     <tr>
+                                        <td>10</td>
+                                        <td>0</td>
                                         <td>100%</td>
+                                        <td>10</td>
+                                        <td>0</td>
                                         <td>100%</td>
                                     </tr>
                                 </tbody>
                             </table>
 
-                            <table class="table table-bordered border-dark">
+                            <table class="table table-bordered border-dark" id="modal_vejaMais_secondTable">
                                 <thead>
                                     <tr>
                                         <th scope="col">1° Bimestre</th>
@@ -339,10 +354,10 @@
 
                                 <tbody>
                                     <tr>
-                                        <td>10.0</td>
-                                        <td>9.0</td>
-                                        <td>9.9</td>
-                                        <td>10.0</td>
+                                        <td class="nota_editar">10.0</td>
+                                        <td class="nota_editar">9.0</td>
+                                        <td class="nota_editar">9.9</td>
+                                        <td class="nota_editar">10.0</td>
                                         <td>9.7</td>
                                         <td>Aprovado</td>
                                     </tr>
@@ -367,7 +382,7 @@
                     </div>
 
                     <div class="modal-body modal-conteudo">
-                        <form class="row mb-4">
+                        <form class="row my-4">
                             <fieldset class="col-md-4">
                                 <label for="tipo" class="form-label">Tipo:</label>
                                 <select name="tipo" id="tipo" class="form-select w-75">
@@ -397,38 +412,39 @@
                             </fieldset>
                         </form>
 
-                        <table class="table table-striped table-bordered border-dark w-75 mx-auto">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Nome</th>
-                                    <th scope="col">Nota</th>
-                                    <th scope="col">Observação</th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                <tr>
-                                    <td class="td_nome">João Vitor</td>
-                                    <td class="td_nota">--</td>
-                                    <td class="td_observacao"><input type="text" name="observacao" class="observacao"></td>
-                                </tr>
-                                <tr>
-                                    <td class="td_nome">Igor</td>
-                                    <td class="td_nota">--</td>
-                                    <td class="td_observacao"><input type="text" name="observacao" class="observacao"></td>
-                                </tr>
-                                <tr>
-                                    <td class="td_nome">Guilherme</td>
-                                    <td class="td_nota">--</td>
-                                    <td class="td_observacao"><input type="text" name="observacao" class="observacao"></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="container-tabela-modal w-75 mx-auto mb-4">
+                            <table class="table table-striped table-bordered border-dark ">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Nome</th>
+                                        <th scope="col">Nota</th>
+                                        <th scope="col">Observação</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- <tr>
+                                        <td class="td_nome">João Vitor</td>
+                                        <td class="td_nota">--</td>
+                                        <td class="td_observacao"><input type="text" name="observacao" class="observacao"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td_nome">Igor</td>
+                                        <td class="td_nota">--</td>
+                                        <td class="td_observacao"><input type="text" name="observacao" class="observacao"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td_nome">Guilherme</td>
+                                        <td class="td_nota">--</td>
+                                        <td class="td_observacao"><input type="text" name="observacao" class="observacao"></td>
+                                    </tr> -->
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
 
                     <div class="modal-footer modal-botoes">
-                        <button type="button" data-bs-dismiss="modal" class="modal-btn btn-cancel">Cancelar</button>
-                        <input type="submit" value="Salvar" data-bs-dismiss="modal" class="modal-btn btn-salvar" >
+                        <button type="button" data-bs-dismiss="modal" class="modal-btn btn-cancel" id="modal_LancarNotas_BtnCancel">Cancelar</button>
+                        <input type="submit" value="Salvar" class="modal-btn btn-salvar" id="btnSave_lancarNota">
                     </div>
                 </div>
             </div>
@@ -443,7 +459,7 @@
                     </div>
 
                     <div class="modal-body modal-conteudo">
-                        <form class="mb-4 mx-auto w-75">  
+                        <form class="mx-auto w-75 my-4">  
                             <fieldset class="mb-3">
                                 <label for="presenca_conteudo" class="form-label">Conteudo do dia:</label>
                                 <input type="text" name="presenca_conteudo" id="presenca_conteudo" class="form-control">
@@ -455,42 +471,43 @@
                             </fieldset>
                         </form>
 
-                        <table class="table table-striped table-bordered border-dark mx-auto w-75">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Alunos</th>
-                                    <th scope="col">Presença</th>
-                                    <th scope="col">Falta</th>
-                                    <th scope="col">Observação</th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                <tr>
-                                    <td class="td_nome">João Vitor</td>
-                                    <td class="check-box"><input type="radio" name="presenca1" id="v"></td>
-                                    <td class="check-box"><input type="radio" name="presenca1" id="f"></td>
-                                    <td class="td_observacao"><input type="text" name="observacao" class="observacao"></td>
-                                </tr>
-                                <tr>
-                                    <td class="td_nome">Igor</td>
-                                    <td class="check-box"><input type="radio" name="presenca2" id="v"></td>
-                                    <td class="check-box"><input type="radio" name="presenca2" id="f"></td>
-                                    <td class="td_observacao"><input type="text" name="observacao" class="observacao"></td>
-                                </tr>
-                                <tr>
-                                    <td class="td_nome">Guilherme</td>
-                                    <td class="check-box"><input type="radio" name="presenca3" id="v"></td>
-                                    <td class="check-box"><input type="radio" name="presenca3" id="f"></td>
-                                    <td class="td_observacao"><input type="text" name="observacao" class="observacao"></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="container-tabela-modal w-75 mx-auto mb-4">
+                            <table class="table table-striped table-bordered border-dark">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Alunos</th>
+                                        <th scope="col">Presença</th>
+                                        <th scope="col">Falta</th>
+                                        <th scope="col">Observação</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- <tr>
+                                        <td class="td_nome">João Vitor</td>
+                                        <td class="check-box"><input type="radio" name="presenca1" id="v"></td>
+                                        <td class="check-box"><input type="radio" name="presenca1" id="f"></td>
+                                        <td class="td_observacao"><input type="text" name="observacao" class="observacao"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td_nome">Igor</td>
+                                        <td class="check-box"><input type="radio" name="presenca2" id="v"></td>
+                                        <td class="check-box"><input type="radio" name="presenca2" id="f"></td>
+                                        <td class="td_observacao"><input type="text" name="observacao" class="observacao"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td_nome">Guilherme</td>
+                                        <td class="check-box"><input type="radio" name="presenca3" id="v"></td>
+                                        <td class="check-box"><input type="radio" name="presenca3" id="f"></td>
+                                        <td class="td_observacao"><input type="text" name="observacao" class="observacao"></td>
+                                    </tr> -->
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
 
                     <div class="modal-footer modal-botoes">
-                        <button type="button" data-bs-dismiss="modal" class="modal-btn btn-cancel">Cancelar</button>
-                        <input type="submit" value="Salvar" data-bs-dismiss="modal" class="modal-btn btn-salvar" >
+                        <button type="button" data-bs-dismiss="modal" class="modal-btn btn-cancel" id="modal_LancarPresenca_BtnCancel">Cancelar</button>
+                        <input type="submit" value="Salvar" class="modal-btn btn-salvar" id="btnSave_lancarPresenca">
                     </div>
                 </div>
             </div>
@@ -543,14 +560,14 @@
 
                             <fieldset class="col-md-12">
                                 <label for="adicionar_foto" class="form-label">Foto:</label>
-                                <input type="file" name="adicionar_foto" id="adicionar_foto" class="form-control">
+                                <input type="file" name="adicionar_foto" id="adicionar_foto" class="form-control" accept="image/*">
                             </fieldset>
                         </form>
                     </div>
 
                     <div class="modal-footer modal-botoes">
-                        <button type="button" data-bs-dismiss="modal" class="modal-btn btn-cancel">Cancelar</button>
-                        <input type="submit" value="Salvar" data-bs-dismiss="modal" class="modal-btn btn-salvar" >
+                        <button type="button" data-bs-dismiss="modal" class="modal-btn btn-cancel" id="modal_AdicionarAluno_BtnCancel">Cancelar</button>
+                        <input type="submit" value="Salvar" class="modal-btn btn-salvar" id="btnSave_adicionarAluno">
                     </div>
                 </div>
             </div>
@@ -590,34 +607,35 @@
                             </fieldset>
                         </form>
 
-                        <table class="table table-striped table-bordered border-dark mx-auto w-75 mb-4">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Escolher</th>
-                                    <th scope="col">Aluno</th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                <tr>
-                                    <td class="check-box"><input type="checkbox" name="imprimir_bo_aluno" id="aluno1"></td>
-                                    <td class="td_nome">João Vitor</td>
-                                </tr>
-                                <tr>
-                                    <td class="check-box"><input type="checkbox" name="imprimir_bo_aluno" id="aluno2"></td>
-                                    <td class="td_nome">Igor</td>
-                                </tr>
-                                <tr>
-                                    <td class="check-box"><input type="checkbox" name="imprimir_bo_aluno" id="aluno3"></td>
-                                    <td class="td_nome">Guilherme</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="container-tabela-modal w-75 mx-auto mb-4 esconder">
+                            <table class="table table-striped table-bordered border-dark">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Escolher</th>
+                                        <th scope="col">Aluno</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- <tr>
+                                        <td class="check-box"><input type="checkbox" name="imprimir_bo_aluno" id="aluno1"></td>
+                                        <td class="td_nome">João Vitor</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="check-box"><input type="checkbox" name="imprimir_bo_aluno" id="aluno2"></td>
+                                        <td class="td_nome">Igor</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="check-box"><input type="checkbox" name="imprimir_bo_aluno" id="aluno3"></td>
+                                        <td class="td_nome">Guilherme</td>
+                                    </tr> -->
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
 
                     <div class="modal-footer modal-botoes">
-                        <button type="button" data-bs-dismiss="modal" class="modal-btn btn-cancel">Cancelar</button>
-                        <input type="submit" value="Salvar" data-bs-dismiss="modal" class="modal-btn btn-salvar" >
+                        <button type="button" data-bs-dismiss="modal" class="modal-btn btn-cancel" id="modal_ImprimirBoletim_BtnCancel">Cancelar</button>
+                        <input type="submit" value="Salvar" class="modal-btn btn-salvar" id="btnSave_imprimirBoletim">
                     </div>
                 </div>
             </div>
@@ -659,34 +677,35 @@
                             </fieldset>
                         </form>
 
-                        <table class="table table-striped table-bordered border-dark mx-auto w-75 mb-4">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Escolher</th>
-                                    <th scope="col">Aluno</th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                <tr>
-                                    <td class="check-box"><input type="checkbox" name="imprimir_pre_aluno" id="aluno1"></td>
-                                    <td class="td_nome">João Vitor</td>
-                                </tr>
-                                <tr>
-                                    <td class="check-box"><input type="checkbox" name="imprimir_pre_aluno" id="aluno2"></td>
-                                    <td class="td_nome">Igor</td>
-                                </tr>
-                                <tr>
-                                    <td class="check-box"><input type="checkbox" name="imprimir_pre_aluno" id="aluno3"></td>
-                                    <td class="td_nome">Guilherme</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="container-tabela-modal w-75 mx-auto mb-4 esconder">
+                            <table class="table table-striped table-bordered border-dark">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Escolher</th>
+                                        <th scope="col">Aluno</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- <tr>
+                                        <td class="check-box"><input type="checkbox" name="imprimir_pre_aluno" id="aluno1"></td>
+                                        <td class="td_nome">João Vitor</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="check-box"><input type="checkbox" name="imprimir_pre_aluno" id="aluno2"></td>
+                                        <td class="td_nome">Igor</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="check-box"><input type="checkbox" name="imprimir_pre_aluno" id="aluno3"></td>
+                                        <td class="td_nome">Guilherme</td>
+                                    </tr> -->
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
 
                     <div class="modal-footer modal-botoes">
-                        <button type="button" data-bs-dismiss="modal" class="modal-btn btn-cancel">Cancelar</button>
-                        <input type="submit" value="Salvar" data-bs-dismiss="modal" class="modal-btn btn-salvar" >
+                        <button type="button" data-bs-dismiss="modal" class="modal-btn btn-cancel" id="modal_ImprimirPresenca_BtnCancel">Cancelar</button>
+                        <input type="submit" value="Salvar" class="modal-btn btn-salvar" id="btnSave_imprimirPresenca">
                     </div>
                 </div>
             </div>
@@ -700,13 +719,13 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
-                    <div class="modal-body modal-conteudo w-75 row mx-auto">
-                        <fieldset class="col-md-12 mb-4">
+                    <div class="modal-body modal-conteudo w-75 row mx-auto my-3">
+                        <fieldset class="col-md-12 mb-4 p-0">
                             <label for="sessao_nome" class="form-label">Nome:</label>
                             <input type="text" name="sessao_nome" id="sessao_nome" class="form-control">
                         </fieldset>
 
-                        <div>
+                        <div class="container-tabela-modal p-0">
                             <p>Selecione as atividades desta sessão:</p>
                             <table class="table table-striped table-bordered border-dark">
                                 <thead>
@@ -719,15 +738,27 @@
                                 <tbody>
                                     <tr>
                                         <td class="check-box"><input type="checkbox" name="selecionar_atividade" id="atividade1"></td>
-                                        <td>Atividade 1</td>
+                                        <td class="nome_atv">Titulo</td>
                                     </tr>
                                     <tr>
                                         <td class="check-box"><input type="checkbox" name="selecionar_atividade" id="atividade2"></td>
-                                        <td>Atividade 2</td>
+                                        <td class="nome_atv">Atividade 2</td>
                                     </tr>
                                     <tr>
                                         <td class="check-box"><input type="checkbox" name="selecionar_atividade" id="atividade3"></td>
-                                        <td>Atividade 3</td>
+                                        <td class="nome_atv">Atividade 3</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="check-box"><input type="checkbox" name="selecionar_atividade" id="atividade3"></td>
+                                        <td class="nome_atv">Atividade 4</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="check-box"><input type="checkbox" name="selecionar_atividade" id="atividade3"></td>
+                                        <td class="nome_atv">Atividade 5</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="check-box"><input type="checkbox" name="selecionar_atividade" id="atividade3"></td>
+                                        <td class="nome_atv">Atividade 6</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -735,8 +766,8 @@
                     </div>
 
                     <div class="modal-footer modal-botoes">
-                        <button type="button" data-bs-dismiss="modal" class="modal-btn btn-cancel">Cancelar</button>
-                        <input type="submit" value="Salvar" data-bs-dismiss="modal" class="modal-btn btn-salvar" >
+                        <button type="button" data-bs-dismiss="modal" class="modal-btn btn-cancel" id="modal_CriarSessao_BtnCancel">Cancelar</button>
+                        <input type="submit" value="Salvar" class="modal-btn btn-salvar" id="btnSave_criarSec">
                     </div>
                 </div>
             </div>
@@ -754,7 +785,7 @@
                         <form method="post">
                             <fieldset>
                                 <label for="atividade_nome" class="form-label">Nome:</label>
-                                <input type="text" name="atividade_nome" id="atividade_nome" class="form-control">
+                                <input type="text" name="atividade_nome" id="atividade_nome" class="form-control" maxlength="14">
                             </fieldset>
 
                             <fieldset>
@@ -775,20 +806,212 @@
                     </div>
 
                     <div class="modal-footer modal-botoes">
-                        <button type="button" data-bs-dismiss="modal" class="modal-btn btn-cancel">Cancelar</button>
-                        <input type="submit" value="Salvar" data-bs-dismiss="modal" class="modal-btn btn-salvar" >
+                        <button type="button" data-bs-dismiss="modal" class="modal-btn btn-cancel" id="modal_CriarAtividade_BtnCancel">Cancelar</button>
+                        <input type="submit" value="Salvar" class="modal-btn btn-salvar" id="btnSave_criarAtv">
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <section class="my-5 bo_pre_aluno" id="container_impressao">
+        <h1>Matemática 2ºB</h1>
+
+        <table id="boletim_sala" class="tabela_impressao table table-striped table-bordered border-dark mx-auto my-3 ">
+            <thead>
+                <tr>
+                    <th scope="col">Matrícula</th>
+                    <th scope="col">Alunos</th>
+                    <th scope="col">1º Bimestre</th>
+                    <th scope="col">2º Bimestre</th>
+                    <th scope="col">3º Bimestre</th>
+                    <th scope="col">4º Bimestre</th>
+                    <th scope="col">Média Final</th>
+                    <th scope="col">Situação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- <tr>
+                    <td class="td_matricula">1</td>
+                    <td class="td_aluno">João Vitor</td>
+                    <td class="td_nota">10</td>
+                    <td class="td_nota">10</td>
+                    <td class="td_nota">10</td>
+                    <td class="td_nota">10</td>
+                    <td class="td_media">10</td>
+                    <td class="td_situacao reprovado">Reprovado</td>
+                </tr>
+                <tr>
+                    <td class="td_matricula">2</td>
+                    <td class="td_aluno">Guilherme</td>
+                    <td class="td_nota">7</td>
+                    <td class="td_nota">10</td>
+                    <td class="td_nota">8</td>
+                    <td class="td_media">5</td>
+                    <td class="td_nota abaixo">5</td>
+                    <td class="td_situacao exame">Exame</td>
+                </tr> -->
+            </tbody>
+        </table>
+
+        <div id="presenca_sala">
+            <!-- <table class="tabela_impressao table table-striped table-bordered border-dark mx-auto my-3 ">
+                <thead>
+                    <tr>
+                        <th scope="col">Matrícula</th>
+                        <th scope="col">Alunos</th>
+                        <th scope="col">Presença</th>
+                        <th scope="col">16/10/2024</th>
+                        <th scope="col">16/10/2024</th>
+                        <th scope="col">16/10/2024</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="td_matricula">1</td>
+                        <td class="td_aluno">João Vitor</td>
+                        <td class="td_nota">50%</td>
+                        <td class="td_nota">V</td>
+                        <td class="td_nota">V</td>
+                        <td class="td_nota">F</td>
+                    </tr>
+                    <tr>
+                        <td class="td_matricula">2</td>
+                        <td class="td_aluno">Guilherme</td>
+                        <td class="td_nota">70%</td>
+                        <td class="td_nota">V</td>
+                        <td class="td_nota">F</td>
+                        <td class="td_nota">F</td>
+                    </tr>
+                </tbody>
+            </table> -->
+        </div>
+
+        <div id="container_bo_pre_aluno">
+            <!-- <div class=" mx-auto bo_pre_aluno">
+                <h1>Matemática 2ºB</h1>
+
+                <div class="info_pessoais row">
+                    <div class="bo_pre_foto col-md-4"></div>
+                    <div class="bo_pre_dados col-md-8 row">
+                        <p class="dado_nome col-md-12">Nome do Aluno</p>
+                        <p class="dado_nasc col-md-6"><span>Data de Nascimento:</span> </p>
+                        <p class="dado_cpf col-md-6"><span>CPF:</span> </p>
+                        <p class="dado_end col-md-12"><span>Endereço</span>: </p>
+                        <p class="dado_id col-md-12"><span>Matricula:</span> </p>
+                    </div>
+                </div>
+                <div class="info_escolar">
+                    <table class="tab1 tabela_impressao table table-striped table-bordered border-dark mx-auto my-3">
+                        <thead>
+                            <tr>
+                                <th scope="col">Atividades Feitas</th>
+                                <th scope="col">Atividades Não Feitas</th>
+                                <th scope="col">Atividades (%)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>5</td>
+                                <td>6</td>
+                                <td>30%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="tab2 tabela_impressao table table-striped table-bordered border-dark mx-auto my-3">
+                        <thead>
+                            <tr>
+                                <th>16/10/2024</th>
+                                <th>16/10/2024</th>
+                                <th>16/10/2024</th>
+                                <th>16/10/2024</th>
+                                <th>16/10/2024</th>
+                                <th>16/10/2024</th>
+                                <th>16/10/2024</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>v</td>
+                                <td>v</td>
+                                <td>v</td>
+                                <td>v</td>
+                                <td>v</td>
+                                <td>v</td>
+                                <td>v</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div> -->
+        </div>
+
+        <table id="imprimir_tab" class="tabela_impressao table table-striped table-bordered border-dark mx-auto my-3 ">
+            <thead>
+                <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Presença</th>
+                    <th scope="col">Atividades</th>
+                    <th scope="col">Média</th>
+                    <th scope="col">Situação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- <tr>
+                    <td class="nome">João Vitor C. Domingos</td>
+                    <td>100%</td>
+                    <td>100%</td>
+                    <td>10.0</td>
+                    <td>Aprovado</td>
+                </tr>
+                <tr>
+                    <td class="nome">Guilherme Henrique</td>
+                    <td>100%</td>
+                    <td>80%</td>
+                    <td>9.0</td>
+                    <td>Exame</td>
+                </tr>
+                <tr>
+                    <td class="nome">Igor</td>
+                    <td>80%</td>
+                    <td>90%</td>
+                    <td>7.0</td>
+                    <td>Reprovado</td>
+                </tr> -->
+            </tbody>
+        </table>
+    </section>
+
     <footer>
         <p>&copy; Feito por <a href="https://github.com/JoaoVitorDomingos" target="_blank">João Vitor C. Domingos</a></p>
     </footer>
 
-
-    <!-- Bootstrp Script -->
+    <!-- Bootstrap Script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <!-- Script do Objeto dos Alunos -->
+    <script type="module" src="scripts/obj_aluno.js"></script>
+
+    <!-- Script que simula um Banco de Dados -->
+    <script type="module" src="scripts/banco_dados.js"></script>
+
+    <!-- Script de Metodos -->
+    <script type="module" src="scripts/metodos.js"></script>
+
+    <!-- Script que rodará ao carregar a pagina para construir a tabela de alunos -->
+    <script type="module" src="scripts/pegar_alunos.js"></script>
+
+    <!-- Script que controla os modais dinâmicos -->
+    <script type="module" src="scripts/modal_dinamico.js"></script>
+
+    <!-- Script de Controle de Estilos -->
+    <script type="module" src="scripts/estilos.js"></script>
+
+    <!-- Script para realizar as ações dos formulários -->
+    <script type="module" src="scripts/formularios.js"></script>
+
+    <!-- Script de impressão -->
+    <script type="module" src="scripts/impressao.js"></script>
 </body>
 </html>

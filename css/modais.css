@@ -38,6 +38,23 @@
     box-shadow: 2px 2px 4px 0px rgba(238, 55, 55, 0.466);
 }
 
+.container-tabela-modal {
+    overflow-y: auto;
+    padding-bottom: 5px;
+    max-height: 250px;
+
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease, visibility 0.3s ease, max-height 0.3s ease;
+}
+
+.esconder {
+    visibility: hidden;
+    opacity: 0;
+    max-height: 0;
+    padding-bottom: 0;
+}
+
 /* Modal - Editar Back */
 #editar_back form fieldset {
     margin-bottom: 30px;
@@ -99,7 +116,7 @@
     border: 2px solid black;
     border-radius: 3px;
     width: 140px;
-    height: 158px;
+    height: 200px;
     background-image: url(../imgs/foto-alunos/foto-aluno1.jpg);
     background-position: center center;
     background-size: cover;
@@ -117,13 +134,21 @@
 
 #aluno_vejaMais .modal-conteudo .tabelas-aluno table:first-of-type {
     text-align: center;
-    width: 20%;
+    width: 90%;
     margin: 0 auto 20px auto;
+}
+
+#aluno_vejaMais .modal-conteudo .tabelas-aluno table:first-of-type > thead th {
+    vertical-align: middle;
 }
 
 #aluno_vejaMais .modal-conteudo .tabelas-aluno table:last-of-type {
     width: 90%;
     margin: 0 auto;
+}
+
+#aluno_vejaMais td.nota_editar:hover {
+    cursor: pointer;
 }
 
 /* Modal - Lançar Notas */
@@ -149,6 +174,10 @@
 }
 
 /* Modal - Tabela */
+.modal-conteudo table {
+    margin: 0;
+}
+
 .modal-conteudo table thead > tr > th {
     background-color: rgb(189, 184, 184);
     text-align: center;

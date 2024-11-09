@@ -47,6 +47,10 @@
     color: var(--azul);
 }
 
+.form-desativado {
+    opacity: 0.5;
+}
+
 
 /* Atividade */
 .atividade {
@@ -58,6 +62,8 @@
     color: white;
     padding: 20px;
     text-align: end;
+
+    transition: all 0.5s ease;
 }
 
 .atividade span:hover {
@@ -69,6 +75,7 @@
     text-align: center;
     font-weight: bold;
     margin-top: -30px;
+    margin-right: 3px;
 }
 
 .atividade p:first-of-type {
@@ -118,6 +125,8 @@ div.grid-view > div.atividade > hr {
     height: 60px;
     padding: 5px;
     margin-bottom: 20px;
+
+    transition: height 0.3s ease;
 }
 
 .line-view .atividade:hover {
@@ -151,33 +160,33 @@ div.grid-view > div.atividade > hr {
     color: white;
 }
 
-div.line-view > div.atividade p, div.line-view > div.atividade hr {
+.closed p, .closed hr {
     display: none;
 }
 
 /* Line View - Opened */
-.opened .atividade {
+.line-view > .opened {
     height: 250px;
 }
 
-div.opened > div.atividade p, div.opened > div.atividade hr {
+.opened > p, .opened > hr {
     display: block;
 }
 
-div.opened > div.atividade hr {
+.line-view > div.opened > hr {
     opacity: 1;
     width: 88%;
     border: 1px solid white;
     margin: 5px auto 20px auto;
 }
 
-div.opened > div.atividade p:first-of-type {
+.line-view > div.opened > p:first-of-type {
     height: 70px;
     width: 88%;
     margin: 0 auto 30px auto;
 }
 
-div.opened > div.atividade p.botao {
+.line-view > div.opened > p.botao {
     width: 15%;
     margin: 0 auto auto;
 }
@@ -246,7 +255,7 @@ menu button {
     display: inline;
     padding: 5px 15px;
     border-radius: 10px;
-    /* background-color: black; */
+    background-color: black;
     font-weight: bold;
     color: white;
 }
@@ -262,11 +271,15 @@ menu button {
     color: var(--verde-claro);
 }
 
+.container-tabela { 
+    width: 65%;
+    max-height: 700px;
+    margin: 70px auto 50px auto;
+    overflow-y: auto;
+}
 
 .tabela {
-    width: 65%;
-    margin-top: 70px;
-    margin-bottom: 50px;
+    margin: 0;
     text-align: center;
 }
 
@@ -397,19 +410,22 @@ section#atividades section#atividades_topo div.topo_botoes p:first-of-type {
 }
 
 /* Container Sessões */
-section#atividades div.container-sessões section {
-    width: 60%;
+section#atividades div.container-sessoes section {
     margin-bottom: 130px;
 }
 
-section#atividades div.container-sessões section div.topo h2 {
+section#atividades div.container-sessoes section div.topo h2 {
     margin-bottom: -15px;
 }
 
-section#atividades div.container-sessões section div.topo div.container-span span {
+section#atividades div.container-sessoes section div.topo div.container-span span {
     font-size: 2em;
 }
 
-section#atividades div.container-sessões section div.topo hr {
+section#atividades div.container-sessoes section div.topo hr {
     margin-bottom: 20px;
+}
+
+#container_impressao {
+    display: none;
 }
