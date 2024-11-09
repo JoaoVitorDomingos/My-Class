@@ -14,6 +14,25 @@ async function PegarAlunos() {
 
     AdicionarAlunos(alunos.data)
     CriarAulas(Dados.dias_aulas, Dados.aulas)
+    window.bancoDados = {
+        get alunos() {
+            return Dados.alunos
+        },
+
+        get aulas() {
+            console.log("Total de Aulas: ")
+            return Dados.aulas
+        },
+
+        get diasAulas() {
+            return Dados.dias_aulas
+        },
+
+        get atividades() {
+            console.log("Total de Atividades: ")
+            return Dados.atividades
+        }
+    }
 }
 
 function AdicionarAlunos(arrayAlunos) {
