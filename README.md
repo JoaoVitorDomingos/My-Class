@@ -42,17 +42,32 @@ Veja o projeto você mesmo: https://joaovitordomingos.github.io/My-Class/
   <ol>
     <li><a href="#banco">Simulação de um Banco de Dados</a></li>
     <li><a href="#api">Pegando os Alunos de uma API</a></li>
+    <li><a href="#aulas">Criando os dias que teve aulas</a></li>
     <li><a href="#modulo">Script tipo Módulo</a></li>
     <li><a href="#modal_dinamico">Modal Dinâmico</a></li>
     <li><a href="#verificacao">Verificacões dos Formulários</a></li>
     <li><a href="#impressao">Impressões</a></li>
+    <li><a href="#conhecimentos">Conhecimentos Aplicados</a></li>
   </ol>
 </details>
 
 <h4 id="banco">Simulação de um Banco de Dados</h4>
 <p>Neste projeto, todas as informações referentes as notas dos alunos, as quantidades de aulas, dias que teve aulas e outras coisas são guardadas em uma simulação de banco de dados.</p>
-<p>Este bando de dados é um script do tipo modulo, onde nele há um objeto literal, como o objeto literal não é independente não importa quanstas instâncias há, é perfeito para uma simulação.</p>
+<p>Este bando de dados é um script do tipo modulo, onde nele há um objeto literal, como este tipo de objeto não é independente não importa quantas instâncias há, é perfeito para uma simulação.</p>
 <p align="center"><img src="./readme-imgs/bancoDados.png" alt="Imagem do Banco de Dados" width="300px"></p>
+<p>Este "Banco de Dados" guarda os alunos, que será um objeto padrão, guarda a quantidade total de aulas e atividades e também guarda os dias em que teve aulas.</p>
+<p>Toda alteração que tiver, como adicionar um aluno novo, lançar presença, etc..., o Banco de Dados será atualizado, mas como é uma simulação, ao resetar a página, as informações também serão resetadas.</p>
+<p>É possível acompanhar o banco de dados pelo inspetor do navegador, pois este objeto está armazenado em uma variável global.</p>
+<p>Para acompanhar o Banco de Dados:</p>
+<ol>
+  <li>Ative o Console do Navegador pressionando CTRL+SHIFT+I ou, também, em qualquer parte da página, clique direito do mouse, inspecionar, console.</li>
+  <li>De início já terá o Banco de Dados dos Alunos, mas para ver o Banco de Dados completo digite no console: <strong>bancoDados</strong></li>
+  <li>Caso queira acessar algo em específico do Banco de Dados, digite: <strong>bancoDados.alunos</strong>, <strong>bancoDados.aulas</strong>, <strong>bancoDados.diasAulas</strong>, <strong>bancoDados.atividades</strong>.</li>
+</ol>
+<div display="flex" align="center">
+  <img src="" alt="Imagem do Inspetor" width="300px">
+  <img src="" alt="Imagem do Banco de Dados no Inspetor" width="300px">
+</div>
 
 <br>
 <br>
