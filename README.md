@@ -36,7 +36,13 @@ Veja o projeto você mesmo: https://joaovitordomingos.github.io/My-Class/
 <br>
 
 <h2 id="funcionalidades">💻 Funcionalidades</h2>
-
+Nesta sessão falarei o que o projeto faz e deixarei explícito quais conhecimentos, principalmente de Javascript, coloquei em prática.
+<details>
+  <sumary>Sumário</sumary>
+  <p>Simulação de um Banco de Dados</p>
+  <p>Pegando os Alunos de uma API</p>
+  <p></p>
+</details>
 
 <br>
 <br>
