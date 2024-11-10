@@ -36,13 +36,23 @@ Veja o projeto você mesmo: https://joaovitordomingos.github.io/My-Class/
 <br>
 
 <h2 id="funcionalidades">💻 Funcionalidades</h2>
-Nesta sessão falarei o que o projeto faz e deixarei explícito quais conhecimentos, principalmente de Javascript, coloquei em prática.
+<p>Nesta sessão falarei o que o projeto faz e deixarei explícito quais conhecimentos, principalmente de Javascript, coloquei em prática.</p>
 <details>
-  <sumary>Sumário</sumary>
-  <p>Simulação de um Banco de Dados</p>
-  <p>Pegando os Alunos de uma API</p>
-  <p></p>
+  <summary><h3>Sumário</h3></summary>
+  <ol>
+    <li><a href="#banco">Simulação de um Banco de Dados</a></li>
+    <li><a href="#api">Pegando os Alunos de uma API</a></li>
+    <li><a href="#modulo">Script tipo Módulo</a></li>
+    <li><a href="#modal_dinamico">Modal Dinâmico</a></li>
+    <li><a href="#verificacao">Verificacões dos Formulários</a></li>
+    <li><a href="#impressao">Impressões</a></li>
+  </ol>
 </details>
+
+<h4 id="banco">Simulação de um Banco de Dados</h4>
+<p>Neste projeto, todas as informações referentes as notas dos alunos, as quantidades de aulas, dias que teve aulas e outras coisas são guardadas em uma simulação de banco de dados.</p>
+<p>Este bando de dados é um script do tipo modulo, onde nele há um objeto literal, como o objeto literal não é independente não importa quanstas instâncias há, é perfeito para uma simulação.</p>
+<p align="center"><img src="./readme-imgs/bancoDados.png" alt="Imagem do Banco de Dados" width="300px"></p>
 
 <br>
 <br>
