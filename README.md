@@ -27,11 +27,20 @@
 
 <h2 id="sobre">📌 Sobre</h2>
 Um sistema escolar onde é possível adicionar alunos, lançar notas, lançar presença, entre outras coisas. Projeto realizado com <strong>HTML</strong>, <strong>CSS</strong>, <strong>Javascript</strong> e  <strong>Bootstrap</strong>, com o objetivo de colocar em prática o que estudei, principalmente em <ins>Javascript</ins>.
+<br>
+<br>
 
 <h2 id="acesso">🚀 Acesse o Projeto</h2>
 Veja o projeto você mesmo: https://joaovitordomingos.github.io/My-Class/
+<br>
+<br>
 
 <h2 id="funcionalidades">💻 Funcionalidades</h2>
 
+<br>
+<br>
+
 <h2 id="licenca">📃 Licença</h2>
-Veja a lincença do projeto: [MIT License]()
+Veja a lincença do projeto: <a href="https://github.com/JoaoVitorDomingos/My-Class/tree/main?tab=MIT-1-ov-file">MIT License</a>
+<br>
+<br>
