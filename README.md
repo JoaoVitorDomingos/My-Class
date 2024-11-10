@@ -19,11 +19,11 @@
   <a href="#licenca">Licença</a> •
 </p>
 
-<!--
+<br>
 <p align="center">
-    <img src="../.github/example.png" alt="Image Example" width="400px">
+    <img src="./readme-imgs/img_projeto.png" alt="Imagem do Projeto" width="800px">
 </p>
--->
+<br>
 
 <h2 id="sobre">📌 Sobre</h2>
 Um sistema escolar onde é possível adicionar alunos, lançar notas, lançar presença, entre outras coisas. Projeto realizado com <strong>HTML</strong>, <strong>CSS</strong>, <strong>Javascript</strong> e  <strong>Bootstrap</strong>, com o objetivo de colocar em prática o que estudei, principalmente em <ins>Javascript</ins>.
@@ -36,6 +36,7 @@ Veja o projeto você mesmo: https://joaovitordomingos.github.io/My-Class/
 <br>
 
 <h2 id="funcionalidades">💻 Funcionalidades</h2>
+
 
 <br>
 <br>
