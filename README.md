@@ -29,9 +29,9 @@
 Um sistema escolar onde é possível adicionar alunos, lançar notas, lançar presença, entre outras coisas. Projeto realizado com <strong>HTML</strong>, <strong>CSS</strong>, <strong>Javascript</strong> e  <strong>Bootstrap</strong>, com o objetivo de colocar em prática o que estudei, principalmente em <ins>Javascript</ins>.
 
 <h2 id="acesso">🚀 Acesse o Projeto</h2>
-Veja o projeto você mesmo: 
+Veja o projeto você mesmo: https://joaovitordomingos.github.io/My-Class/
 
 <h2 id="funcionalidades">💻 Funcionalidades</h2>
 
 <h2 id="licenca">📃 Licença</h2>
-Veja a lincença do projeto: 
+Veja a lincença do projeto: [MIT License]()
