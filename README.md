@@ -41,9 +41,9 @@ Veja o projeto você mesmo: https://joaovitordomingos.github.io/My-Class/
   <summary><h3>Sumário</h3></summary>
   <ol>
     <li><a href="#banco">Simulação de um Banco de Dados</a></li>
+    <li><a href="#modulo">Script tipo Módulo</a></li>
     <li><a href="#api">Pegando os Alunos de uma API</a></li>
     <li><a href="#aulas">Criando os dias que teve aulas</a></li>
-    <li><a href="#modulo">Script tipo Módulo</a></li>
     <li><a href="#modal_dinamico">Modal Dinâmico</a></li>
     <li><a href="#verificacao">Verificacões dos Formulários</a></li>
     <li><a href="#impressao">Impressões</a></li>
@@ -53,7 +53,7 @@ Veja o projeto você mesmo: https://joaovitordomingos.github.io/My-Class/
 
 <h4 id="banco">Simulação de um Banco de Dados</h4>
 <p>Neste projeto, todas as informações referentes as notas dos alunos, as quantidades de aulas, dias que teve aulas e outras coisas são guardadas em uma simulação de banco de dados.</p>
-<p>Este bando de dados é um script do tipo modulo, onde nele há um objeto literal, como este tipo de objeto não é independente não importa quantas instâncias há, é perfeito para uma simulação.</p>
+<p>Este banco de dados é um script do tipo modulo, onde nele há um objeto literal, como este tipo de objeto não é independente não importa quantas instâncias há, é perfeito para uma simulação.</p>
 <p align="center"><img src="./readme-imgs/bancoDados.png" alt="Imagem do Banco de Dados" width="300px"></p>
 <p>Este "Banco de Dados" guarda os alunos, que será um objeto padrão, guarda a quantidade total de aulas e atividades e também guarda os dias em que teve aulas.</p>
 <p>Toda alteração que tiver, como adicionar um aluno novo, lançar presença, etc..., o Banco de Dados será atualizado, mas como é uma simulação, ao resetar a página, as informações também serão resetadas.</p>
@@ -65,9 +65,26 @@ Veja o projeto você mesmo: https://joaovitordomingos.github.io/My-Class/
   <li>Caso queira acessar algo em específico do Banco de Dados, digite: <strong>bancoDados.alunos</strong>, <strong>bancoDados.aulas</strong>, <strong>bancoDados.diasAulas</strong>, <strong>bancoDados.atividades</strong>.</li>
 </ol>
 <div display="flex" align="center">
-  <img src="" alt="Imagem do Inspetor" width="300px">
-  <img src="" alt="Imagem do Banco de Dados no Inspetor" width="300px">
+  <img src="./readme-imgs/inspetor.png" alt="Imagem do Inspetor" width="400px">
+  <img src="./readme-imgs/bancoDados_inspetor.png" alt="Imagem do Banco de Dados no Inspetor" width="400px">
 </div>
+<br>
+<br>
+
+<h4 id="modulo">Script tipo Módulo</h4>
+
+
+<br>
+<br>
+
+<h4 id="api">Pegando os Alunos de uma API</h4>
+<p>Os alunos e suas informações são feitos na hora que carrega a página. Utilizei a API do site <a href="https://reqres.in/">Reqres</a> para fazer os alunos.</p>
+<p>Utilizando uma <strong>async function</strong> e <strong>fetch</strong>, acesso esta API e pego os alunos, porém so irei utilizar desta API o nome, sobrenome, foto e id. As outras informações dos alunos foram criadas.</p>
+<p>Todas as informações dos alunos é armazenadas em um objeto do tipo padrão, que está num script separado do tipo módulo.</p>
+<p align="center"><img src="" alt="Imagem do Objeto Aluno" width="400px"></p>
+<h5>Data de Nascimento:</h5>
+<p>Os alunos terão idades de 16 a 19, para isso, com o metodo <strong>Date().getFullYear()</strong>, pego o ano atual e subtraio da idade mínima e máxima, guardando os dois valores para assim gerar anos aleátorios de nascimento. Agora o mês simplesmente utilizo a função de gerar números aleátórios. E o dia é realizado a mesma coisa, mas com uma verificação antes, já que fevereiro tem apenas 29 dias e os meses abril, junho, setembro e novembro tem 30 dias.</p>
+<p align="center"><img src="" alt="Imagem da Função do Nascimento" width="400px"></p>
 
 <br>
 <br>
