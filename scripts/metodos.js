@@ -11,9 +11,10 @@ export default function CriarTabelaAluno(nome, presenca, atividades, media, situ
         if(i == 0) {
             td.innerHTML = nome
             td.classList.add("nome")
-        } else if(i == 1) 
+        } else if(i == 1) {
             td.innerHTML = presenca
-        else if(i == 2) 
+            td.classList.add("presenca")
+        } else if(i == 2) 
             td.innerHTML = atividades
         else if(i == 3) {
             td.innerHTML = media

@@ -375,31 +375,90 @@ btnSave_LancarPresenca.addEventListener("click", evento => {
                     alert("Data Iválida!")
                 } else {
 
+                    const td_alunos = [...document.querySelectorAll("#lancar_presenca>div>div>div>div>table>tbody>tr>td.td_nome")]
+                    const tds_presenca = [...document.querySelectorAll("#classe>.container-tabela>table>tbody>tr>td.presenca")]
+                    //console.log(tds_presenca)
+
                     let dia_formatado = `${dia_input[3]}/${dia_input[2]}/${dia_input[1]}`
                     //console.log(dia_formatado)
 
-                    Dados.dias_aulas.push([dia_formatado, dia])
-
-                    //console.log("Banco de Dados - Aulas: ")
-                    //console.log(Dados.dias_aulas)
-
-                    const td_alunos = [...document.querySelectorAll("#lancar_presenca>div>div>div>div>table>tbody>tr>td.td_nome")]
-
+                    let pos
                     let pos_radios = 0
-                    td_alunos.forEach(aluno => {
-                        Dados.alunos.forEach(objAluno => {
-                            if(objAluno.nome == aluno.innerHTML) {
-                                if(radios[pos_radios].checked) {
-                                    //console.log(`O aluno ${objAluno.nome} VEIO este dia`)
-                                    objAluno.dias_presenca.push("V")
-                                } else {
-                                    //console.log(`O aluno ${objAluno.nome} FALTOU este dia`)
-                                    objAluno.dias_presenca.push("F")
+
+
+                    if(Dados.dias_aulas.some((el, indice) => {
+                        if(el[0] == dia_formatado) {
+                            //console.log("Esta data já existe!")
+                            pos = indice
+                        } 
+                        return el[0] == dia_formatado
+                    })) {
+                        //console.log("Editando Data")
+                        td_alunos.forEach((aluno, indice) => {
+                            Dados.alunos.forEach(objAluno => {
+                                if(objAluno.nome == aluno.innerHTML) {
+                                    if(radios[pos_radios].checked) {
+                                        //console.log(`O aluno ${objAluno.nome} VEIO este dia`)
+                                        if(objAluno.dias_presenca[pos] == "F") {
+                                            //console.log("Presença: " + objAluno.presenca[0])
+                                            objAluno.presenca[0] += 1
+                                            //console.log("Nova Presença: " + objAluno.presenca[0])
+                                            objAluno.dias_presenca[pos] = "V"
+                                        }
+                                    } else {
+                                        //console.log(`O aluno ${objAluno.nome} FALTOU este dia`)
+                                        if(objAluno.dias_presenca[pos] == "V") {
+                                            //console.log("Presença: " + objAluno.presenca[0])
+                                            objAluno.presenca[0] -= 1
+                                            //console.log("Nova Presença: " + objAluno.presenca[0])
+                                            objAluno.dias_presenca[pos] = "F"
+                                        }
+                                    }
+                                    //console.log("Presença (%): " + objAluno.presenca[1])
+                                    objAluno.CalcularPresenca(objAluno.presenca[0], Dados.aulas)
+                                    //console.log("Nova Presença (%): " + objAluno.presenca[1])
+
+                                    tds_presenca[indice].innerHTML = `${objAluno.presenca[1]}%`
+
+                                    pos_radios += 2
                                 }
-                                pos_radios += 2
-                            }
+                            })
                         })
-                    })
+
+                    } else {
+                        //console.log("Criando Data")
+                        Dados.dias_aulas.push([dia_formatado, dia])
+                        Dados.aulas += 1
+                        //console.log("Total de Aulas: " + Dados.aulas)
+
+                        //console.log("Banco de Dados - Aulas: ")
+                        //console.log(Dados.dias_aulas)
+
+                        td_alunos.forEach((aluno, indice) => {
+                            Dados.alunos.forEach(objAluno => {
+                                if(objAluno.nome == aluno.innerHTML) {
+                                    if(radios[pos_radios].checked) {
+                                        //console.log(`O aluno ${objAluno.nome} VEIO este dia`)
+                                        objAluno.dias_presenca.push("V")
+                                        //console.log("Presença: " + objAluno.presenca[0])
+                                        objAluno.presenca[0] += 1
+                                        //console.log("Nova Presença: " + objAluno.presenca[0])
+                                    } else {
+                                        //console.log(`O aluno ${objAluno.nome} FALTOU este dia`)
+                                        objAluno.dias_presenca.push("F")
+                                        //console.log("Presença: " + objAluno.presenca[0])
+                                    }
+                                    //console.log("Presença (%): " + objAluno.presenca[1])
+                                    objAluno.CalcularPresenca(objAluno.presenca[0], Dados.aulas)
+                                    //console.log("Nova Presença (%): " + objAluno.presenca[1])
+
+                                    tds_presenca[indice].innerHTML = `${objAluno.presenca[1]}%`
+
+                                    pos_radios += 2
+                                }
+                            })
+                        })
+                    }
 
                     //console.log("Banco de Dados - Alunos: ")
                     //console.log(Dados.alunos)

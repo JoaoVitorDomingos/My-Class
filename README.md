@@ -198,7 +198,7 @@ Veja o projeto você mesmo: https://joaovitordomingos.github.io/My-Class/
 <ul>
   <li><a href="#api">HTTP Request</a></li>
   <li><a href="#modulo">Módulos</a></li>
-  <li><a href="#api">Objetos</a></li>
+  <li><a href="#api">Objetos</a></li> 
 </ul>
 
 <br>
