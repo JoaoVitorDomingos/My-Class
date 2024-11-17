@@ -74,7 +74,7 @@ Veja o projeto você mesmo: https://joaovitordomingos.github.io/My-Class/
 
 <h3 id="modulo">Script tipo Módulo</h3>
 <p>Foi criado um script do tipo módulo chamado <i>metodos</i> onde ficará métodos que serão utilizados em várias partes do site, por exemplo um método que gera um número aleatório.</p>
-<p align="center"><img src="./readme-imgs/metodos.png" alt="Imagem do script Metodos" width="500px"></p>
+<p align="center"><img src="./readme-imgs/metodos.png" alt="Imagem do script Metodos" width="900px"></p>
 
 <br>
 <br>
@@ -86,7 +86,7 @@ Veja o projeto você mesmo: https://joaovitordomingos.github.io/My-Class/
 <p align="center"><img src="./readme-imgs/alunos/alunos_objeto.png" alt="Imagem do Objeto Aluno" width="400px"></p>
 <h4>Data de Nascimento:</h4>
 <p>Os alunos terão idades de 16 a 19, para isso, com o metodo <strong>Date().getFullYear()</strong>, pego o ano atual e subtraio da idade mínima e máxima, guardando os dois valores para assim gerar anos aleátorios de nascimento. Agora o mês simplesmente utilizo a função de gerar números aleátórios. E para o dia, é realizado a mesma coisa, mas com uma verificação antes, já que fevereiro tem apenas 29 dias e os meses abril, junho, setembro e novembro tem 30 dias.</p>
-<p align="center"><img src="./readme-imgs/alunos/nascimento_funcao.png" alt="Imagem da Função do Nascimento" width="400px"></p>
+<p align="center"><img src="./readme-imgs/alunos/nascimento_funcao.png" alt="Imagem da Função do Nascimento" width="600px"></p>
 <h4>Sexo, Endereço, Nota e CPF:</h4>
 <p>Para o sexo e endereço, apenas realizado uma condição, comparando o id, por exemplo o id 12 é uma menina, e seu endereço é "Rua do MasterX". Agora para o cpf, apenas gero números aleatórios de 0 a 9. As notas também são geradas aleatóriamentes, de 0 a 10.</p>
 <h4>Presença:</h4>
@@ -115,14 +115,14 @@ Veja o projeto você mesmo: https://joaovitordomingos.github.io/My-Class/
 <h3 id="modal_dinamico">Modal Dinâmico</h3>
 <p>O maior exemplo de modal dinâmico é o "Veja Mais" do aluno, foi se utilizado uma estrutura genérica de modal e por meio do Javascript foi se alterando o conteúdo do modal, este é o modal dinâmico do <a href="https://getbootstrap.com/docs/5.3/components/modal/#varying-modal-content">Bootstrap</a>.</p>
 <div display="flex" align="center">
-  <img src="./readme-imgs/modalDinamico/vejaMais_1.png" alt="Imagem do Veja Mais da Aluna Rachel" width="400px">
-  <img src="./readme-imgs/modalDinamico/vejaMais_2.png" alt="Imagem do Veja Mais do Aluno Lindsay" width="400px">
+  <img src="./readme-imgs/modalDinamico/vejaMais_1.png" alt="Imagem do Veja Mais da Aluna Rachel" width="500px">
+  <img src="./readme-imgs/modalDinamico/vejaMais_2.png" alt="Imagem do Veja Mais do Aluno Lindsay" width="500px">
 </div>
 <p>Cada ícone na parte "Veja Mais" tem um <strong>data-bs-whatever</strong> com o valor da matrícula do aluno, isso irá diferenciar os alunos, assim sabendo qual conteúdo mostrar.</p>
 <p>Outro exemplo, é o modal de Criar/Editar Sessão/Atividade, ao apertar no botão de criar o modal vem com o título Criar Atividade/Sessão, agora quando se aperta no ícone de edição, o modal vem com o nome Editar Atividade/Sessão</p>
 <div align="center" display="flex">
-  <img src="./readme-imgs/modalDinamico/modalCriar.png" alt="Imagem do modal Criar" width="400px">
-  <img src="./readme-imgs/modalDinamico/modalEditar.png" alt="Imagem do modal Editar" width="400px">
+  <img src="./readme-imgs/modalDinamico/modalCriar.png" alt="Imagem do modal Criar" width="500px">
+  <img src="./readme-imgs/modalDinamico/modalEditar.png" alt="Imagem do modal Editar" width="500px">
 </div>
 <p>No modal de Sessão a tabela também é alterada dinâmicamente, caso se adicione uma atividade nova ou altere o nome de uma atividade, ao abir o modal a tabela muda de acordo com os nomes das atividades.</p>
 
@@ -142,14 +142,14 @@ Veja o projeto você mesmo: https://joaovitordomingos.github.io/My-Class/
 <h4 id="lancar_notas">Lançar Notas</h4>
 <p>Neste formulário, além da verificação de preenchimento, há uma verificação na data e na nota. Não é possível lançar a nota em uma data antes do primeiro dia de aula, em uma data acima de 30 dias e nos finais de semana.</p>
 <div display="flex" align="center">
-  <img src="./readme-imgs/verificacaoFormularios/lancar_notas/notasModal.png" alt="Imagem do modal Lançar Notas com data inválida." width="400px">
+  <img src="./readme-imgs/verificacaoFormularios/lancar_notas/notasModal.png" alt="Imagem do modal Lançar Notas com data inválida." width="500px">
   <img src="./readme-imgs/verificacaoFormularios/lancar_notas/alerta_notas.png" alt="Imagem do Alerta." width="400px">
 </div>
 <p>Também não é possível lançar uma nota abaixo de zero e acima de 10.</p>
 <div display="flex" align="center">
-  <img src="./readme-imgs/verificacaoFormularios/lancar_notas/verificacao_nota1.png" alt="Imagem mostrando o lançamento de uma nota abaixo de zero." width="300px">
-  <img src="./readme-imgs/verificacaoFormularios/lancar_notas/verificacao_nota3.png" alt="Imagem mostrando o lançamento de uma nota acima de zero." width="300px">
-  <img src="./readme-imgs/verificacaoFormularios/lancar_notas/verificacao_nota2.png" alt="Imagem do alerta quando a nota for inválida" width="300px">
+  <img src="./readme-imgs/verificacaoFormularios/lancar_notas/verificacao_nota1.png" alt="Imagem mostrando o lançamento de uma nota abaixo de zero." width="400px">
+  <img src="./readme-imgs/verificacaoFormularios/lancar_notas/verificacao_nota3.png" alt="Imagem mostrando o lançamento de uma nota acima de zero." width="400px">
+  <img src="./readme-imgs/verificacaoFormularios/lancar_notas/verificacao_nota2.png" alt="Imagem do alerta quando a nota for inválida" width="400px">
 </div>
 <h4 id="lancar_presenca">Lançar Presença</h4>
 <p>A mesma verificação de data que ocorre no "Lançar Notas", ocorre no modal "Lançar Presença", sendo assim, não é possível lançar uma presença antes do primeiro dia de aula ou em um dia acima de 30 dias após o último dia de aula e nos finais de semana.</p>
@@ -160,13 +160,13 @@ Veja o projeto você mesmo: https://joaovitordomingos.github.io/My-Class/
 <h4 id="adicionar_aluno">Adicionar Aluno</h4>
 <p>Como todos os alunos já presentes tem entre 16 a 19 anos, então não é possível adicionar um aluno mais novo que 16 ou mais velho que 19 anos, para isso existe uma verificação em sua data de nascimento.</p>
 <div align="center" display="flex">
-  <img src="./readme-imgs/verificacaoFormularios/adicionar_aluno/verificacao_dataNasc.png" alt="Imagem do cadastro de um aluno recém nascido." width="400px">
+  <img src="./readme-imgs/verificacaoFormularios/adicionar_aluno/verificacao_dataNasc.png" alt="Imagem do cadastro de um aluno recém nascido." width="500px">
   <img src="./readme-imgs/verificacaoFormularios/adicionar_aluno/dataNasc_invalida.png" alt="Imagem do alerta da data de nascimento inválida." width="400px">
 </div>
 <p>Em seu nome não é possível adicionar números ou caracteres especiais, apenas aqueles utilizados em nomes como: ã,â,...</p>
 <p>O CPF tem que seguir como é exemplificado, caso tenha algo de errado, irá acionar o alerta.</p>
 <div align="center" display="flex">
-  <img src="./readme-imgs/verificacaoFormularios/adicionar_aluno/modalAdicionarAluno.png" alt="Imagem do modal Adicionar Alunos com informações inválidas." width="400px">
+  <img src="./readme-imgs/verificacaoFormularios/adicionar_aluno/modalAdicionarAluno.png" alt="Imagem do modal Adicionar Alunos com informações inválidas." width="500px">
   <img src="./readme-imgs/verificacaoFormularios/adicionar_aluno/alerta_nome.png" alt="Imagem do alerta do nome inválido do aluno." width="400px">
   <img src="./readme-imgs/verificacaoFormularios/adicionar_aluno/alerta_cpf.png" alt="Imagem do alerta do CPF inválido do aluno." width="400px">
 </div>
