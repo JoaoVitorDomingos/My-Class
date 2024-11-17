@@ -490,21 +490,27 @@ btnSave_AdicionarAluno.addEventListener("click", evento => {
     if(!validacao) {
         alert("Preencha Tudo!")
     } else {
-        if(/\W/.test(input_nome.value)) {
-            //console.log("Tem caracteres especiais")
-            if(/[ãáâçíêóô\s]/i.test(input_nome.value)) {
-                let nome_att = input_nome.value.replace(/[ãáâçíêóô\s]/ig, "_")
-                //console.log("Nome Atualizado: " + nome_att)
-                if(/\W/.test(nome_att)) {
-                    //console.log(nome_att.match(/\s/))
+        if(/\d/.test(input_nome.value)) {
+            alert("Nome Inválido!")
+            return
+        } else {
+            if(/\W/.test(input_nome.value)) {
+                //console.log("Tem caracteres especiais")
+                if(/[ãáâçíêóô\s]/i.test(input_nome.value)) {
+                    let nome_att = input_nome.value.replace(/[ãáâçíêóô\s]/ig, "_")
+                    //console.log("Nome Atualizado: " + nome_att)
+                    if(/\W/.test(nome_att)) {
+                        //console.log(nome_att.match(/\s/))
+                        alert("Nome Inválido!")
+                        return
+                    }
+                } else {
                     alert("Nome Inválido!")
                     return
                 }
-            } else {
-                alert("Nome Inválido!")
-                return
             }
         }
+        
     
         //console.log("Nome válido")
     
