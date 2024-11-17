@@ -166,6 +166,7 @@ function EditarBack(evento) {
     const editarBack_backImg = document.getElementById("backImg")
 
     const backTitulo = document.querySelector("#classe>.back>h2")
+    const titulo_atividades = document.querySelector("#atividades>#atividades_topo>h1")
     const divBack = document.querySelector("#classe>.back")
 
     let validacao = ValidacaoFormulario(editarBack_titulo, editarBack_backImg)
@@ -176,6 +177,7 @@ function EditarBack(evento) {
         //alert("Tudo Preenchido!")
 
         backTitulo.innerHTML = editarBack_titulo.value
+        titulo_atividades.innerHTML = editarBack_titulo.value
         //console.log("Cor do Texto:")
         //console.log(editarBack_corTxt.value)
         backTitulo.style.setProperty("color", editarBack_corTxt.value)
