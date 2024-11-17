@@ -115,14 +115,14 @@ Veja o projeto você mesmo: https://joaovitordomingos.github.io/My-Class/
 <h3 id="modal_dinamico">Modal Dinâmico</h3>
 <p>O maior exemplo de modal dinâmico é o "Veja Mais" do aluno, foi se utilizado uma estrutura genérica de modal e por meio do Javascript foi se alterando o conteúdo do modal, este é o modal dinâmico do <a href="https://getbootstrap.com/docs/5.3/components/modal/#varying-modal-content">Bootstrap</a>.</p>
 <div display="flex" align="center">
-  <img src="./readme-imgs/modalDinamico/vejaMais_1.png" alt="Imagem do Veja Mais da Aluna Rachel" width="500px">
-  <img src="./readme-imgs/modalDinamico/vejaMais_2.png" alt="Imagem do Veja Mais do Aluno Lindsay" width="500px">
+  <img src="./readme-imgs/modalDinamico/vejaMais_1.png" alt="Imagem do Veja Mais da Aluna Rachel" width="400px">
+  <img src="./readme-imgs/modalDinamico/vejaMais_2.png" alt="Imagem do Veja Mais do Aluno Lindsay" width="400px">
 </div>
 <p>Cada ícone na parte "Veja Mais" tem um <strong>data-bs-whatever</strong> com o valor da matrícula do aluno, isso irá diferenciar os alunos, assim sabendo qual conteúdo mostrar.</p>
 <p>Outro exemplo, é o modal de Criar/Editar Sessão/Atividade, ao apertar no botão de criar o modal vem com o título Criar Atividade/Sessão, agora quando se aperta no ícone de edição, o modal vem com o nome Editar Atividade/Sessão</p>
 <div align="center" display="flex">
-  <img src="./readme-imgs/modalDinamico/modalCriar.png" alt="Imagem do modal Criar" width="500px">
-  <img src="./readme-imgs/modalDinamico/modalEditar.png" alt="Imagem do modal Editar" width="500px">
+  <img src="./readme-imgs/modalDinamico/modalCriar.png" alt="Imagem do modal Criar" width="400px">
+  <img src="./readme-imgs/modalDinamico/modalEditar.png" alt="Imagem do modal Editar" width="400px">
 </div>
 <p>No modal de Sessão a tabela também é alterada dinâmicamente, caso se adicione uma atividade nova ou altere o nome de uma atividade, ao abir o modal a tabela muda de acordo com os nomes das atividades.</p>
 
