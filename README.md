@@ -16,6 +16,7 @@
   <a href="#sobre">Sobre</a> • 
   <a href="#acesso">Acesse Aqui</a> • 
   <a href="#funcionalidades">Funcionalidades</a> • 
+  <a href="#mobile">Mobile</a> •
   <a href="#licenca">Licença</a> •
 </p>
 
@@ -216,6 +217,12 @@ Veja o projeto você mesmo: https://joaovitordomingos.github.io/My-Class/
   <li><a href="#modulo">Módulos</a></li>
   <li><a href="#api">Objetos</a></li> 
 </ul>
+
+<br>
+<br>
+
+<h2 id="mobile">📱 Mobile</h2>
+<p>Neste projeto foquei apenas em versões para telas grandes, computadores e notebooks, não desenvolvi um estilo para mobile, já que é um sistema para uso em computadores. Porém futuramente farei um design para mobile, como também poderei adicionar novas funcionalidades.</p>
 
 <br>
 <br>
