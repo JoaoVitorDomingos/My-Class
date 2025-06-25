@@ -4,13 +4,31 @@ import CriarTabelaAluno from "./metodos.js"
 import { GerarNumeroAleatorioInclusivo, GerarNumeroFloatAleatorioInclusivo , CriarTabelaGenerica, CriarTabelaModais} from "./metodos.js"
 
 async function PegarAlunos() {
-    const resposta = await fetch("https://reqres.in/api/users?page=2")
-    //console.log(resposta)
 
-    const alunos = await resposta.json()
-    //console.log(alunos)
+    let alunos
 
-    //console.log(alunos.data)
+    try {
+        const resposta = await fetch("pior", 
+            {
+                method: 'GET',
+                headers: {
+                    "x-api-key": "reqres-free-v1"
+                }
+            }
+        )
+        //console.log(resposta)
+
+        alunos = await resposta.json()
+        console.log(alunos)
+
+        //console.log(alunos.data)
+
+    } catch(erro) {
+        console.log("Erro: ")
+        console.log(erro)
+
+        alunos = criarAlunos()
+    }
 
     AdicionarAlunos(alunos.data)
     CriarAulas(Dados.dias_aulas, Dados.aulas)
@@ -201,6 +219,40 @@ function CriarAulas(array_aulas, qtd_dias) {
     array_aulas.reverse()
     //console.log("Banco de Dados - Aulas: ")
     //console.log(array_aulas)
+}
+
+function criarAlunos() {
+    let nomes = ["Michele Jatson", "Guilherme Henrique", "João Vitor", "Kauan Gomes", "Igor Bare", "Caroline Hantson"]
+
+    let caminhoF = "imgs/foto-alunos/Feminino/"
+    let caminhoM = "imgs/foto-alunos/Masculino/"
+    let basePath = window.location.pathname
+    basePath.includes("My-Class") ? basePath = "/My-Class/" : basePath = ""
+
+    let avatares = [`${basePath + caminhoF}foto-aluno2.jpg`, 
+                    `${basePath + caminhoM}foto-aluno5.jpg`,  
+                    `${basePath + caminhoM}foto-aluno1.jpg`,  
+                    `${basePath + caminhoM}foto-aluno8.jpg`,  
+                    `${basePath + caminhoM}foto-aluno3.jpg`,  
+                    `${basePath + caminhoF}foto-aluno6.jpg`, ]
+
+    let arrayAlunos = {data:[]}
+
+    for(let i = 0; i < 6; i++) {
+        let nomeSeparado = nomes[i].split(" ")
+        //console.log(`Nome Separada: ${nomeSeparado}`)
+        //console.log(`Avatar: ${avatares[i]}`)
+
+        arrayAlunos.data[i] = 
+        {
+            "id": (7+i),
+            "first_name": nomeSeparado[0],
+            "last_name": nomeSeparado[1],
+            "avatar": avatares[i]
+        }
+    }
+
+    return arrayAlunos
 }
 
 PegarAlunos()
