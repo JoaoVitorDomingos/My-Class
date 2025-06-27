@@ -5,6 +5,24 @@ import { CriarPresenca } from "./pegar_alunos.js"
 import * as impressaojs from "./impressao.js"
 import { ExpandirAtv } from "./estilos.js"
 
+const msgErroPreenchimento = "Preencha todos os campos!"
+const msgErroDataPequena = "A data é a partir do primeiro dia de aula: "
+const msgErroDataGrande = "A data é até, no máximo, um mês após o último dia de aula: "
+const msgErroDataFinalSemana = "Sábado e Domingo não são dias de aulas!"
+const msgErroNotaInvalida = "Nota Inválida! A nota deve estar entre 0 e 10!"
+const msgErroNome = "Nome Inválido!"
+const msgErroIdade = "Data de nascimento inválida! O aluno tem que ter entre 16 e 19 anos."
+const msgErroCPF = "CPF Inválido!"
+const msgErroImpressao = "Selecione pelo menos um aluno!"
+
+const msgInfoNotas = "Notas adicionadas com sucesso!"
+const msgInfoPresenca = "Presença lançada com sucesso!"
+const msgInfoAlunoAdd = "Aluno Adicionado!"
+const msgInfoImpressao = "Ative o 'gráficos de segundo plano' em 'mais definições' para ter a melhor impressão"
+const msgInfoAtividadeCriada = "Atividade Criada com Sucesso"
+const msgInfoSessaoCriada = "Sessão Criada com Sucesso"
+
+
 // Função de Validação de Formularios
 function ValidacaoFormulario(...inputs) {
     let max = inputs.length
@@ -172,7 +190,7 @@ function EditarBack(evento) {
     let validacao = ValidacaoFormulario(editarBack_titulo, editarBack_backImg)
 
     if(!validacao) {
-        alert("Preencha tudo!")
+        alert(msgErroPreenchimento)
     } else {
         //alert("Tudo Preenchido!")
 
@@ -221,7 +239,7 @@ btnSave_lancarNota.addEventListener("click", evento => {
     let validacao = ValidacaoFormulario(input_conteudo, input_data, ...tds_nota)
 
     if(!validacao) {
-        alert("Preencha tudo!")
+        alert(msgErroPreenchimento)
     } else {
         const tds_nomes = document.querySelectorAll("#lancar_notas>div>div>div>div>table>tbody>tr>td.td_nome")
         const mainTabela_media = [...document.getElementsByClassName("media")]
@@ -233,7 +251,8 @@ btnSave_lancarNota.addEventListener("click", evento => {
     
         if(dia < Dados.dias_aulas[0][1]) {
             //console.log("Data Iválida! Muito pequena!")
-            alert("Data Iválida!")
+            //console.log(Dados.dias_aulas[0][1])
+            alert(msgErroDataPequena + Dados.dias_aulas[0][0])
         } else {
 
             let last_pos = Dados.dias_aulas.length - 1
@@ -242,12 +261,12 @@ btnSave_lancarNota.addEventListener("click", evento => {
     
             if((dia.getMonth() - (Dados.dias_aulas[last_pos][1].getMonth() + 1)) >= 1 || (dia.getFullYear() - Dados.dias_aulas[last_pos][1].getFullYear()) != 0) {
                 //console.log("Data inválida! Muito grande")
-                alert("Data Iválida!")
+                alert(msgErroDataGrande + Dados.dias_aulas[last_pos][0])
             } else {
 
                 if(dia.getDay() == 0 || dia.getDay() == 6) {
                     //console.log("Data Inválida! Final de semana!")
-                    alert("Data Iválida!")
+                    alert(msgErroDataFinalSemana)
                 } else {
                     // console.log(tds_nomes)
                     tds_nomes.forEach((nome, indice) => {
@@ -271,6 +290,8 @@ btnSave_lancarNota.addEventListener("click", evento => {
                     //console.log(evento.target.previousElementSibling)
                     Resetar(evento, evento.target.previousElementSibling)
 
+                    alert(msgInfoNotas)
+
                     modal_LancarNota.hide()
 
                     //console.log("Banco de Dados - Alunos:")
@@ -287,7 +308,7 @@ function AdicionarNotaTD(evento) {
     let nota = ""
     do{
         if(nota < 0 || nota > 10 || /[a-z]/.test(nota))
-            alert("Nota inválida!")
+            alert(msgErroNotaInvalida)
         nota = prompt("Digite a nota deste aluno (0-10):")
         //console.log(nota)
         //console.log(typeof(nota))
@@ -351,7 +372,7 @@ btnSave_LancarPresenca.addEventListener("click", evento => {
     let validacao = ValidacaoFormulario(...radios, input_dia, input_conteudo)
 
     if(!validacao) {
-        alert("Preencha Tudo!")
+        alert(msgErroPreenchimento)
     } else {
 
         let dia_input = (input_dia.value).match(/(\d{4})-(\d{2})-(\d{2})/)
@@ -360,7 +381,7 @@ btnSave_LancarPresenca.addEventListener("click", evento => {
     
         if(dia < Dados.dias_aulas[0][1]) {
             //console.log("Data Iválida! Muito pequena!")
-            alert("Data Iválida!")
+            alert(msgErroDataPequena)
         } else {
 
             let last_pos = Dados.dias_aulas.length - 1
@@ -369,12 +390,12 @@ btnSave_LancarPresenca.addEventListener("click", evento => {
     
             if((dia.getMonth() - (Dados.dias_aulas[last_pos][1].getMonth() + 1)) >= 1 || (dia.getFullYear() - Dados.dias_aulas[last_pos][1].getFullYear()) != 0) {
                 //console.log("Data inválida! Muito grande")
-                alert("Data Iválida!")
+                alert(msgErroDataGrande)
             } else {
 
                 if(dia.getDay() == 0 || dia.getDay() == 6) {
                     //console.log("Data Inválida! Final de semana!")
-                    alert("Data Iválida!")
+                    alert(msgErroDataFinalSemana)
                 } else {
 
                     const td_alunos = [...document.querySelectorAll("#lancar_presenca>div>div>div>div>table>tbody>tr>td.td_nome")]
@@ -465,7 +486,9 @@ btnSave_LancarPresenca.addEventListener("click", evento => {
                     //console.log("Banco de Dados - Alunos: ")
                     //console.log(Dados.alunos)
 
+
                     Resetar(evento, evento.target.previousElementSibling)
+                    alert(msgInfoPresenca)
                     modal_LancarPresenca.hide()
                 }
             }
@@ -490,24 +513,24 @@ btnSave_AdicionarAluno.addEventListener("click", evento => {
     let validacao = ValidacaoFormulario(input_nome, input_nascimento, radios_sexo, input_cpf, input_endereco, input_foto)
 
     if(!validacao) {
-        alert("Preencha Tudo!")
+        alert(msgErroPreenchimento)
     } else {
         if(/\d/.test(input_nome.value)) {
-            alert("Nome Inválido!")
+            alert(msgErroNome)
             return
         } else {
             if(/\W/.test(input_nome.value)) {
                 //console.log("Tem caracteres especiais")
-                if(/[ãáâçíêóô\s]/i.test(input_nome.value)) {
+                if(/[ãáâçíêéóô\s]/i.test(input_nome.value)) {
                     let nome_att = input_nome.value.replace(/[ãáâçíêóô\s]/ig, "_")
                     //console.log("Nome Atualizado: " + nome_att)
                     if(/\W/.test(nome_att)) {
                         //console.log(nome_att.match(/\s/))
-                        alert("Nome Inválido!")
+                        alert(msgErroNome)
                         return
                     }
                 } else {
-                    alert("Nome Inválido!")
+                    alert(msgErroNome)
                     return
                 }
             }
@@ -524,11 +547,11 @@ btnSave_AdicionarAluno.addEventListener("click", evento => {
     
         //console.log("Ano resultante: " + (ano_atual - ano_aluno))
         if(ano_atual - ano_aluno < 16 || ano_atual - ano_aluno > 19) {
-            alert("Data de nascimento inválida! O aluno tem que ter entre 16 e 19 anos.")
+            alert(msgErroIdade)
         } else {
             //alert("data ok.")
             if(/[\Wa-z\s]/i.test(input_cpf.value) || input_cpf.value.length < 11) {
-                alert("CPF Inválido!")
+                alert(msgErroCPF)
             } else {
                 //alert("CPF OK.")
 
@@ -570,7 +593,7 @@ btnSave_AdicionarAluno.addEventListener("click", evento => {
                 //console.log("Banco de Dados - Alunos:")
                 //console.log(Dados.alunos)
 
-                alert("Aluno Adicionado!")
+                alert(msgInfoAlunoAdd)
 
                 Resetar(evento, evento.target.previousElementSibling)
                 modal_AdicionarAluno.hide()
@@ -630,7 +653,7 @@ btnsave_imprimirBo.addEventListener("click", evento => {
         modal_imprimirBo.hide()
 
         setTimeout(() => {
-            alert("Ative o 'gráficos de segundo plano' em 'mais definições' para ter a melhor impressão")
+            alert(msgInfoImpressao)
             window.print()
         }, 500)
         
@@ -663,12 +686,12 @@ btnsave_imprimirBo.addEventListener("click", evento => {
             modal_imprimirBo.hide()
 
             setTimeout(() => {
-                alert("Ative o 'gráficos de segundo plano' em 'mais definições' para ter a melhor impressão")
+                alert(msgInfoImpressao)
                 window.print()
             }, 500)
 
         } else {
-            alert("Selecione pelo menos um aluno!")
+            alert(msgErroImpressao)
         }
         
     }
@@ -725,7 +748,7 @@ btnsave_imprimirPre.addEventListener("click", evento => {
                             modal_imprimirPre.hide()
     
                             setTimeout(() => {
-                                alert("Ative o 'gráficos de segundo plano' em 'mais definições' para ter a melhor impressão")
+                                alert(msgInfoImpressao)
                                 window.print()
                             }, 500)
                         } else {
@@ -756,12 +779,12 @@ btnsave_imprimirPre.addEventListener("click", evento => {
                                 modal_imprimirPre.hide()
         
                                 setTimeout(() => {
-                                    alert("Ative o 'gráficos de segundo plano' em 'mais definições' para ter a melhor impressão")
+                                    alert(msgInfoImpressao)
                                     window.print()
                                 }, 500)
 
                             } else {
-                                alert("Selecione pelo menos um aluno!")
+                                alert(msgErroImpressao)
                             }
                         }
                     }
@@ -914,6 +937,7 @@ btnSave_criarAtv.addEventListener("click", evento => {
             }
             // Fechar Modal
             Resetar(evento, evento.target.previousElementSibling)
+            alert(msgInfoAtividadeCriada)
             modal_criarAtv.hide()
         }
 
@@ -1049,6 +1073,7 @@ btnSave_CriarSec.addEventListener("click", evento => {
             }
 
             Resetar(evento, evento.target.previousElementSibling)
+            alert(msgInfoSessaoCriada)
             modal_criarSection.hide()
         }
     
