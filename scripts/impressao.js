@@ -10,6 +10,8 @@ function CriarDivAluno(arrayAlunosObj, tipo, diasPresenca=0, posDateInicial) {
         // Container
         const container = document.createElement("div")
         container.classList.add("mx-auto", "bo_pre_aluno")
+        if(arrayAlunosObj.length > 1 && i != arrayAlunosObj.length - 1)
+            container.classList.add("quebra_folha")
         pai.appendChild(container)
 
         // Titulo
@@ -23,10 +25,10 @@ function CriarDivAluno(arrayAlunosObj, tipo, diasPresenca=0, posDateInicial) {
         container.appendChild(div_infoPessoais)
 
         // Div Foto
-        const div_foto = document.createElement("div")
-        div_foto.classList.add("bo_pre_foto", "col-md-4")
-        div_foto.style.backgroundImage = `url(${arrayAlunosObj[i].foto})`
-        div_infoPessoais.appendChild(div_foto)
+        const img_foto = document.createElement("img")
+        img_foto.classList.add("bo_pre_foto", "col-md-4")
+        img_foto.setAttribute("src", arrayAlunosObj[i].foto)
+        div_infoPessoais.appendChild(img_foto)
 
         // Div Dados
         const div_dados = document.createElement("div")

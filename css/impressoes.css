@@ -37,6 +37,10 @@
         width: 20%;
     }
 
+    .quebra_folha {
+        page-break-after: always;
+    }
+
     /* Boletim Sala */
     .boletim_sala > #presenca_sala, .boletim_sala > #container_bo_pre_aluno, .boletim_sala > #imprimir_tab {
         display: none;
@@ -64,7 +68,7 @@
     }
 
     #presenca_sala > .tabela_impressao {
-        page-break-after: always;
+        /* page-break-after: always; */
     }
 
 
@@ -74,7 +78,7 @@
     }
 
     #container_bo_pre_aluno > .bo_pre_aluno {
-        page-break-after: always;
+        /* page-break-after: always; */
         width: 90%;
     }
 
@@ -83,16 +87,11 @@
     }
 
     #container_bo_pre_aluno > .bo_pre_aluno > .info_pessoais > .bo_pre_foto {
-        border: 1px solid black;
-        box-shadow: 1px 0px 3px 0px rgba(0, 0, 0, 0.329);
+        padding: 0;
+        border: 2px solid black;
+        border-radius: 5px;
         width: 200px;
         height: 200px;
-
-        /* background-image: url(../imgs/foto-alunos/Masculino/foto-aluno5.jpg); */
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        border-radius: 3px;
     }
 
     #container_bo_pre_aluno > .bo_pre_aluno > .info_pessoais > .bo_pre_dados {

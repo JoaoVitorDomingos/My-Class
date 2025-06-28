@@ -8,7 +8,7 @@ async function PegarAlunos() {
     let alunos
 
     try {
-        const resposta = await fetch("pior", 
+        const resposta = await fetch("https://reqres.in/api/users?page=2", 
             {
                 method: 'GET',
                 headers: {
@@ -19,7 +19,7 @@ async function PegarAlunos() {
         //console.log(resposta)
 
         alunos = await resposta.json()
-        console.log(alunos)
+        //console.log(alunos)
 
         //console.log(alunos.data)
 
